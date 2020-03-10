@@ -130,3 +130,5 @@ dmypy.json
 
 
 examples/images
+.vscode/settings.json
+examples/temp.py

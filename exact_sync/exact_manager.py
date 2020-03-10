@@ -10,6 +10,7 @@ import sys
 from functools import partial
 import threading
 import queue
+from tqdm import tqdm
 
 from exact_sync.exact_enums import *
 from exact_sync.exact_errors import *
@@ -66,10 +67,12 @@ class ExactManager():
         if (self.statusqueue is not None) and (level>1):
             self.statusqueue.put((1, logmsg))
 
-    def progress(self, value:float):
+    def progress(self, value:float, callback:callable=None):
         value=value/self.progress_denominator+self.offset
         if (self.statusqueue is not None):
             self.statusqueue.put((0, value*100 if value<1 else -1))
+        if (callback is not None):
+            callback(value*100)
 
     def set_progress_properties(self, denominator:float, offset:float):
         self.progress_denominator=float(denominator)
@@ -118,14 +121,10 @@ class ExactManager():
         obj = self.json_get_request(self.serverurl+'annotations/api/annotation/loadannotationtypes/?imageset_id=%d' % imageset_id)['annotation_types']        
         return obj
 
-    def download_image(self, image_id:int, target_path: Path):
-        status,filename,blob = self.getfile('images/api/image/download/%d/' % image_id)
+    def download_image(self, image_id:int, target_path: Path, callback:callable):
+        status,filename = self.getfile('images/api/image/download/%d/' % image_id, target_path, callback=callback)
         self.log(1, 'Downloading image',image_id,'to', target_path)
-        if (status==200):
-            open(str(target_path), 'wb').write(blob)
-            return target_path
-        else:
-            return ''
+        return filename
 
     def retrieve_imagesets(self):
         status, obj = self.get('images/api/list_imagesets/')
@@ -154,9 +153,20 @@ class ExactManager():
         ret= requests.get(self.serverurl+url, auth=(self.username, self.password))
         return ret.status_code, ret.text
 
-    def getfile(self, url) -> (int, str, bytes):
-        ret= requests.get(self.serverurl+url, auth=(self.username, self.password))
-        return ret.status_code, self.get_filename_from_cd(ret.headers.get('content-disposition')), ret.content
+    def getfile(self, url, target_path, callback) -> (int, str, bytes):
+        with requests.get(self.serverurl+url, auth=(self.username, self.password), stream=True) as r:
+            r.raise_for_status()
+            f = open(str(target_path),'wb')
+            siz=0
+            chunk_size=8192
+            for chunk in tqdm(r.iter_content(chunk_size), total=int(r.headers['content-length']) / chunk_size, desc=target_path.name): 
+                if chunk: # filter out keep-alive new chunks
+                    f.write(chunk)
+                    siz += len(chunk)
+                    prog=float(siz)/int(r.headers['content-length'])
+                    self.progress(prog, callback=callback)
+            f.close()
+        return r.status_code, target_path
 
     def get_filename_from_cd(self, cd):
         """
