@@ -121,8 +121,8 @@ class ExactManager():
         obj = self.json_get_request(self.serverurl+'annotations/api/annotation/loadannotationtypes/?imageset_id=%d' % imageset_id)['annotation_types']        
         return obj
 
-    def download_image(self, image_id:int, target_path: Path, callback:callable):
-        status,filename = self.getfile('images/api/image/download/%d/' % image_id, target_path, callback=callback)
+    def download_image(self, image_id:int, target_path: Path, callback:callable, original_image:bool=False):
+        status,filename = self.getfile('images/api/image/download/{0}/?original_image={1}'.format(image_id, original_image), target_path, callback=callback)
         self.log(1, 'Downloading image',image_id,'to', target_path)
         return filename
 
