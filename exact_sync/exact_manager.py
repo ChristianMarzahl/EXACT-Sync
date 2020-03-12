@@ -11,6 +11,7 @@ from functools import partial
 import threading
 import queue
 from tqdm import tqdm
+from requests_toolbelt.multipart import encoder
 
 from exact_sync.exact_enums import *
 from exact_sync.exact_errors import *
@@ -140,6 +141,46 @@ class ExactManager():
         else:
             return []
 
+
+    def update_annotation(self, annotation_id:int,  image_id:int, annotationtype_id:int, vector:list, last_modified:int, blurred:bool=False, guid:str='', deleted:int=0, description:str=''):
+        data = {
+            'annotation_id': annotation_id,
+            'image_id' : image_id,
+            'annotation_type_id' : annotationtype_id,
+            'vector' : list_to_exactvector(vector),
+            'unique_identifier' : guid,
+            'deleted' : deleted,
+            'last_edit_time' : datetime.datetime.fromtimestamp(last_modified).strftime('%Y-%m-%dT%H:%M:%S.%f'),
+            'blurred' : blurred,
+            'description' : description
+        }
+        self.log(1, f'Update of remote annotation {guid}, ts={data["last_edit_time"]}')
+        status, ret = self.post('annotations/api/annotation/update/', data=json.dumps(data), headers={'content-type':'application/json'})
+        if status==200:
+            return ret
+        else: 
+            self.log(10,'Unable to update annotation, message was: '+ret)
+            raise ExactProcessError('Unable to update annotation')
+
+    def create_annotation(self, image_id:int, annotationtype_id:int, vector:list, last_modified:int, blurred:bool=False, guid:str='', description:str='', deleted:bool=False):
+        data = {
+            'image_id': image_id,
+            'annotation_type_id' : annotationtype_id,
+            'vector' : list_to_exactvector(vector),
+            'unique_identifier' : guid,
+            'deleted' : deleted,
+            'last_edit_time' : datetime.datetime.fromtimestamp(last_modified).strftime('%Y-%m-%dT%H:%M:%S.%f'),
+            'blurred' : blurred,
+            'description' : description
+        }
+        self.log(1,f'Creating remote annotation {guid} with ts = {data["last_edit_time"]}')
+        status, ret = self.post('annotations/api/annotation/create/', data=json.dumps(data), headers={'content-type':'application/json'})
+        if status==201:
+            return ret
+        else: 
+            self.log(10,'Unable to create annotation, message was: '+ret)
+            raise ExactProcessError('Unable to create annotation')
+
     def retrieve_imagelist(self, imageset_id:int) -> list:
         # this is really a format fuckup. But let's parse it nevertheless...
         self.log(0, 'Retrieving image list for ',imageset_id)
@@ -168,6 +209,39 @@ class ExactManager():
             f.close()
         return r.status_code, target_path
 
+    def create_progressbar(self, e:encoder.MultipartEncoder):
+
+        bar = tqdm(total=100)
+        def upload_monitor(monitor:encoder.MultipartEncoderMonitor):
+            bar.update((float(monitor.bytes_read)/monitor.len) * 100)
+        return upload_monitor
+
+    def upload_image_to_imageset(self, imageset_id:int, filename:str) -> bool:
+        e = encoder.MultipartEncoder(fields={'files[]': (os.path.basename(filename), open(filename, 'rb'), 'application/octet-stream')})
+        p_bar = self.create_progressbar(e)
+        m = encoder.MultipartEncoderMonitor(e, p_bar)
+        headers = {'Content-Type': m.content_type, 'referer': self.serverurl}
+        self.log(1, 'Uploading image',filename,'to',imageset_id)
+        status, obj = self.post('images/image/upload/%d/'%imageset_id, data=m, headers=headers, timeout=120)
+        if (status==200):
+            return obj
+        else:
+            raise ExactProcessError('Unable to upload, response is: '+str(obj))
+
+    def post(self, url, data, files=None, **kwargs):
+        try:
+            ret= requests.post(self.serverurl+url, auth=(self.username, self.password), data=data, files=files, **kwargs)
+        except requests.exceptions.ConnectionError as e:
+            return self.post(url, data, files, **kwargs)
+        try:
+            return ret.status_code, json.loads(ret.text)
+        except:
+            return ret.status_code, ret.text
+    
+    def get(self, url):
+        ret= requests.get(self.serverurl+url, auth=(self.username, self.password))
+        return ret.status_code, ret.text
+
     def get_filename_from_cd(self, cd):
         """
         Get filename from content-disposition
@@ -178,3 +252,9 @@ class ExactManager():
         if len(fname) == 0:
             return None
         return fname[0]
+
+    @staticmethod
+    def list_to_exactvector(vector):
+        retdict = {f'x{(i+1)}': v[0] for i, v in enumerate(vector)}
+        retdict.update({f'y{i+1}': v[1] for i, v in enumerate(vector)} )
+        return retdict
