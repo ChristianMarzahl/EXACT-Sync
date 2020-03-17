@@ -147,30 +147,35 @@ class ExactManager():
         image_id = annotation['image']['id']
         annotationtype_id = annotation['annotation_type']['id']
         vector = annotation['vector']
-        last_modified = annotation['last_edit_time']
-        blurred =False
-        guid = annotation['unique_identifier']
-        deleted = annotation['deleted']
-        description = annotation['description']
-        meta_data = annotation['meta_data']
+        last_modified = annotation.get('last_edit_time', None)
+        blurred =annotation.get('blurred', False)
+        guid = annotation.get('unique_identifier', '')
+        deleted = annotation.get('deleted', False)
+        description = annotation.get('description', '')
+        meta_data = annotation.get('meta_data', None)
 
         self.update_annotation(annotation_id,  image_id, annotationtype_id, vector, last_modified, blurred, guid, deleted, description, meta_data)
     
 
-    def update_annotation(self, annotation_id:int,  image_id:int, annotationtype_id:int, vector:list, last_modified:int, blurred:bool=False, guid:str='', deleted:int=0, description:str='', meta_data:dict=None):
+    def update_annotation(self, annotation_id:int,  image_id:int, annotationtype_id:int, vector:list, last_modified:int=None, blurred:bool=False, guid:str=None, deleted:int=0, description:str='', meta_data:dict=None):
         data = {
             'annotation_id': annotation_id,
             'image_id' : image_id,
             'annotation_type_id' : annotationtype_id,
             'vector' : vector if isinstance(vector, dict) else ExactManager.list_to_exactvector(vector),
-            'unique_identifier' : guid,
             'deleted' : deleted,
-            'last_edit_time' : datetime.datetime.fromtimestamp(last_modified).strftime('%Y-%m-%dT%H:%M:%S.%f') if isinstance(last_modified, int) else last_modified,
             'blurred' : blurred,
             'description' : description,
             'meta_data': meta_data
         }
-        self.log(1, f'Update of remote annotation {guid}, ts={data["last_edit_time"]}')
+
+        if guid is not None:
+            data['unique_identifier'] = guid
+
+        if last_modified != None:
+            data['last_edit_time'] = datetime.datetime.fromtimestamp(last_modified).strftime('%Y-%m-%dT%H:%M:%S.%f') if isinstance(last_modified, int) else last_modified
+
+        self.log(1, f'Update of remote annotation {guid}')
         status, ret = self.post('annotations/api/annotation/update/', data=json.dumps(data), headers={'content-type':'application/json'})
         if status==200:
             return ret
@@ -178,19 +183,24 @@ class ExactManager():
             self.log(10,'Unable to update annotation, message was: '+ret)
             raise ExactProcessError('Unable to update annotation')
 
-    def create_annotation(self, image_id:int, annotationtype_id:int, vector:list, last_modified:int, blurred:bool=False, guid:str='', description:str='', deleted:bool=False, meta_data:dict=None):
+    def create_annotation(self, image_id:int, annotationtype_id:int, vector:list, last_modified:int=None, blurred:bool=False, guid:str=None, description:str='', deleted:bool=False, meta_data:dict=None):
         data = {
             'image_id': image_id,
             'annotation_type_id' : annotationtype_id,
             'vector' : vector if isinstance(vector, dict) else ExactManager.list_to_exactvector(vector),
-            'unique_identifier' : guid,
             'deleted' : deleted,
-            'last_edit_time' : datetime.datetime.fromtimestamp(last_modified).strftime('%Y-%m-%dT%H:%M:%S.%f'),
             'blurred' : blurred,
             'description' : description,
             'meta_data': meta_data
         }
-        self.log(1,f'Creating remote annotation {guid} with ts = {data["last_edit_time"]}')
+
+        if guid is not None:
+            data['unique_identifier'] = guid
+
+        if last_modified != None:
+            data['last_edit_time'] = datetime.datetime.fromtimestamp(last_modified).strftime('%Y-%m-%dT%H:%M:%S.%f')
+
+        self.log(1,f'Creating remote annotation {guid}')
         status, ret = self.post('annotations/api/annotation/create/', data=json.dumps(data), headers={'content-type':'application/json'})
         if status==201:
             return ret
