@@ -128,12 +128,28 @@ class ExactManager():
         return filename
 
     def retrieve_imagesets(self):
+        """List of all image sets
+        
+        Raises:
+            ExactProcessError: 'Unable to retrieve list of image sets
+        
+        Returns:
+            [type] -- List of images sets with images and products
+        """
         status, obj = self.get('images/api/list_imagesets/')
         if (status != 200):
             raise ExactProcessError('Unable to retrieve list of image sets')
         return json.loads(obj)
 
     def retrieve_annotations(self,image_id:int) -> list:
+        """Download image annotations 
+        
+        Arguments:
+            image_id {int} -- Image Id
+        
+        Returns:
+            list -- List of Annotations
+        """
         obj = self.json_get_request(self.serverurl+'annotations/api/annotation/load/?image_id=%d' % image_id)
         self.log(0, 'Retrieving annotations from ', image_id)
         if 'annotations' in obj:
@@ -250,6 +266,32 @@ class ExactManager():
         headers = {'Content-Type': m.content_type, 'referer': self.serverurl}
         self.log(1, 'Uploading image',filename,'to',imageset_id)
         status, obj = self.post('images/image/upload/%d/'%imageset_id, data=m, headers=headers, timeout=120)
+        if (status==200):
+            return obj
+        else:
+            raise ExactProcessError('Unable to upload, response is: '+str(obj))
+
+
+    def upload_annotation_mediafile(self, annotation_id:int, filename:str, media_file_type:int) -> bool:
+        """Attach a media file to an annotations
+        
+        Arguments:
+            annotation_id {int} -- Annotation ID
+            filename {str} -- File Path
+            media_file_type {int} -- 1 Undefined, 2 Image, 3 Video, 4 Audio
+        
+        Raises:
+            ExactProcessError: Unable to upload media file
+        
+        Returns:
+            [object] -- List of uploaded media files
+        """
+        e = encoder.MultipartEncoder(fields={'files[]': (os.path.basename(filename), open(filename, 'rb'), 'application/octet-stream')})
+        p_bar = self.create_progressbar(e)
+        m = encoder.MultipartEncoderMonitor(e, p_bar)
+        headers = {'Content-Type': m.content_type, 'referer': self.serverurl}
+        self.log(1, 'Uploading media file',filename,'to',annotation_id)
+        status, obj = self.post('annotations/api/annotation/mediafile/upload/{0}/{1}/'.format(annotation_id,media_file_type), data=m, headers=headers, timeout=120)
         if (status==200):
             return obj
         else:
