@@ -58,8 +58,9 @@ class TestAnnotationTypesApi(unittest.TestCase):
         """Test case for retrieve_annotation_type
 
         """
-
-        annotation_type = self.api.retrieve_annotation_type(id=10)
+        annotation_type_list = self.api.list_annotation_types()
+        annotation_type = annotation_type_list.results[0]
+        annotation_type = self.api.retrieve_annotation_type(id=annotation_type.id)
         pass
 
     def test_update_annotation_type(self):

@@ -42,7 +42,7 @@ class VerificationsApi(object):
 
         :param async_req bool
         :param Body90 body:
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class VerificationsApi(object):
 
         :param async_req bool
         :param Body90 body:
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -129,7 +129,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -149,7 +149,7 @@ class VerificationsApi(object):
         :param int annotation:
         :param int user:
         :param bool verified:
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -172,7 +172,7 @@ class VerificationsApi(object):
         :param int annotation:
         :param int user:
         :param bool verified:
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -238,7 +238,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -258,7 +258,7 @@ class VerificationsApi(object):
         :param int annotation:
         :param int user:
         :param bool verified:
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -281,7 +281,7 @@ class VerificationsApi(object):
         :param int annotation:
         :param int user:
         :param bool verified:
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -347,7 +347,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -495,7 +495,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified: verified
-        :return: InlineResponse20020
+        :return: Verifications
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -525,12 +525,14 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified: verified
-        :return: InlineResponse20020
+        :return: Verifications
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['limit', 'offset', 'id', 'annotation', 'user', 'time', 'time__lte', 'time__gte', 'time__range', 'verified']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')        
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -571,7 +573,11 @@ class VerificationsApi(object):
             query_params.append(('time__range', params['time__range']))  # noqa: E501
         if 'verified' in params:
             query_params.append(('verified', params['verified']))  # noqa: E501
-
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
+            
         header_params = {}
 
         form_params = []
@@ -593,7 +599,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20020',  # noqa: E501
+            response_type='Verifications',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -620,7 +626,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -650,7 +656,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -738,7 +744,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -767,7 +773,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -799,7 +805,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -887,7 +893,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -916,7 +922,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -948,7 +954,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1036,7 +1042,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1062,7 +1068,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1091,7 +1097,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1161,7 +1167,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1188,7 +1194,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1218,7 +1224,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1306,7 +1312,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1335,7 +1341,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1367,7 +1373,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1455,7 +1461,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1484,7 +1490,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1516,7 +1522,7 @@ class VerificationsApi(object):
         :param str time__gte: time__gte
         :param str time__range: time__range
         :param str verified2: verified
-        :return: InlineResponse20021
+        :return: Verification
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1604,7 +1610,7 @@ class VerificationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='Verification',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

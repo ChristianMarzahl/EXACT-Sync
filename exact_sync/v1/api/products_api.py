@@ -42,7 +42,7 @@ class ProductsApi(object):
 
         :param async_req bool
         :param Body108 body:
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class ProductsApi(object):
 
         :param async_req bool
         :param Body108 body:
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -145,7 +145,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -168,7 +168,7 @@ class ProductsApi(object):
         :param int creator:
         :param list[int] imagesets:
         :param list[int] annotationtype_set:
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -194,7 +194,7 @@ class ProductsApi(object):
         :param int creator:
         :param list[int] imagesets:
         :param list[int] annotationtype_set:
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -276,7 +276,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -299,7 +299,7 @@ class ProductsApi(object):
         :param int creator:
         :param list[int] imagesets:
         :param list[int] annotationtype_set:
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -325,7 +325,7 @@ class ProductsApi(object):
         :param int creator:
         :param list[int] imagesets:
         :param list[int] annotationtype_set:
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -407,7 +407,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -560,7 +560,7 @@ class ProductsApi(object):
         :param str creator: creator
         :param str imagesets: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20024
+        :return: Products
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -591,12 +591,14 @@ class ProductsApi(object):
         :param str creator: creator
         :param str imagesets: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20024
+        :return: Products
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['limit', 'offset', 'id', 'name', 'name__contains', 'description', 'description__contains', 'team', 'creator', 'imagesets', 'annotationtype']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')        
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -639,6 +641,10 @@ class ProductsApi(object):
             query_params.append(('imagesets', params['imagesets']))  # noqa: E501
         if 'annotationtype' in params:
             query_params.append(('annotationtype', params['annotationtype']))  # noqa: E501
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
 
         header_params = {}
 
@@ -661,7 +667,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20024',  # noqa: E501
+            response_type='Products',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -689,7 +695,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -720,7 +726,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -826,7 +832,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -859,7 +865,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -895,7 +901,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1001,7 +1007,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1034,7 +1040,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1070,7 +1076,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1176,7 +1182,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1203,7 +1209,7 @@ class ProductsApi(object):
         :param str creator: creator
         :param str imagesets: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1233,7 +1239,7 @@ class ProductsApi(object):
         :param str creator: creator
         :param str imagesets: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1305,7 +1311,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1333,7 +1339,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1364,7 +1370,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1470,7 +1476,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1503,7 +1509,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1539,7 +1545,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1645,7 +1651,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1678,7 +1684,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1714,7 +1720,7 @@ class ProductsApi(object):
         :param str creator2: creator
         :param str imagesets2: imagesets
         :param str annotationtype: annotationtype
-        :return: InlineResponse20025
+        :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1820,7 +1826,7 @@ class ProductsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='Product',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

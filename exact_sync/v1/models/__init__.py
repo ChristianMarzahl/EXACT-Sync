@@ -15,7 +15,7 @@ from __future__ import absolute_import
 
 # import models into model package
 
-'''
+
 from exact_sync.v1.models.body import Body
 from exact_sync.v1.models.body1 import Body1
 from exact_sync.v1.models.body10 import Body10
@@ -133,34 +133,35 @@ from exact_sync.v1.models.body96 import Body96
 from exact_sync.v1.models.body97 import Body97
 from exact_sync.v1.models.body98 import Body98
 from exact_sync.v1.models.body99 import Body99
-from exact_sync.v1.models.inline_response200 import InlineResponse200
-from exact_sync.v1.models.inline_response2001 import InlineResponse2001
-from exact_sync.v1.models.inline_response20010 import InlineResponse20010
-from exact_sync.v1.models.inline_response20011 import InlineResponse20011
-from exact_sync.v1.models.inline_response20012 import InlineResponse20012
-from exact_sync.v1.models.inline_response20013 import InlineResponse20013
-from exact_sync.v1.models.inline_response20014 import InlineResponse20014
-from exact_sync.v1.models.inline_response20015 import InlineResponse20015
-'''
 
+
+from exact_sync.v1.models.annotations import Annotations
+from exact_sync.v1.models.annotation import Annotation
 from exact_sync.v1.models.annotation_types import AnnotationTypes
 from exact_sync.v1.models.annotation_type import AnnotationType
 from exact_sync.v1.models.annotation_media_files import AnnotationMediaFiles
 from exact_sync.v1.models.annotation_media_file import AnnotationMediaFile
 
-'''
-from exact_sync.v1.models.inline_response2002 import InlineResponse2002
-from exact_sync.v1.models.inline_response20020 import InlineResponse20020
-from exact_sync.v1.models.inline_response20021 import InlineResponse20021
-from exact_sync.v1.models.inline_response20022 import InlineResponse20022
-from exact_sync.v1.models.inline_response20023 import InlineResponse20023
-from exact_sync.v1.models.inline_response20024 import InlineResponse20024
-from exact_sync.v1.models.inline_response20025 import InlineResponse20025
-from exact_sync.v1.models.inline_response2003 import InlineResponse2003
-from exact_sync.v1.models.inline_response2004 import InlineResponse2004
-from exact_sync.v1.models.inline_response2005 import InlineResponse2005
-from exact_sync.v1.models.inline_response2006 import InlineResponse2006
-from exact_sync.v1.models.inline_response2007 import InlineResponse2007
-from exact_sync.v1.models.inline_response2008 import InlineResponse2008
-from exact_sync.v1.models.inline_response2009 import InlineResponse2009
-'''
+
+from exact_sync.v1.models.users import Users
+from exact_sync.v1.models.user import User
+from exact_sync.v1.models.set_tags import SetTags
+from exact_sync.v1.models.set_tag import SetTag
+from exact_sync.v1.models.screening_modes import ScreeningModes
+from exact_sync.v1.models.screening_mode import ScreeningMode
+
+
+from exact_sync.v1.models.teams import Teams
+from exact_sync.v1.models.verifications import Verifications
+from exact_sync.v1.models.verification import Verification
+from exact_sync.v1.models.log_image_actions import LogImageActions
+from exact_sync.v1.models.log_image_action import LogImageAction
+from exact_sync.v1.models.products import Products
+from exact_sync.v1.models.product import Product
+from exact_sync.v1.models.team import Team
+from exact_sync.v1.models.team_memberships import TeamMemberships
+from exact_sync.v1.models.team_membership import TeamMembership
+from exact_sync.v1.models.images import Images
+from exact_sync.v1.models.image import Image
+from exact_sync.v1.models.image_sets import ImageSets
+from exact_sync.v1.models.image_set import ImageSet

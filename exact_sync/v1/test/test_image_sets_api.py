@@ -14,16 +14,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from api.image_sets_api import ImageSetsApi  # noqa: E501
-from swagger_client.rest import ApiException
+from exact_sync.v1.api_client import ApiClient as client
+from exact_sync.v1.api.image_sets_api import ImageSetsApi  # noqa: E501
+from exact_sync.v1.rest import ApiException
 
 
 class TestImageSetsApi(unittest.TestCase):
     """ImageSetsApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.image_sets_api.ImageSetsApi()  # noqa: E501
+        self.api = ImageSetsApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -44,6 +44,7 @@ class TestImageSetsApi(unittest.TestCase):
         """Test case for list_image_sets
 
         """
+        image_sets = self.api.list_image_sets(omit="images")
         pass
 
     def test_partial_update_image_set(self):
@@ -56,6 +57,9 @@ class TestImageSetsApi(unittest.TestCase):
         """Test case for retrieve_image_set
 
         """
+        image_sets = self.api.list_image_sets(omit="images")
+        image_set = image_sets.results[0]
+        image_set = self.api.retrieve_image_set(id=image_set.id)
         pass
 
     def test_update_image_set(self):

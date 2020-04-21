@@ -58,7 +58,9 @@ class TestAnnotationMediaFilesApi(unittest.TestCase):
         """Test case for retrieve_annotation_media_file
 
         """
-        annotation_media_file = self.api.retrieve_annotation_media_file(id=516)
+        annotation_media_files = self.api.list_annotation_media_files()
+        media = annotation_media_files.results[0]
+        annotation_media_file = self.api.retrieve_annotation_media_file(id=media.id)
         pass
 
     def test_update_annotation_media_file(self):

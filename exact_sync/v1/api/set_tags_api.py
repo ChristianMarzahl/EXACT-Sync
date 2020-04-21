@@ -42,7 +42,7 @@ class SetTagsApi(object):
 
         :param async_req bool
         :param Body45 body:
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class SetTagsApi(object):
 
         :param async_req bool
         :param Body45 body:
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -127,7 +127,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -146,7 +146,7 @@ class SetTagsApi(object):
         :param async_req bool
         :param str name:
         :param list[int] imagesets:
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -168,7 +168,7 @@ class SetTagsApi(object):
         :param async_req bool
         :param str name:
         :param list[int] imagesets:
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -232,7 +232,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -251,7 +251,7 @@ class SetTagsApi(object):
         :param async_req bool
         :param str name:
         :param list[int] imagesets:
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -273,7 +273,7 @@ class SetTagsApi(object):
         :param async_req bool
         :param str name:
         :param list[int] imagesets:
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -337,7 +337,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -465,7 +465,7 @@ class SetTagsApi(object):
         :param str name: name
         :param str name__contains: name__contains
         :param str imagesets: imagesets
-        :return: InlineResponse20010
+        :return: SetTags
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -491,7 +491,7 @@ class SetTagsApi(object):
         :param str name: name
         :param str name__contains: name__contains
         :param str imagesets: imagesets
-        :return: InlineResponse20010
+        :return: SetTags
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -551,7 +551,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20010',  # noqa: E501
+            response_type='SetTags',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -574,7 +574,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -600,7 +600,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -678,7 +678,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -702,7 +702,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -729,7 +729,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -807,7 +807,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -831,7 +831,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -858,7 +858,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -936,7 +936,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -958,7 +958,7 @@ class SetTagsApi(object):
         :param str name: name
         :param str name__contains: name__contains
         :param str imagesets: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -983,7 +983,7 @@ class SetTagsApi(object):
         :param str name: name
         :param str name__contains: name__contains
         :param str imagesets: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1045,7 +1045,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1068,7 +1068,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1094,7 +1094,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1172,7 +1172,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1196,7 +1196,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1223,7 +1223,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1301,7 +1301,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1325,7 +1325,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1352,7 +1352,7 @@ class SetTagsApi(object):
         :param str name2: name
         :param str name__contains: name__contains
         :param str imagesets2: imagesets
-        :return: InlineResponse20011
+        :return: SetTag
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1430,7 +1430,7 @@ class SetTagsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20011',  # noqa: E501
+            response_type='SetTag',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

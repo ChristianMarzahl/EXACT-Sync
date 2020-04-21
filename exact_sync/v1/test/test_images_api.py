@@ -14,16 +14,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from api.images_api import ImagesApi  # noqa: E501
-from swagger_client.rest import ApiException
+from exact_sync.v1.api_client import ApiClient as client
+from exact_sync.v1.api.images_api import ImagesApi  # noqa: E501
+from exact_sync.v1.rest import ApiException
 
 
 class TestImagesApi(unittest.TestCase):
     """ImagesApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.images_api.ImagesApi()  # noqa: E501
+        self.api = ImagesApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -44,6 +44,7 @@ class TestImagesApi(unittest.TestCase):
         """Test case for list_images
 
         """
+        images = self.api.list_images(omit="annotations")
         pass
 
     def test_partial_update_image(self):
@@ -56,6 +57,9 @@ class TestImagesApi(unittest.TestCase):
         """Test case for retrieve_image
 
         """
+        images = self.api.list_images(omit="annotations")
+        image = images.results[0]
+        image = self.api.retrieve_image(id=image.id)    
         pass
 
     def test_update_image(self):

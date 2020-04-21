@@ -42,7 +42,7 @@ class ImagesApi(object):
 
         :param async_req bool
         :param Body27 body:
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class ImagesApi(object):
 
         :param async_req bool
         :param Body27 body:
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -155,7 +155,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -181,7 +181,7 @@ class ImagesApi(object):
         :param float image_type:
         :param int image_set:
         :param list[int] annotations:
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -210,7 +210,7 @@ class ImagesApi(object):
         :param float image_type:
         :param int image_set:
         :param list[int] annotations:
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -302,7 +302,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -328,7 +328,7 @@ class ImagesApi(object):
         :param float image_type:
         :param int image_set:
         :param list[int] annotations:
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -357,7 +357,7 @@ class ImagesApi(object):
         :param float image_type:
         :param int image_set:
         :param list[int] annotations:
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -449,7 +449,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -642,7 +642,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set: image_set
         :param str image_type: image_type
-        :return: InlineResponse2006
+        :return: Images
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -681,12 +681,14 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set: image_set
         :param str image_type: image_type
-        :return: InlineResponse2006
+        :return: Images
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['limit', 'offset', 'id', 'name', 'name__contains', 'filename', 'filename__contains', 'time', 'time__contains', 'mpp', 'mpp__range', 'objective_power', 'objective_power__range', 'width', 'width__range', 'height', 'height__range', 'image_set', 'image_type']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -745,7 +747,11 @@ class ImagesApi(object):
             query_params.append(('image_set', params['image_set']))  # noqa: E501
         if 'image_type' in params:
             query_params.append(('image_type', params['image_type']))  # noqa: E501
-
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
+            
         header_params = {}
 
         form_params = []
@@ -767,7 +773,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2006',  # noqa: E501
+            response_type='Images',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -803,7 +809,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -842,7 +848,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -974,7 +980,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1018,7 +1024,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1065,7 +1071,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1197,7 +1203,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1241,7 +1247,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1288,7 +1294,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1420,7 +1426,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1455,7 +1461,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set: image_set
         :param str image_type: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1493,7 +1499,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set: image_set
         :param str image_type: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1581,7 +1587,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1617,7 +1623,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1656,7 +1662,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1788,7 +1794,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1832,7 +1838,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1879,7 +1885,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2011,7 +2017,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -2055,7 +2061,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2102,7 +2108,7 @@ class ImagesApi(object):
         :param str height__range: height__range
         :param str image_set2: image_set
         :param str image_type2: image_type
-        :return: InlineResponse2007
+        :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2234,7 +2240,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

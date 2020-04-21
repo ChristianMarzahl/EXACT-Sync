@@ -14,16 +14,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from api.screening_modes_api import ScreeningModesApi  # noqa: E501
-from swagger_client.rest import ApiException
+from exact_sync.v1.api_client import ApiClient as client
+from exact_sync.v1.api.screening_modes_api import ScreeningModesApi  # noqa: E501
+from exact_sync.v1.rest import ApiException
 
 
 class TestScreeningModesApi(unittest.TestCase):
     """ScreeningModesApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.screening_modes_api.ScreeningModesApi()  # noqa: E501
+        self.api = ScreeningModesApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -44,6 +44,7 @@ class TestScreeningModesApi(unittest.TestCase):
         """Test case for list_screening_modes
 
         """
+        screening_modes = self.api.list_screening_modes()
         pass
 
     def test_partial_update_screening_mode(self):
@@ -56,6 +57,10 @@ class TestScreeningModesApi(unittest.TestCase):
         """Test case for retrieve_screening_mode
 
         """
+        screening_modes = self.api.list_screening_modes()
+        screening_mode = screening_modes.results[0]
+        screening_mode = self.api.retrieve_screening_mode(id=screening_mode.id)
+
         pass
 
     def test_update_screening_mode(self):

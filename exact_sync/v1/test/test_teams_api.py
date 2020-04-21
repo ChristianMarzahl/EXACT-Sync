@@ -14,16 +14,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from api.teams_api import TeamsApi  # noqa: E501
-from swagger_client.rest import ApiException
+from exact_sync.v1.api_client import ApiClient as client
+from exact_sync.v1.api.teams_api import TeamsApi  # noqa: E501
+from exact_sync.v1.rest import ApiException
 
 
 class TestTeamsApi(unittest.TestCase):
     """TeamsApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.teams_api.TeamsApi()  # noqa: E501
+        self.api = TeamsApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -44,6 +44,7 @@ class TestTeamsApi(unittest.TestCase):
         """Test case for list_teams
 
         """
+        teams = self.api.list_teams()
         pass
 
     def test_partial_update_team(self):
@@ -56,6 +57,9 @@ class TestTeamsApi(unittest.TestCase):
         """Test case for retrieve_team
 
         """
+        teams = self.api.list_teams()
+        team = teams.results[0]
+        team = self.api.retrieve_team(id=team.id)
         pass
 
     def test_update_team(self):

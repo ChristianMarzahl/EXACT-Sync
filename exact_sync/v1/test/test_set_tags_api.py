@@ -14,16 +14,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from api.set_tags_api import SetTagsApi  # noqa: E501
-from swagger_client.rest import ApiException
+from exact_sync.v1.api_client import ApiClient as client
+from exact_sync.v1.api.set_tags_api import SetTagsApi  # noqa: E501
+from exact_sync.v1.rest import ApiException
 
 
 class TestSetTagsApi(unittest.TestCase):
     """SetTagsApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.set_tags_api.SetTagsApi()  # noqa: E501
+        self.api = SetTagsApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -44,6 +44,7 @@ class TestSetTagsApi(unittest.TestCase):
         """Test case for list_set_tags
 
         """
+        tags = self.api.list_set_tags()
         pass
 
     def test_partial_update_set_tag(self):
@@ -56,6 +57,9 @@ class TestSetTagsApi(unittest.TestCase):
         """Test case for retrieve_set_tag
 
         """
+        tags = self.api.list_set_tags()
+        tag = tags.results[0]
+        tag = self.api.retrieve_set_tag(id=tag.id)
         pass
 
     def test_update_set_tag(self):

@@ -165,8 +165,8 @@ class AnnotationMediaFile(object):
         :param annotation: The annotation of this AnnotationMediaFile.  # noqa: E501
         :type: int
         """
-        if annotation is None:
-            raise ValueError("Invalid value for `annotation`, must not be `None`")  # noqa: E501
+        #if annotation is None:
+        #    raise ValueError("Invalid value for `annotation`, must not be `None`")  # noqa: E501
 
         self._annotation = annotation
 

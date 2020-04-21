@@ -42,7 +42,7 @@ class TeamsApi(object):
 
         :param async_req bool
         :param Body9 body:
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class TeamsApi(object):
 
         :param async_req bool
         :param Body9 body:
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -133,7 +133,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -153,7 +153,7 @@ class TeamsApi(object):
         :param str name:
         :param list[int] image_sets:
         :param list[int] product_set:
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -176,7 +176,7 @@ class TeamsApi(object):
         :param str name:
         :param list[int] image_sets:
         :param list[int] product_set:
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -246,7 +246,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -266,7 +266,7 @@ class TeamsApi(object):
         :param str name:
         :param list[int] image_sets:
         :param list[int] product_set:
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -289,7 +289,7 @@ class TeamsApi(object):
         :param str name:
         :param list[int] image_sets:
         :param list[int] product_set:
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -359,7 +359,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -492,7 +492,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets: image_sets
-        :return: InlineResponse2002
+        :return: Teams
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -519,12 +519,14 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets: image_sets
-        :return: InlineResponse2002
+        :return: Teams
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['limit', 'offset', 'id', 'name', 'name__contains', 'members', 'image_sets']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -559,6 +561,10 @@ class TeamsApi(object):
             query_params.append(('members', params['members']))  # noqa: E501
         if 'image_sets' in params:
             query_params.append(('image_sets', params['image_sets']))  # noqa: E501
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
 
         header_params = {}
 
@@ -581,7 +587,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2002',  # noqa: E501
+            response_type='Teams',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -605,7 +611,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -632,7 +638,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -718,7 +724,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -744,7 +750,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -773,7 +779,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -859,7 +865,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -885,7 +891,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -914,7 +920,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1000,7 +1006,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1023,7 +1029,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1049,7 +1055,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1113,7 +1119,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1137,7 +1143,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1164,7 +1170,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1250,7 +1256,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1276,7 +1282,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1305,7 +1311,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1391,7 +1397,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1417,7 +1423,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1446,7 +1452,7 @@ class TeamsApi(object):
         :param str name__contains: name__contains
         :param str members: members
         :param str image_sets2: image_sets
-        :return: InlineResponse2003
+        :return: Team
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1532,7 +1538,7 @@ class TeamsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2003',  # noqa: E501
+            response_type='Team',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

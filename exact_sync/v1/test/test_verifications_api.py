@@ -14,16 +14,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from api.verifications_api import VerificationsApi  # noqa: E501
-from swagger_client.rest import ApiException
+from exact_sync.v1.api_client import ApiClient as client
+from exact_sync.v1.api.verifications_api import VerificationsApi  # noqa: E501
+from exact_sync.v1.rest import ApiException
 
 
 class TestVerificationsApi(unittest.TestCase):
     """VerificationsApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.verifications_api.VerificationsApi()  # noqa: E501
+        self.api = VerificationsApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -44,6 +44,7 @@ class TestVerificationsApi(unittest.TestCase):
         """Test case for list_verifications
 
         """
+        verifications = self.api.list_verifications()
         pass
 
     def test_partial_update_verification(self):
@@ -56,6 +57,9 @@ class TestVerificationsApi(unittest.TestCase):
         """Test case for retrieve_verification
 
         """
+        verifications = self.api.list_verifications()
+        verification = verifications.results[0]
+        verification = self.api.retrieve_verification(id=verification.id)
         pass
 
     def test_update_verification(self):

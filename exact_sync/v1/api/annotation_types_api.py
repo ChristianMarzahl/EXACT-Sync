@@ -681,6 +681,8 @@ class AnnotationTypesApi(object):
         """
 
         all_params = ['limit', 'offset', 'id', 'name', 'name__contains', 'vector_type', 'vector_type__lte', 'vector_type__gte', 'vector_type__range', 'active', 'product']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -723,7 +725,11 @@ class AnnotationTypesApi(object):
             query_params.append(('active', params['active']))  # noqa: E501
         if 'product' in params:
             query_params.append(('product', params['product']))  # noqa: E501
-
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
+            
         header_params = {}
 
         form_params = []

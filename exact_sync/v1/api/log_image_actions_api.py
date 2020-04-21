@@ -42,7 +42,7 @@ class LogImageActionsApi(object):
 
         :param async_req bool
         :param Body99 body:
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class LogImageActionsApi(object):
 
         :param async_req bool
         :param Body99 body:
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -133,7 +133,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -154,7 +154,7 @@ class LogImageActionsApi(object):
         :param int user:
         :param int action:
         :param str ip:
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -178,7 +178,7 @@ class LogImageActionsApi(object):
         :param int user:
         :param int action:
         :param str ip:
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -248,7 +248,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -269,7 +269,7 @@ class LogImageActionsApi(object):
         :param int user:
         :param int action:
         :param str ip:
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -293,7 +293,7 @@ class LogImageActionsApi(object):
         :param int user:
         :param int action:
         :param str ip:
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -363,7 +363,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -521,7 +521,7 @@ class LogImageActionsApi(object):
         :param str ip: ip
         :param str ip__contains: ip__contains
         :param str action: action
-        :return: InlineResponse20022
+        :return: LogImageActions
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -553,12 +553,14 @@ class LogImageActionsApi(object):
         :param str ip: ip
         :param str ip__contains: ip__contains
         :param str action: action
-        :return: InlineResponse20022
+        :return: LogImageActions
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['limit', 'offset', 'id', 'image', 'user', 'time', 'time__lte', 'time__gte', 'time__range', 'ip', 'ip__contains', 'action']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -603,7 +605,11 @@ class LogImageActionsApi(object):
             query_params.append(('ip__contains', params['ip__contains']))  # noqa: E501
         if 'action' in params:
             query_params.append(('action', params['action']))  # noqa: E501
-
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
+            
         header_params = {}
 
         form_params = []
@@ -625,7 +631,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20022',  # noqa: E501
+            response_type='LogImageActions',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -654,7 +660,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -686,7 +692,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -782,7 +788,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -814,7 +820,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -849,7 +855,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -945,7 +951,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -977,7 +983,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1012,7 +1018,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1108,7 +1114,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1136,7 +1142,7 @@ class LogImageActionsApi(object):
         :param str ip: ip
         :param str ip__contains: ip__contains
         :param str action: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1167,7 +1173,7 @@ class LogImageActionsApi(object):
         :param str ip: ip
         :param str ip__contains: ip__contains
         :param str action: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1241,7 +1247,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1270,7 +1276,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1302,7 +1308,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1398,7 +1404,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1430,7 +1436,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1465,7 +1471,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1561,7 +1567,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1593,7 +1599,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1628,7 +1634,7 @@ class LogImageActionsApi(object):
         :param str ip2: ip
         :param str ip__contains: ip__contains
         :param str action2: action
-        :return: InlineResponse20023
+        :return: LogImageAction
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1724,7 +1730,7 @@ class LogImageActionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='LogImageAction',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

@@ -373,8 +373,8 @@ class AnnotationType(object):
         :param product: The product of this AnnotationType.  # noqa: E501
         :type: int
         """
-        if product is None:
-            raise ValueError("Invalid value for `product`, must not be `None`")  # noqa: E501
+        #if product is None:
+        #    raise ValueError("Invalid value for `product`, must not be `None`")  # noqa: E501
 
         self._product = product
 

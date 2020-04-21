@@ -42,7 +42,7 @@ class TeamMembershipApi(object):
 
         :param async_req bool
         :param Body18 body:
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class TeamMembershipApi(object):
 
         :param async_req bool
         :param Body18 body:
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -129,7 +129,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -149,7 +149,7 @@ class TeamMembershipApi(object):
         :param bool is_admin:
         :param int team:
         :param int user:
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -172,7 +172,7 @@ class TeamMembershipApi(object):
         :param bool is_admin:
         :param int team:
         :param int user:
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -238,7 +238,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -258,7 +258,7 @@ class TeamMembershipApi(object):
         :param bool is_admin:
         :param int team:
         :param int user:
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -281,7 +281,7 @@ class TeamMembershipApi(object):
         :param bool is_admin:
         :param int team:
         :param int user:
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -347,7 +347,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -475,7 +475,7 @@ class TeamMembershipApi(object):
         :param str is_admin: is_admin
         :param str team: team
         :param str user: user
-        :return: InlineResponse2004
+        :return: TeamMemberships
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -501,12 +501,14 @@ class TeamMembershipApi(object):
         :param str is_admin: is_admin
         :param str team: team
         :param str user: user
-        :return: InlineResponse2004
+        :return: TeamMemberships
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['limit', 'offset', 'id', 'is_admin', 'team', 'user']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -539,7 +541,11 @@ class TeamMembershipApi(object):
             query_params.append(('team', params['team']))  # noqa: E501
         if 'user' in params:
             query_params.append(('user', params['user']))  # noqa: E501
-
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
+            
         header_params = {}
 
         form_params = []
@@ -561,7 +567,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2004',  # noqa: E501
+            response_type='TeamMemberships',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -584,7 +590,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -610,7 +616,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -690,7 +696,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -715,7 +721,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -743,7 +749,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -823,7 +829,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -848,7 +854,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -876,7 +882,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -956,7 +962,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -978,7 +984,7 @@ class TeamMembershipApi(object):
         :param str is_admin: is_admin
         :param str team: team
         :param str user: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1003,7 +1009,7 @@ class TeamMembershipApi(object):
         :param str is_admin: is_admin
         :param str team: team
         :param str user: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1065,7 +1071,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1088,7 +1094,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1114,7 +1120,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1194,7 +1200,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1219,7 +1225,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1247,7 +1253,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1327,7 +1333,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1352,7 +1358,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1380,7 +1386,7 @@ class TeamMembershipApi(object):
         :param str is_admin2: is_admin
         :param str team2: team
         :param str user2: user
-        :return: InlineResponse2005
+        :return: TeamMembership
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1460,7 +1466,7 @@ class TeamMembershipApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2005',  # noqa: E501
+            response_type='TeamMembership',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

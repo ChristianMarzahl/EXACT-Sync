@@ -14,16 +14,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from api.products_api import ProductsApi  # noqa: E501
-from swagger_client.rest import ApiException
+from exact_sync.v1.api_client import ApiClient as client
+from exact_sync.v1.api.products_api import ProductsApi  # noqa: E501
+from exact_sync.v1.rest import ApiException
 
 
 class TestProductsApi(unittest.TestCase):
     """ProductsApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.products_api.ProductsApi()  # noqa: E501
+        self.api = ProductsApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -44,6 +44,7 @@ class TestProductsApi(unittest.TestCase):
         """Test case for list_products
 
         """
+        products = self.api.list_products()
         pass
 
     def test_partial_update_product(self):
@@ -56,6 +57,10 @@ class TestProductsApi(unittest.TestCase):
         """Test case for retrieve_product
 
         """
+        products = self.api.list_products()
+        product = products.results[0]
+        product = self.api.retrieve_product(id=product.id)
+
         pass
 
     def test_update_product(self):

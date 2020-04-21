@@ -42,7 +42,7 @@ class ScreeningModesApi(object):
 
         :param async_req bool
         :param Body54 body:
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class ScreeningModesApi(object):
 
         :param async_req bool
         :param Body54 body:
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -149,7 +149,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -174,7 +174,7 @@ class ScreeningModesApi(object):
         :param int x_resolution:
         :param int y_resolution:
         :param int current_index:
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -202,7 +202,7 @@ class ScreeningModesApi(object):
         :param int x_resolution:
         :param int y_resolution:
         :param int current_index:
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -288,7 +288,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -313,7 +313,7 @@ class ScreeningModesApi(object):
         :param int x_resolution:
         :param int y_resolution:
         :param int current_index:
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -341,7 +341,7 @@ class ScreeningModesApi(object):
         :param int x_resolution:
         :param int y_resolution:
         :param int current_index:
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -427,7 +427,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -550,7 +550,7 @@ class ScreeningModesApi(object):
         :param str id: id
         :param str image: image
         :param str user: user
-        :return: InlineResponse20012
+        :return: ScreeningModes
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -575,12 +575,14 @@ class ScreeningModesApi(object):
         :param str id: id
         :param str image: image
         :param str user: user
-        :return: InlineResponse20012
+        :return: ScreeningModes
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['limit', 'offset', 'id', 'image', 'user']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')        
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -611,6 +613,10 @@ class ScreeningModesApi(object):
             query_params.append(('image', params['image']))  # noqa: E501
         if 'user' in params:
             query_params.append(('user', params['user']))  # noqa: E501
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
 
         header_params = {}
 
@@ -633,7 +639,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20012',  # noqa: E501
+            response_type='ScreeningModes',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -655,7 +661,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -680,7 +686,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -778,7 +784,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -807,7 +813,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -839,7 +845,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -937,7 +943,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -966,7 +972,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -998,7 +1004,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1096,7 +1102,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1117,7 +1123,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image: image
         :param str user: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1141,7 +1147,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image: image
         :param str user: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1201,7 +1207,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1223,7 +1229,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1248,7 +1254,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1346,7 +1352,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1375,7 +1381,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1407,7 +1413,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1505,7 +1511,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1534,7 +1540,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1566,7 +1572,7 @@ class ScreeningModesApi(object):
         :param str id2: id
         :param str image2: image
         :param str user2: user
-        :return: InlineResponse20013
+        :return: ScreeningMode
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1664,7 +1670,7 @@ class ScreeningModesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20013',  # noqa: E501
+            response_type='ScreeningMode',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

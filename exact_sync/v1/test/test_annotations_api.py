@@ -14,16 +14,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from api.annotations_api import AnnotationsApi  # noqa: E501
-from swagger_client.rest import ApiException
+from exact_sync.v1.api_client import ApiClient as client
+from exact_sync.v1.api.annotations_api import AnnotationsApi  # noqa: E501
+from exact_sync.v1.rest import ApiException
 
 
 class TestAnnotationsApi(unittest.TestCase):
     """AnnotationsApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.annotations_api.AnnotationsApi()  # noqa: E501
+        self.api = AnnotationsApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -44,6 +44,8 @@ class TestAnnotationsApi(unittest.TestCase):
         """Test case for list_annotations
 
         """
+        annotations = self.api.list_annotations(omit="annotation_types")
+
         pass
 
     def test_partial_update_annotation(self):
@@ -56,6 +58,11 @@ class TestAnnotationsApi(unittest.TestCase):
         """Test case for retrieve_annotation
 
         """
+        annotations = self.api.list_annotations(omit="annotation_types")
+        anno = annotations.results[0]
+        annotation = self.api.retrieve_annotation(id=anno.id)
+
+
         pass
 
     def test_update_annotation(self):

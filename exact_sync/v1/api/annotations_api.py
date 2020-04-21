@@ -42,7 +42,7 @@ class AnnotationsApi(object):
 
         :param async_req bool
         :param Body63 body:
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class AnnotationsApi(object):
 
         :param async_req bool
         :param Body63 body:
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -159,7 +159,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -186,7 +186,7 @@ class AnnotationsApi(object):
         :param str unique_identifier:
         :param list[int] uploaded_media_files:
         :param object meta_data:
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -216,7 +216,7 @@ class AnnotationsApi(object):
         :param str unique_identifier:
         :param list[int] uploaded_media_files:
         :param object meta_data:
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -312,7 +312,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -339,7 +339,7 @@ class AnnotationsApi(object):
         :param str unique_identifier:
         :param list[int] uploaded_media_files:
         :param object meta_data:
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -369,7 +369,7 @@ class AnnotationsApi(object):
         :param str unique_identifier:
         :param list[int] uploaded_media_files:
         :param object meta_data:
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -465,7 +465,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -658,7 +658,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20014
+        :return: Annotations
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -697,12 +697,14 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20014
+        :return: Annotations
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['limit', 'offset', 'id', 'time', 'time__lte', 'time__gte', 'time__range', 'unique_identifier', 'unique_identifier__contains', 'description', 'description__contains', 'deleted', 'image', 'user', 'annotation_type', 'verified_by', 'verified_by__range', 'vector_x', 'vector_y']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -761,7 +763,11 @@ class AnnotationsApi(object):
             query_params.append(('vector_x', params['vector_x']))  # noqa: E501
         if 'vector_y' in params:
             query_params.append(('vector_y', params['vector_y']))  # noqa: E501
-
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
+            
         header_params = {}
 
         form_params = []
@@ -783,7 +789,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20014',  # noqa: E501
+            response_type='Annotations',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -819,7 +825,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -858,7 +864,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -994,7 +1000,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1039,7 +1045,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1087,7 +1093,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1223,7 +1229,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1268,7 +1274,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1316,7 +1322,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1452,7 +1458,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1487,7 +1493,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1525,7 +1531,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1613,7 +1619,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1649,7 +1655,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1688,7 +1694,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1824,7 +1830,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1869,7 +1875,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1917,7 +1923,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2053,7 +2059,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -2098,7 +2104,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2146,7 +2152,7 @@ class AnnotationsApi(object):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
-        :return: InlineResponse20015
+        :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2282,7 +2288,7 @@ class AnnotationsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20015',  # noqa: E501
+            response_type='Annotation',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

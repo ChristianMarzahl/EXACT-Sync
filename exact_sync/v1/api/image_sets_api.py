@@ -42,7 +42,7 @@ class ImageSetsApi(object):
 
         :param async_req bool
         :param Body36 body:
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class ImageSetsApi(object):
 
         :param async_req bool
         :param Body36 body:
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -163,7 +163,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -190,7 +190,7 @@ class ImageSetsApi(object):
         :param list[int] set_tags:
         :param int team:
         :param int creator:
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -220,7 +220,7 @@ class ImageSetsApi(object):
         :param list[int] set_tags:
         :param int team:
         :param int creator:
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -320,7 +320,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -347,7 +347,7 @@ class ImageSetsApi(object):
         :param list[int] set_tags:
         :param int team:
         :param int creator:
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -377,7 +377,7 @@ class ImageSetsApi(object):
         :param list[int] set_tags:
         :param int team:
         :param int creator:
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -477,7 +477,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -690,7 +690,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images: images
-        :return: InlineResponse2008
+        :return: ImageSets
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -733,12 +733,14 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images: images
-        :return: InlineResponse2008
+        :return: ImageSets
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['limit', 'offset', 'id', 'path', 'path__contains', 'name', 'name__contains', 'location', 'location__contains', 'description', 'description__contains', 'time', 'time__range', 'team', 'creator', 'public', 'main_annotation_type', 'set_tags', 'product', 'collaboration_type', 'priority', 'zip_state', 'images']  # noqa: E501
+        all_params.append('omit')
+        all_params.append('fields')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -805,6 +807,10 @@ class ImageSetsApi(object):
             query_params.append(('zip_state', params['zip_state']))  # noqa: E501
         if 'images' in params:
             query_params.append(('images', params['images']))  # noqa: E501
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E501
 
         header_params = {}
 
@@ -827,7 +833,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2008',  # noqa: E501
+            response_type='ImageSets',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -867,7 +873,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -910,7 +916,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1058,7 +1064,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1107,7 +1113,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1159,7 +1165,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1307,7 +1313,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1356,7 +1362,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1408,7 +1414,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1556,7 +1562,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1595,7 +1601,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1637,7 +1643,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1733,7 +1739,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1773,7 +1779,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1816,7 +1822,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1964,7 +1970,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -2013,7 +2019,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2065,7 +2071,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2213,7 +2219,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -2262,7 +2268,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2314,7 +2320,7 @@ class ImageSetsApi(object):
         :param str priority: priority
         :param str zip_state: zip_state
         :param str images2: images
-        :return: InlineResponse2009
+        :return: ImageSet
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2462,7 +2468,7 @@ class ImageSetsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2009',  # noqa: E501
+            response_type='ImageSet',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

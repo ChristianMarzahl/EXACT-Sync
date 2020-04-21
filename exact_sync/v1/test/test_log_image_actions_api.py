@@ -14,16 +14,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from api.log_image_actions_api import LogImageActionsApi  # noqa: E501
-from swagger_client.rest import ApiException
+from exact_sync.v1.api_client import ApiClient as client
+from exact_sync.v1.api.log_image_actions_api import LogImageActionsApi  # noqa: E501
+from exact_sync.v1.rest import ApiException
 
 
 class TestLogImageActionsApi(unittest.TestCase):
     """LogImageActionsApi unit test stubs"""
 
     def setUp(self):
-        self.api = api.log_image_actions_api.LogImageActionsApi()  # noqa: E501
+        self.api = LogImageActionsApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -44,6 +44,7 @@ class TestLogImageActionsApi(unittest.TestCase):
         """Test case for list_log_image_actions
 
         """
+        image_actions = self.api.list_log_image_actions()
         pass
 
     def test_partial_update_log_image_action(self):
@@ -56,6 +57,10 @@ class TestLogImageActionsApi(unittest.TestCase):
         """Test case for retrieve_log_image_action
 
         """
+        image_actions = self.api.list_log_image_actions()
+        image_action = image_actions.results[0]
+        iamge_action = self.api.retrieve_log_image_action(id=image_action.id)
+
         pass
 
     def test_update_log_image_action(self):
