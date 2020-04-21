@@ -61,6 +61,8 @@ class ExactManager():
         else:
             self.log(1,f'Time offset to server is: {timeoffset} seconds.')
 
+    #region helper functions
+
     def log(self,level, *args):
         logmsg=' '.join([str(x) for x in args])
         if level>=self.loglevel:
@@ -79,7 +81,6 @@ class ExactManager():
         self.progress_denominator=float(denominator)
         self.offset=float(offset)
 
-
     def queueWorker(self):
         while (True):
             status, newjob, context = self.jobqueue.get()
@@ -93,6 +94,33 @@ class ExactManager():
         for k in range(self.num_threads):
             self.jobqueue.put((-1,0,0))
 
+    def create_progressbar(self, e:encoder.MultipartEncoder):
+
+        bar = tqdm(total=100)
+        def upload_monitor(monitor:encoder.MultipartEncoderMonitor):
+            bar.update((float(monitor.bytes_read)/monitor.len) * 100)
+        return upload_monitor
+
+    def get_filename_from_cd(self, cd):
+        """
+        Get filename from content-disposition
+        """
+        if not cd:
+            return None
+        fname = re.findall('filename=(.+)', cd)
+        if len(fname) == 0:
+            return None
+        return fname[0]
+
+    @staticmethod
+    def list_to_exactvector(vector):
+        retdict = {f'x{(i+1)}': v[0] for i, v in enumerate(vector)}
+        retdict.update({f'y{i+1}': v[1] for i, v in enumerate(vector)} )
+        return retdict
+    #endregion
+
+    #region POST commands
+
     def json_post_request(self,url) -> dict:
         req = requests.post(url, auth = (self.username, self.password))
         if req.status_code==403:
@@ -102,60 +130,6 @@ class ExactManager():
         except:
             return dict()
 
-    def json_get_request(self,url) -> dict:
-        req = requests.get(url, auth = (self.username, self.password))
-        if req.status_code==403:
-            raise AccessViolationError('Permission denied by exact server for current user'+req.text)
-        try: 
-            return json.loads(req.text)
-        except:
-            return dict()
-
-    def csv_get_request(self,url) -> list:
-        req = requests.get(url, auth = (self.username, self.password))
-        try: 
-            return req.text.split(',')
-        except:
-            return []
-
-    def retrieve_annotationtypes(self, imageset_id:int) -> list:
-        obj = self.json_get_request(self.serverurl+'annotations/api/annotation/loadannotationtypes/?imageset_id=%d' % imageset_id)['annotation_types']        
-        return obj
-
-    def download_image(self, image_id:int, target_path: Path, callback:callable, original_image:bool=False):
-        status,filename = self.getfile('images/api/image/download/{0}/?original_image={1}'.format(image_id, original_image), target_path, callback=callback)
-        self.log(1, 'Downloading image',image_id,'to', target_path)
-        return filename
-
-    def retrieve_imagesets(self):
-        """List of all image sets
-        
-        Raises:
-            ExactProcessError: 'Unable to retrieve list of image sets
-        
-        Returns:
-            [type] -- List of images sets with images and products
-        """
-        status, obj = self.get('images/api/list_imagesets/')
-        if (status != 200):
-            raise ExactProcessError('Unable to retrieve list of image sets')
-        return json.loads(obj)
-
-    def retrieve_annotations(self,image_id:int) -> list:
-        """Download image annotations 
-        
-        Arguments:
-            image_id {int} -- Image Id
-        
-        Returns:
-            list -- List of Annotations
-        """
-        obj = self.json_get_request(self.serverurl+'annotations/api/annotation/load/?image_id=%d' % image_id)
-        self.log(0, 'Retrieving annotations from ', image_id)
-        if 'annotations' in obj:
-            return obj['annotations']
-        else:
-            return []
 
     def update_annotation_from_dict(self, annotation:dict): 
 
@@ -224,41 +198,6 @@ class ExactManager():
             self.log(10,'Unable to create annotation, message was: '+ret)
             raise ExactProcessError('Unable to create annotation')
 
-    def retrieve_imagelist(self, imageset_id:int) -> list:
-        # this is really a format fuckup. But let's parse it nevertheless...
-        self.log(0, 'Retrieving image list for ',imageset_id)
-        il = self.csv_get_request(self.serverurl+'images/imagelist/%d/' % imageset_id)
-        return ExactImageList([[int(x.split('?')[0].split('/')[-2]),x.split('?')[1]] for x in il if '?' in x])
-
-    def retrieve_imageset(self,imageset_id):
-        return self.json_get_request(self.serverurl+'images/api/imageset/load?image_set_id=%d' % imageset_id)['image_set']
-
-    def get(self, url):
-        ret= requests.get(self.serverurl+url, auth=(self.username, self.password))
-        return ret.status_code, ret.text
-
-    def getfile(self, url, target_path, callback) -> (int, str, bytes):
-        with requests.get(self.serverurl+url, auth=(self.username, self.password), stream=True) as r:
-            r.raise_for_status()
-            f = open(str(target_path),'wb')
-            siz=0
-            chunk_size=8192
-            for chunk in tqdm(r.iter_content(chunk_size), total=int(r.headers['content-length']) / chunk_size, desc=target_path.name): 
-                if chunk: # filter out keep-alive new chunks
-                    f.write(chunk)
-                    siz += len(chunk)
-                    prog=float(siz)/int(r.headers['content-length'])
-                    self.progress(prog, callback=callback)
-            f.close()
-        return r.status_code, target_path
-
-    def create_progressbar(self, e:encoder.MultipartEncoder):
-
-        bar = tqdm(total=100)
-        def upload_monitor(monitor:encoder.MultipartEncoderMonitor):
-            bar.update((float(monitor.bytes_read)/monitor.len) * 100)
-        return upload_monitor
-
     def upload_image_to_imageset(self, imageset_id:int, filename:str) -> bool:
         e = encoder.MultipartEncoder(fields={'files[]': (os.path.basename(filename), open(filename, 'rb'), 'application/octet-stream')})
         p_bar = self.create_progressbar(e)
@@ -271,6 +210,129 @@ class ExactManager():
         else:
             raise ExactProcessError('Unable to upload, response is: '+str(obj))
 
+    def add_product_to_imageset(self, product_id:int, imageset_id:int):
+        """[Assign a product to an image set]
+        
+        Arguments:
+            product_id {int} -- [Product Id
+            imageset_id {int} -- [Imageset ID]
+        
+        Returns:
+            [type] -- [description]
+        """
+        data = {'image_set_id':imageset_id,
+                'product_id':product_id}
+
+        self.log(1, 'Adding product',product_id,'to',imageset_id)
+        obj = self.post('images/api/imageset/product/add/',data=data )       
+        return obj
+
+    def create_product(self, name:str, team:dict, description:str=None):
+        """Create a new team product
+        
+        Arguments:
+            name {str} -- Product name
+            team {dict} -- Team {'id': 123}
+        
+        Keyword Arguments:
+            description {str} -- [description] (default: {None})
+        """
+        data = {'name':name,
+                'team':team,
+                'description': description}
+
+        obj = self.post('administration/api/products/create/',data=data )       
+        return obj
+
+    def create_imageset(self, name:str, team:dict, description:str=None, location:str=None, 
+                            public:bool=False, public_collaboration:bool=False, image_lock:bool=False,
+                            priority:int=0, main_annotation_type:dict=None, collaboration_type:int=0, products:[dict]=None):
+        """Create a new ImageSet and assign a team
+        
+        Arguments:
+            name {str} -- Imageset name
+            team {dict} -- Dict with team id {'id': 123}
+        
+        Keyword Arguments:
+            description {str} -- [description] (default: {None})
+            location {str} -- [description] (default: {None})
+            public {bool} -- [description] (default: {False})
+            public_collaboration {bool} -- [description] (default: {False})
+            image_lock {bool} -- [description] (default: {False})
+            priority {int} -- [description] (default: {0})
+            main_annotation_type {dict} -- Dict with Id (default: {None})
+            collaboration_type {int} -- [description] (default: {0})
+            products {[type]} -- [List of porudcts [{'id':123}]] (default: {None})
+        
+        Raises:
+            AssertionError: [description]
+        
+        Returns:
+            [type] -- [description]
+        """
+
+        if 'id' not in team:
+            raise AssertionError("Team has to contain id")
+        
+        data = {'name':name,
+                'team':team,
+                'location': location,
+                'description': description,
+                'public': public,
+                'public_collaboration': public_collaboration,
+                'image_lock': image_lock,
+                'priority': priority,
+                'main_annotation_type': main_annotation_type,
+                'collaboration_type': collaboration_type,
+                'products': products}
+
+        obj = self.post('images/api/imageset/create/',data=data )       
+        return obj
+
+
+    def create_annotationtype(self,product_id:int, name:str, vector_type:int, color_code:str='#FF0000',
+                              area_hit_test:bool=True, closed:bool=False, default_width:int=50,
+                              default_height:int=50, sort_order:int=0
+                              ):
+        """Create ne new AnnotationType
+        
+        Arguments:
+            product_id {int} -- Product Id
+            name {str} -- Annotation Name
+            vector_type {int} -- BOUNDING_BOX = 1; POINT = 2; LINE = 3; MULTI_LINE = 4; 
+                                POLYGON = 5; FIXED_SIZE_BOUNDING_BOX = 6; GLOBAL = 7
+        
+        Keyword Arguments:
+            color_code {str} -- [description] (default: {'#FF0000'})
+            area_hit_test {bool} -- [description] (default: {True})
+            closed {bool} -- [description] (default: {False})
+            default_width {int} -- [description] (default: {50})
+            default_height {int} -- [description] (default: {50})
+            sort_order {int} -- [description] (default: {0})
+        
+        Raises:
+            ExactProcessError: [description]
+        
+        Returns:
+            [type] -- [description]
+        """                   
+        data = {'product_id': product_id,
+                'name': name[0:20],
+                'color_code': color_code,
+                'sort_order':sort_order,
+                'vector_type': vector_type,
+                'default_width': default_width,
+                'default_height': default_height,
+                'area_hit_test':area_hit_test,
+                'closed':closed}
+        self.log(1,'Creating remote annotation type: ',name,'product',product_id,'vector type',vector_type)
+        
+        status, ret =  self.post('administration/api/annotation_type/create/', data=data)
+        if (status==201):
+            return ret
+        else:
+            self.log(10,'Unable to create annotation, message was: '+ret)
+            raise ExactProcessError('Unable to create annotation')
 
     def upload_annotation_mediafile(self, annotation_id:int, filename:str, media_file_type:int) -> bool:
         """Attach a media file to an annotations
@@ -306,24 +368,137 @@ class ExactManager():
             return ret.status_code, json.loads(ret.text)
         except:
             return ret.status_code, ret.text
+
+    #endregion
+
     
-    def get(self, url):
-        ret= requests.get(self.serverurl+url, auth=(self.username, self.password))
+    #region GET commands
+
+    def get(self, url, params={}):
+        ret= requests.get(self.serverurl+url, auth=(self.username, self.password), params=params)
         return ret.status_code, ret.text
 
-    def get_filename_from_cd(self, cd):
-        """
-        Get filename from content-disposition
-        """
-        if not cd:
-            return None
-        fname = re.findall('filename=(.+)', cd)
-        if len(fname) == 0:
-            return None
-        return fname[0]
+    def json_get_request(self,url) -> dict:
+        req = requests.get(url, auth = (self.username, self.password))
+        if req.status_code==403:
+            raise AccessViolationError('Permission denied by exact server for current user'+req.text)
+        try: 
+            return json.loads(req.text)
+        except:
+            return dict()
 
-    @staticmethod
-    def list_to_exactvector(vector):
-        retdict = {f'x{(i+1)}': v[0] for i, v in enumerate(vector)}
-        retdict.update({f'y{i+1}': v[1] for i, v in enumerate(vector)} )
-        return retdict
+    def csv_get_request(self,url) -> list:
+        req = requests.get(url, auth = (self.username, self.password))
+        try: 
+            return req.text.split(',')
+        except:
+            return []
+
+    def retrieve_annotationtypes(self, imageset_id:int) -> list:
+        obj = self.json_get_request(self.serverurl+'annotations/api/annotation/loadannotationtypes/?imageset_id=%d' % imageset_id)['annotation_types']        
+        return obj
+
+    def download_image(self, image_id:int, target_path: Path, callback:callable, original_image:bool=False):
+        status,filename = self.getfile('images/api/image/download/{0}/?original_image={1}'.format(image_id, original_image), target_path, callback=callback)
+        self.log(1, 'Downloading image',image_id,'to', target_path)
+        return filename
+
+    def retrieve_imagesets(self):
+        """List of all image sets
+        
+        Raises:
+            ExactProcessError: 'Unable to retrieve list of image sets
+        
+        Returns:
+            [type] -- List of images sets with images and products
+        """
+        status, obj = self.get('images/api/list_imagesets/')
+        if (status != 200):
+            raise ExactProcessError('Unable to retrieve list of image sets')
+        return json.loads(obj)
+
+    def retrieve_annotations(self,image_id:int) -> list:
+        """Download image annotations 
+        
+        Arguments:
+            image_id {int} -- Image Id
+        
+        Returns:
+            list -- List of Annotations
+        """
+        obj = self.json_get_request(self.serverurl+'annotations/api/annotation/load/?image_id=%d' % image_id)
+        self.log(0, 'Retrieving annotations from ', image_id)
+        if 'annotations' in obj:
+            return obj['annotations']
+        else:
+            return []
+
+    def retrieve_imageset(self,imageset_id):
+        return self.json_get_request(self.serverurl+'images/api/imageset/load?image_set_id=%d' % imageset_id)['image_set']
+   
+    def getfile(self, url, target_path, callback) -> (int, str, bytes):
+        with requests.get(self.serverurl+url, auth=(self.username, self.password), stream=True) as r:
+            r.raise_for_status()
+            f = open(str(target_path),'wb')
+            siz=0
+            chunk_size=8192
+            for chunk in tqdm(r.iter_content(chunk_size), total=int(r.headers['content-length']) / chunk_size, desc=target_path.name): 
+                if chunk: # filter out keep-alive new chunks
+                    f.write(chunk)
+                    siz += len(chunk)
+                    prog=float(siz)/int(r.headers['content-length'])
+                    self.progress(prog, callback=callback)
+            f.close()
+        return r.status_code, target_path
+
+    def filter_products(self, name:str=None, id:int=-1, team:dict=None):
+        """Filter products
+        
+        Keyword Arguments:
+            name {str} -- Product name (default: {None})
+            id {int} -- Product id (default: {-1})
+            team {dict} -- Team {'id': 123} (default: {None})
+        
+        Returns:
+            [type] -- [description]
+        """
+        params = {'name':name,
+                'team':team,
+                'id': id}
+
+        obj = self.get('administration/api/products/filter/', params=params)       
+        return obj
+
+    def filter_teams(self, name:str=None, id:int=-1):
+        """Filter teams
+        
+        Keyword Arguments:
+            name {str} -- Team name (default: {None})
+            id {int} -- Team id (default: {-1})
+        
+        Returns:
+            [type] -- [description]
+        """
+        params = {'name':name,
+                'id': id}
+
+        obj = self.get('users/api/team/filter/', params=params)       
+        return obj
+
+    #endregion
+
+    #region DELETE
+
+    def delete_annotationtype(self, annotation_type_id:int):
+        """Delete the annotation type
+        
+        Arguments:
+            annotation_type_id {int} -- Annotation Type
+        
+        Returns:
+            [type] -- [description]
+        """
+        data = {'annotation_type_id':annotation_type_id}
+        return self.post('administration/api/annotation_type/delete/', data=data)
+
+    #endregion
