@@ -32,27 +32,26 @@ class TestAnnotationsApi(unittest.TestCase):
         """Test case for create_annotation
 
         """
-        pass
+        assert False
 
     def test_destroy_annotation(self):
         """Test case for destroy_annotation
 
         """
-        pass
+        assert False
 
     def test_list_annotations(self):
         """Test case for list_annotations
 
         """
         annotations = self.api.list_annotations(omit="annotation_types")
-
         pass
 
     def test_partial_update_annotation(self):
         """Test case for partial_update_annotation
 
         """
-        pass
+        assert False
 
     def test_retrieve_annotation(self):
         """Test case for retrieve_annotation
@@ -61,15 +60,13 @@ class TestAnnotationsApi(unittest.TestCase):
         annotations = self.api.list_annotations(omit="annotation_types")
         anno = annotations.results[0]
         annotation = self.api.retrieve_annotation(id=anno.id)
-
-
         pass
 
     def test_update_annotation(self):
         """Test case for update_annotation
 
         """
-        pass
+        assert False
 
 
 if __name__ == '__main__':

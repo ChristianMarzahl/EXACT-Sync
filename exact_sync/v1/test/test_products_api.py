@@ -15,8 +15,13 @@ from __future__ import absolute_import
 import unittest
 
 from exact_sync.v1.api_client import ApiClient as client
+
 from exact_sync.v1.api.products_api import ProductsApi  # noqa: E501
+from exact_sync.v1.api.teams_api import TeamsApi
+from exact_sync.v1.api.image_sets_api import ImageSetsApi
+
 from exact_sync.v1.rest import ApiException
+from exact_sync.v1.models import ImageSet, Team, Product
 
 
 class TestProductsApi(unittest.TestCase):
@@ -24,21 +29,53 @@ class TestProductsApi(unittest.TestCase):
 
     def setUp(self):
         self.api = ProductsApi()  # noqa: E501
+        self.team_api = TeamsApi()
+        self.image_sets_api = ImageSetsApi()
+
+
+         # create dummy team and image_sets
+        teams = self.team_api.list_teams(name="test_product")
+        if teams.count == 0:
+            team = Team(name="test_product")
+            team = self.team_api.create_team(body=team) 
+        else:
+            team = teams.results[0]
+
+        image_sets = self.image_sets_api.list_image_sets(name="test_product")
+        if image_sets.count == 0:
+            image_set = ImageSet(name="test_product", team=team.id)
+            image_set = self.image_sets_api.create_image_set(body=image_set)
+        else:
+            image_set = image_sets.results[0]
+
+        self.team = team
+        self.image_set = image_set       
 
     def tearDown(self):
+
+        self.image_sets_api.destroy_image_set(id=self.image_set.id)
+        self.team_api.destroy_team(id=self.team.id)
         pass
 
     def test_create_product(self):
         """Test case for create_product
 
         """
+        product = Product(name="NewProduct", imagesets=[self.image_set.id], team=self.team.id)
+        created_product = self.api.create_product(body=product)
+
+        self.api.destroy_product(id=created_product.id)
         pass
 
     def test_destroy_product(self):
         """Test case for destroy_product
 
         """
-        pass
+        product = Product(name="DestroyProduct", imagesets=[self.image_set.id], team=self.team.id)
+        created_product = self.api.create_product(body=product)
+
+        self.api.destroy_product(id=created_product.id)
+        assert False
 
     def test_list_products(self):
         """Test case for list_products
@@ -51,6 +88,14 @@ class TestProductsApi(unittest.TestCase):
         """Test case for partial_update_product
 
         """
+        product = Product(name="Par_Product", imagesets=[self.image_set.id], team=self.team.id)
+        created_product = self.api.create_product(body=product)
+
+        description = "p_updateProduct"
+        update_product = self.api.partial_update_product(id=created_product.id, description=description)
+
+        assert description == update_product.description
+        self.api.destroy_product(id=update_product.id)
         pass
 
     def test_retrieve_product(self):
@@ -67,6 +112,14 @@ class TestProductsApi(unittest.TestCase):
         """Test case for update_product
 
         """
+        product = Product(name="UpdateProduct", imagesets=[self.image_set.id], team=self.team.id)
+        created_product = self.api.create_product(body=product)
+
+        created_product.description = "u_updateProduct"
+        update_product = self.api.update_product(id=created_product.id, body=created_product)
+
+        assert created_product.description == update_product.description
+        self.api.destroy_product(id=update_product.id)
         pass
 
 

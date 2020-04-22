@@ -16,7 +16,9 @@ import unittest
 
 from exact_sync.v1.api_client import ApiClient as client
 from exact_sync.v1.api.image_sets_api import ImageSetsApi  # noqa: E501
+from exact_sync.v1.api.teams_api import TeamsApi
 from exact_sync.v1.rest import ApiException
+from exact_sync.v1.models import ImageSet, Team
 
 
 class TestImageSetsApi(unittest.TestCase):
@@ -24,21 +26,39 @@ class TestImageSetsApi(unittest.TestCase):
 
     def setUp(self):
         self.api = ImageSetsApi()  # noqa: E501
+        self.team_api = TeamsApi()
+        # create dummy team
+        teams = self.team_api.list_teams(name="test_image_sets")
+        if len(teams.results) == 0:
+            team = Team(name="test_image_sets")
+            team = self.team_api.create_team(body=team) 
+        else:
+            team = teams.results[0]
+        self.team = team
 
     def tearDown(self):
+
+        self.team_api.destroy_team(id=self.team.id)
         pass
 
     def test_create_image_set(self):
         """Test case for create_image_set
 
         """
+        image_set = ImageSet(name="create_image_set", team=self.team.id)
+        created_imageset = self.api.create_image_set(body=image_set)
+
+        self.api.destroy_image_set(id=created_imageset.id)
         pass
 
     def test_destroy_image_set(self):
         """Test case for destroy_image_set
 
         """
-        pass
+        image_set = ImageSet(name="destroy_image_set", team=self.team.id)
+        created_imageset = self.api.create_image_set(body=image_set)
+
+        self.api.destroy_image_set(id=created_imageset.id)
 
     def test_list_image_sets(self):
         """Test case for list_image_sets
@@ -51,6 +71,14 @@ class TestImageSetsApi(unittest.TestCase):
         """Test case for partial_update_image_set
 
         """
+        image_set = ImageSet(name="p_image_set", team=self.team.id)
+        created_imageset = self.api.create_image_set(body=image_set)
+
+        description = "BlaBla description"  
+        updated_imageset = self.api.partial_update_image_set(id=created_imageset.id, description=description)
+
+        assert description == updated_imageset.description
+        self.api.destroy_image_set(id=created_imageset.id)
         pass
 
     def test_retrieve_image_set(self):
@@ -65,7 +93,15 @@ class TestImageSetsApi(unittest.TestCase):
     def test_update_image_set(self):
         """Test case for update_image_set
 
-        """
+        """        
+        image_set = ImageSet(name="u_image_set", team=self.team.id)
+        created_imageset = self.api.create_image_set(body=image_set)
+
+        created_imageset.description = "BlaBla Update"
+        updated_imageset = self.api.update_image_set(id=created_imageset.id, body=created_imageset)
+
+        assert created_imageset.description == updated_imageset.description
+        self.api.destroy_image_set(id=created_imageset.id)
         pass
 
 

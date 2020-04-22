@@ -48,7 +48,7 @@ class Product(object):
         'annotationtype_set': 'annotationtype_set'
     }
 
-    def __init__(self, id=None, name=None, description=None, team=None, creator=None, imagesets=None, annotationtype_set=None):  # noqa: E501
+    def __init__(self, id=None, name=None, description=None, team=None, creator=None, imagesets=None, annotationtype_set=[]):  # noqa: E501
         """Product - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None

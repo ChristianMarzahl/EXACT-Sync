@@ -15,29 +15,64 @@ from __future__ import absolute_import
 import unittest
 
 from exact_sync.v1.api_client import ApiClient as client
-from exact_sync.v1.api.set_tags_api import SetTagsApi  # noqa: E501
-from exact_sync.v1.rest import ApiException
 
+from exact_sync.v1.api.set_tags_api import SetTagsApi  # noqa: E501
+from exact_sync.v1.api.teams_api import TeamsApi
+from exact_sync.v1.api.image_sets_api import ImageSetsApi
+
+from exact_sync.v1.rest import ApiException
+from exact_sync.v1.models import SetTag, ImageSet, Team
 
 class TestSetTagsApi(unittest.TestCase):
     """SetTagsApi unit test stubs"""
 
     def setUp(self):
         self.api = SetTagsApi()  # noqa: E501
+        self.team_api = TeamsApi()
+        self.image_sets_api = ImageSetsApi()
+
+        # create dummy team and image_sets
+        teams = self.team_api.list_teams(name="test_tags")
+        if teams.count == 0:
+            team = Team(name="test_tags")
+            team = self.team_api.create_team(body=team) 
+        else:
+            team = teams.results[0]
+
+        image_sets = self.image_sets_api.list_image_sets(name="test_set_tags")
+        if image_sets.count == 0:
+            image_set = ImageSet(name="test_set_tags", team=team.id)
+            image_set = self.image_sets_api.create_image_set(body=image_set)
+        else:
+            image_set = image_sets.results[0]
+
+        self.team = team
+        self.image_set = image_set
 
     def tearDown(self):
+
+        self.image_sets_api.destroy_image_set(id=self.image_set.id)
+        self.team_api.destroy_team(id=self.team.id)
         pass
 
     def test_create_set_tag(self):
         """Test case for create_set_tag
 
         """
+        tag =  SetTag(name="create_set_tag", imagesets=[self.image_set.id])
+        created_tag = self.api.create_set_tag(body=tag)
+
+        self.api.destroy_set_tag(id=created_tag.id)
         pass
 
     def test_destroy_set_tag(self):
         """Test case for destroy_set_tag
 
         """
+        tag =  SetTag(name="destroy_set_tag", imagesets=[self.image_set.id])
+        created_tag = self.api.create_set_tag(body=tag)
+
+        self.api.destroy_set_tag(id=created_tag.id)
         pass
 
     def test_list_set_tags(self):
@@ -51,6 +86,14 @@ class TestSetTagsApi(unittest.TestCase):
         """Test case for partial_update_set_tag
 
         """
+        tag =  SetTag(name="p_update_set_tag", imagesets=[self.image_set.id])
+        created_tag = self.api.create_set_tag(body=tag)
+
+        new_name = "p_update_New"
+        updated_tag = self.api.partial_update_set_tag(id=created_tag.id, name=new_name)
+
+        assert new_name == updated_tag.name
+        self.api.destroy_set_tag(id=updated_tag.id)
         pass
 
     def test_retrieve_set_tag(self):
@@ -66,8 +109,16 @@ class TestSetTagsApi(unittest.TestCase):
         """Test case for update_set_tag
 
         """
-        pass
 
+        tag =  SetTag(name="update_set_tag", imagesets=[self.image_set.id])
+        created_tag = self.api.create_set_tag(body=tag)
+
+        created_tag.name = "UpdateTag"
+        updated_tag = self.api.update_set_tag(id=created_tag.id, body=created_tag)
+
+        assert created_tag.name == updated_tag.name
+        self.api.destroy_set_tag(id=updated_tag.id)
+        pass
 
 if __name__ == '__main__':
     unittest.main()

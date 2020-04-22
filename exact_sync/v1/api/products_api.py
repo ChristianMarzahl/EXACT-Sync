@@ -41,7 +41,7 @@ class ProductsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param Body108 body:
+        :param Product body:
         :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
@@ -62,7 +62,7 @@ class ProductsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param Body108 body:
+        :param Product body:
         :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
@@ -94,297 +94,6 @@ class ProductsApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/administration/products/', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Product',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def create_product(self, **kwargs):  # noqa: E501
-        """create_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_product(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_product_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.create_product_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def create_product_with_http_info(self, **kwargs):  # noqa: E501
-        """create_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_product_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'description', 'team', 'creator', 'imagesets', 'annotationtype_set']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_product" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/administration/products/', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Product',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def create_product(self, **kwargs):  # noqa: E501
-        """create_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_product(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_product_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.create_product_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def create_product_with_http_info(self, **kwargs):  # noqa: E501
-        """create_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_product_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'description', 'team', 'creator', 'imagesets', 'annotationtype_set']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_product" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-
         body_params = None
         if 'body' in params:
             body_params = params['body']
@@ -424,16 +133,7 @@ class ProductsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str id: (required)
-        :param str id2: id
-        :param str name: name
-        :param str name__contains: name__contains
-        :param str description: description
-        :param str description__contains: description__contains
-        :param str team: team
-        :param str creator: creator
-        :param str imagesets: imagesets
-        :param str annotationtype: annotationtype
+        :param int id: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -454,22 +154,13 @@ class ProductsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str id: (required)
-        :param str id2: id
-        :param str name: name
-        :param str name__contains: name__contains
-        :param str description: description
-        :param str description__contains: description__contains
-        :param str team: team
-        :param str creator: creator
-        :param str imagesets: imagesets
-        :param str annotationtype: annotationtype
+        :param int id: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'id2', 'name', 'name__contains', 'description', 'description__contains', 'team', 'creator', 'imagesets', 'annotationtype']  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -496,25 +187,6 @@ class ProductsApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name' in params:
-            query_params.append(('name', params['name']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'description' in params:
-            query_params.append(('description', params['description']))  # noqa: E501
-        if 'description__contains' in params:
-            query_params.append(('description__contains', params['description__contains']))  # noqa: E501
-        if 'team' in params:
-            query_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            query_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            query_params.append(('imagesets', params['imagesets']))  # noqa: E501
-        if 'annotationtype' in params:
-            query_params.append(('annotationtype', params['annotationtype']))  # noqa: E501
-
         header_params = {}
 
         form_params = []
@@ -684,17 +356,12 @@ class ProductsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str id: (required)
-        :param Body114 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
+        :param int id: (required)
+        :param str name
+        :param str description
+        :param int team
+        :param [int] imagesets
+        :param [int] annotationtype
         :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
@@ -715,23 +382,18 @@ class ProductsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str id: (required)
-        :param Body114 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
+        :param int id: (required)
+        :param str name
+        :param str description
+        :param int team
+        :param [int] imagesets
+        :param [int] annotationtype
         :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'body', 'id2', 'name2', 'name__contains', 'description2', 'description__contains', 'team2', 'creator2', 'imagesets2', 'annotationtype']  # noqa: E501
+        all_params = ['id','name', 'description', 'team', 'creator', 'imagesets', 'annotationtype']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -758,411 +420,26 @@ class ProductsApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'description2' in params:
-            query_params.append(('description', params['description2']))  # noqa: E501
-        if 'description__contains' in params:
-            query_params.append(('description__contains', params['description__contains']))  # noqa: E501
-        if 'team2' in params:
-            query_params.append(('team', params['team2']))  # noqa: E501
-        if 'creator2' in params:
-            query_params.append(('creator', params['creator2']))  # noqa: E501
-        if 'imagesets2' in params:
-            query_params.append(('imagesets', params['imagesets2']))  # noqa: E501
-        if 'annotationtype' in params:
-            query_params.append(('annotationtype', params['annotationtype']))  # noqa: E501
-
         header_params = {}
 
         form_params = []
         local_var_files = {}
+        
+        body_params = {}
         if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
+            body_params['name'] = params['name']
         if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
+            body_params['description'] = params['description']
         if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
+            body_params['team'] = params['team']
         if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
+            body_params['creator'] = params['creator']
         if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/administration/products/{id}/', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Product',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def partial_update_product(self, id, **kwargs):  # noqa: E501
-        """partial_update_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_product(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.partial_update_product_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.partial_update_product_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def partial_update_product_with_http_info(self, id, **kwargs):  # noqa: E501
-        """partial_update_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_product_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'description', 'team', 'creator', 'imagesets', 'annotationtype_set', 'id2', 'name2', 'name__contains', 'description2', 'description__contains', 'team2', 'creator2', 'imagesets2', 'annotationtype']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method partial_update_product" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `partial_update_product`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'description2' in params:
-            query_params.append(('description', params['description2']))  # noqa: E501
-        if 'description__contains' in params:
-            query_params.append(('description__contains', params['description__contains']))  # noqa: E501
-        if 'team2' in params:
-            query_params.append(('team', params['team2']))  # noqa: E501
-        if 'creator2' in params:
-            query_params.append(('creator', params['creator2']))  # noqa: E501
-        if 'imagesets2' in params:
-            query_params.append(('imagesets', params['imagesets2']))  # noqa: E501
+            body_params['imagesets'] = params['imagesets']
         if 'annotationtype' in params:
-            query_params.append(('annotationtype', params['annotationtype']))  # noqa: E501
+            body_params['annotationtype'] = params['annotationtype']
 
-        header_params = {}
 
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/administration/products/{id}/', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Product',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def partial_update_product(self, id, **kwargs):  # noqa: E501
-        """partial_update_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_product(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.partial_update_product_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.partial_update_product_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def partial_update_product_with_http_info(self, id, **kwargs):  # noqa: E501
-        """partial_update_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_product_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'description', 'team', 'creator', 'imagesets', 'annotationtype_set', 'id2', 'name2', 'name__contains', 'description2', 'description__contains', 'team2', 'creator2', 'imagesets2', 'annotationtype']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method partial_update_product" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `partial_update_product`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'description2' in params:
-            query_params.append(('description', params['description2']))  # noqa: E501
-        if 'description__contains' in params:
-            query_params.append(('description__contains', params['description__contains']))  # noqa: E501
-        if 'team2' in params:
-            query_params.append(('team', params['team2']))  # noqa: E501
-        if 'creator2' in params:
-            query_params.append(('creator', params['creator2']))  # noqa: E501
-        if 'imagesets2' in params:
-            query_params.append(('imagesets', params['imagesets2']))  # noqa: E501
-        if 'annotationtype' in params:
-            query_params.append(('annotationtype', params['annotationtype']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1329,16 +606,7 @@ class ProductsApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body111 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
+        :param Product body:
         :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1360,22 +628,13 @@ class ProductsApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body111 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
+        :param Product body:
         :return: Product
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'body', 'id2', 'name2', 'name__contains', 'description2', 'description__contains', 'team2', 'creator2', 'imagesets2', 'annotationtype']  # noqa: E501
+        all_params = ['id', 'body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1402,408 +661,12 @@ class ProductsApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'description2' in params:
-            query_params.append(('description', params['description2']))  # noqa: E501
-        if 'description__contains' in params:
-            query_params.append(('description__contains', params['description__contains']))  # noqa: E501
-        if 'team2' in params:
-            query_params.append(('team', params['team2']))  # noqa: E501
-        if 'creator2' in params:
-            query_params.append(('creator', params['creator2']))  # noqa: E501
-        if 'imagesets2' in params:
-            query_params.append(('imagesets', params['imagesets2']))  # noqa: E501
-        if 'annotationtype' in params:
-            query_params.append(('annotationtype', params['annotationtype']))  # noqa: E501
-
+        
         header_params = {}
 
         form_params = []
         local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/administration/products/{id}/', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Product',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def update_product(self, id, **kwargs):  # noqa: E501
-        """update_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_product(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.update_product_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_product_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def update_product_with_http_info(self, id, **kwargs):  # noqa: E501
-        """update_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_product_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'description', 'team', 'creator', 'imagesets', 'annotationtype_set', 'id2', 'name2', 'name__contains', 'description2', 'description__contains', 'team2', 'creator2', 'imagesets2', 'annotationtype']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_product" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `update_product`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'description2' in params:
-            query_params.append(('description', params['description2']))  # noqa: E501
-        if 'description__contains' in params:
-            query_params.append(('description__contains', params['description__contains']))  # noqa: E501
-        if 'team2' in params:
-            query_params.append(('team', params['team2']))  # noqa: E501
-        if 'creator2' in params:
-            query_params.append(('creator', params['creator2']))  # noqa: E501
-        if 'imagesets2' in params:
-            query_params.append(('imagesets', params['imagesets2']))  # noqa: E501
-        if 'annotationtype' in params:
-            query_params.append(('annotationtype', params['annotationtype']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/administration/products/{id}/', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Product',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def update_product(self, id, **kwargs):  # noqa: E501
-        """update_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_product(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.update_product_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_product_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def update_product_with_http_info(self, id, **kwargs):  # noqa: E501
-        """update_product  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_product_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str description:
-        :param int team:
-        :param int creator:
-        :param list[int] imagesets:
-        :param list[int] annotationtype_set:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str description2: description
-        :param str description__contains: description__contains
-        :param str team2: team
-        :param str creator2: creator
-        :param str imagesets2: imagesets
-        :param str annotationtype: annotationtype
-        :return: Product
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'description', 'team', 'creator', 'imagesets', 'annotationtype_set', 'id2', 'name2', 'name__contains', 'description2', 'description__contains', 'team2', 'creator2', 'imagesets2', 'annotationtype']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_product" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `update_product`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'description2' in params:
-            query_params.append(('description', params['description2']))  # noqa: E501
-        if 'description__contains' in params:
-            query_params.append(('description__contains', params['description__contains']))  # noqa: E501
-        if 'team2' in params:
-            query_params.append(('team', params['team2']))  # noqa: E501
-        if 'creator2' in params:
-            query_params.append(('creator', params['creator2']))  # noqa: E501
-        if 'imagesets2' in params:
-            query_params.append(('imagesets', params['imagesets2']))  # noqa: E501
-        if 'annotationtype' in params:
-            query_params.append(('annotationtype', params['annotationtype']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'description' in params:
-            form_params.append(('description', params['description']))  # noqa: E501
-        if 'team' in params:
-            form_params.append(('team', params['team']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'imagesets' in params:
-            form_params.append(('imagesets', params['imagesets']))  # noqa: E501
-            collection_formats['imagesets'] = 'multi'  # noqa: E501
-        if 'annotationtype_set' in params:
-            form_params.append(('annotationtype_set', params['annotationtype_set']))  # noqa: E501
-            collection_formats['annotationtype_set'] = 'multi'  # noqa: E501
-
+        
         body_params = None
         if 'body' in params:
             body_params = params['body']

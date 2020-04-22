@@ -17,7 +17,7 @@ import unittest
 from exact_sync.v1.api_client import ApiClient as client
 from exact_sync.v1.api.teams_api import TeamsApi  # noqa: E501
 from exact_sync.v1.rest import ApiException
-
+from exact_sync.v1.models.team import Team
 
 class TestTeamsApi(unittest.TestCase):
     """TeamsApi unit test stubs"""
@@ -32,12 +32,18 @@ class TestTeamsApi(unittest.TestCase):
         """Test case for create_team
 
         """
+        team = Team(name="test_create_team")
+        created_team = self.api.create_team(body=team) 
+        self.api.destroy_team(id=created_team.id)
         pass
 
     def test_destroy_team(self):
         """Test case for destroy_team
 
         """
+        team = Team(name="test_destroy_team")
+        created_team = self.api.create_team(body=team) 
+        self.api.destroy_team(id=created_team.id)
         pass
 
     def test_list_teams(self):
@@ -51,6 +57,14 @@ class TestTeamsApi(unittest.TestCase):
         """Test case for partial_update_team
 
         """
+        team = Team(name="p_update_team")
+        created_team = self.api.create_team(body=team) 
+
+        new_name = team.name + "PartialUpdate"
+        updated_team = self.api.partial_update_team(id=created_team.id, name=new_name)
+        
+        assert new_name == updated_team.name
+        self.api.destroy_team(id=updated_team.id)
         pass
 
     def test_retrieve_team(self):
@@ -66,6 +80,14 @@ class TestTeamsApi(unittest.TestCase):
         """Test case for update_team
 
         """
+        team = Team(name="update_team")
+        created_team = self.api.create_team(body=team) 
+
+        created_team.name = team.name + "Update"
+        updated_team = self.api.update_team(id=created_team.id, body=created_team)
+
+        assert created_team.name == updated_team.name
+        self.api.destroy_team(id=updated_team.id)
         pass
 
 

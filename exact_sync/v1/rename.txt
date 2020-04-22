@@ -1,0 +1,91 @@
+inline_response20017 --> AnnotationType
+inline_response20016 --> AnnotationTypes
+
+inline_response20018 -> annotation_media_files
+InlineResponse20018 -> AnnotationMediaFiles
+
+inline_response20019 -> annotation_media_file
+InlineResponse20019 -> AnnotationMediaFile
+
+InlineResponse20014 -> Annotations
+inline_response20014 -> annotations
+
+InlineResponse20015 -> Annotation
+inline_response20015 -> annotation
+
+InlineResponse2008 -> ImageSets
+inline_response2008 -> image_sets
+
+InlineResponse2009 -> ImageSet
+inline_response2009 -> image_set
+body36, 37, 38, 39, 40, 41, 42, 43, 44 
+
+
+InlineResponse2006 -> Images
+inline_response2006 -> images
+
+InlineResponse2007 -> Image
+inline_response2007 -> image
+
+InlineResponse20022 -> LogImageActions
+inline_response20022 -> log_image_actions
+
+InlineResponse20023 -> LogImageAction
+inline_response20023 -> log_image_action
+
+InlineResponse20024 -> Products
+inline_response20024 -> products
+
+InlineResponse20025 -> Product
+inline_response20025 -> product
+
+InlineResponse20012 -> ScreeningModes
+inline_response20012 -> screening_modes
+
+InlineResponse20013 -> ScreeningMode
+inline_response20013 -> screening_mode
+
+InlineResponse20010 -> SetTags
+inline_response20010 -> set_tags
+
+InlineResponse20011 -> SetTag
+inline_response20011 -> set_tag
+
+InlineResponse2004-> TeamMemberships
+inline_response2004 -> team_memberships
+
+InlineResponse2005 -> TeamMembership
+inline_response2005 -> team_membership
+
+InlineResponse2002-> Teams
+inline_response2002 -> teams
+
+InlineResponse2003 -> Team
+inline_response2003 -> team
+body9, ... 
+
+InlineResponse20020-> Verifications
+inline_response20020 -> verifications
+
+InlineResponse20021 -> Verification
+inline_response20021 -> verification
+
+InlineResponse200-> Users
+inline_response200 -> users
+
+InlineResponse2001 -> User
+inline_response2001 -> user
+body8, ... 17
+
+
+
+
+
+
+
+
+
+
+
+
+

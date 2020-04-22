@@ -31,7 +31,7 @@ class Team(object):
     swagger_types = {
         'id': 'int',
         'name': 'str',
-        'members': 'list[str]',
+        'members': 'list[int]',
         'image_sets': 'list[int]',
         'product_set': 'list[int]'
     }
@@ -44,7 +44,7 @@ class Team(object):
         'product_set': 'product_set'
     }
 
-    def __init__(self, id=None, name=None, members=None, image_sets=None, product_set=None):  # noqa: E501
+    def __init__(self, id=None, name=None, members=None, image_sets=[], product_set=[]):  # noqa: E501
         """Team - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None

@@ -41,7 +41,9 @@ class ImagesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param Body27 body:
+        :param str file_path:
+        :param int image_type:
+        :param int image_set:
         :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
@@ -62,13 +64,15 @@ class ImagesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param Body27 body:
+        :param str file_path:
+        :param int image_type:
+        :param int image_set:
         :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['file_path', 'image_type', 'image_set']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -94,44 +98,14 @@ class ImagesApi(object):
 
         form_params = []
         local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
+        if 'file_path' in params:
+            local_var_files['file_path'] = params['file_path']  # noqa: E501
         if 'image_type' in params:
             form_params.append(('image_type', params['image_type']))  # noqa: E501
         if 'image_set' in params:
             form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
+
+
 
         body_params = None
         if 'body' in params:
@@ -142,7 +116,7 @@ class ImagesApi(object):
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
@@ -155,301 +129,7 @@ class ImagesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Image',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def create_image(self, **kwargs):  # noqa: E501
-        """create_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_image(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_image_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.create_image_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def create_image_with_http_info(self, **kwargs):  # noqa: E501
-        """create_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_image_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'filename', 'height', 'width', 'mpp', 'objective_power', 'image_type', 'image_set', 'annotations']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_image" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/images/images/', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Image',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def create_image(self, **kwargs):  # noqa: E501
-        """create_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_image(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_image_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.create_image_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def create_image_with_http_info(self, **kwargs):  # noqa: E501
-        """create_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_image_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'filename', 'height', 'width', 'mpp', 'objective_power', 'image_type', 'image_set', 'annotations']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_image" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/images/images/', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Image',  # noqa: E501
+            response_type='Images',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -467,23 +147,6 @@ class ImagesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param str id2: id
-        :param str name: name
-        :param str name__contains: name__contains
-        :param str filename: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width: width
-        :param str width__range: width__range
-        :param str height: height
-        :param str height__range: height__range
-        :param str image_set: image_set
-        :param str image_type: image_type
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -505,29 +168,12 @@ class ImagesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param str id2: id
-        :param str name: name
-        :param str name__contains: name__contains
-        :param str filename: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width: width
-        :param str width__range: width__range
-        :param str height: height
-        :param str height__range: height__range
-        :param str image_set: image_set
-        :param str image_type: image_type
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'id2', 'name', 'name__contains', 'filename', 'filename__contains', 'time', 'time__contains', 'mpp', 'mpp__range', 'objective_power', 'objective_power__range', 'width', 'width__range', 'height', 'height__range', 'image_set', 'image_type']  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -554,41 +200,6 @@ class ImagesApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name' in params:
-            query_params.append(('name', params['name']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'filename' in params:
-            query_params.append(('filename', params['filename']))  # noqa: E501
-        if 'filename__contains' in params:
-            query_params.append(('filename__contains', params['filename__contains']))  # noqa: E501
-        if 'time' in params:
-            query_params.append(('time', params['time']))  # noqa: E501
-        if 'time__contains' in params:
-            query_params.append(('time__contains', params['time__contains']))  # noqa: E501
-        if 'mpp' in params:
-            query_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'mpp__range' in params:
-            query_params.append(('mpp__range', params['mpp__range']))  # noqa: E501
-        if 'objective_power' in params:
-            query_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'objective_power__range' in params:
-            query_params.append(('objectivePower__range', params['objective_power__range']))  # noqa: E501
-        if 'width' in params:
-            query_params.append(('width', params['width']))  # noqa: E501
-        if 'width__range' in params:
-            query_params.append(('width__range', params['width__range']))  # noqa: E501
-        if 'height' in params:
-            query_params.append(('height', params['height']))  # noqa: E501
-        if 'height__range' in params:
-            query_params.append(('height__range', params['height__range']))  # noqa: E501
-        if 'image_set' in params:
-            query_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'image_type' in params:
-            query_params.append(('image_type', params['image_type']))  # noqa: E501
-
         header_params = {}
 
         form_params = []
@@ -732,7 +343,7 @@ class ImagesApi(object):
         if 'mpp__range' in params:
             query_params.append(('mpp__range', params['mpp__range']))  # noqa: E501
         if 'objective_power' in params:
-            query_params.append(('objectivePower', params['objective_power']))  # noqa: E501
+            query_params.append(('objective_power', params['objective_power']))  # noqa: E501
         if 'objective_power__range' in params:
             query_params.append(('objectivePower__range', params['objective_power__range']))  # noqa: E501
         if 'width' in params:
@@ -791,24 +402,10 @@ class ImagesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body33 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
+        :param float mpp
+        :param float objective_power
+        :param int image_type
+        :param int image_set
         :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
@@ -830,30 +427,16 @@ class ImagesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body33 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
+        :param float mpp
+        :param float objective_power
+        :param int image_type
+        :param int image_set
         :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'body', 'id2', 'name2', 'name__contains', 'filename2', 'filename__contains', 'time', 'time__contains', 'mpp2', 'mpp__range', 'objective_power2', 'objective_power__range', 'width2', 'width__range', 'height2', 'height__range', 'image_set2', 'image_type2']  # noqa: E501
+        all_params = ['id', 'mpp', 'objective_power', 'image_set', 'image_type']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -880,533 +463,23 @@ class ImagesApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'filename2' in params:
-            query_params.append(('filename', params['filename2']))  # noqa: E501
-        if 'filename__contains' in params:
-            query_params.append(('filename__contains', params['filename__contains']))  # noqa: E501
-        if 'time' in params:
-            query_params.append(('time', params['time']))  # noqa: E501
-        if 'time__contains' in params:
-            query_params.append(('time__contains', params['time__contains']))  # noqa: E501
-        if 'mpp2' in params:
-            query_params.append(('mpp', params['mpp2']))  # noqa: E501
-        if 'mpp__range' in params:
-            query_params.append(('mpp__range', params['mpp__range']))  # noqa: E501
-        if 'objective_power2' in params:
-            query_params.append(('objectivePower', params['objective_power2']))  # noqa: E501
-        if 'objective_power__range' in params:
-            query_params.append(('objectivePower__range', params['objective_power__range']))  # noqa: E501
-        if 'width2' in params:
-            query_params.append(('width', params['width2']))  # noqa: E501
-        if 'width__range' in params:
-            query_params.append(('width__range', params['width__range']))  # noqa: E501
-        if 'height2' in params:
-            query_params.append(('height', params['height2']))  # noqa: E501
-        if 'height__range' in params:
-            query_params.append(('height__range', params['height__range']))  # noqa: E501
-        if 'image_set2' in params:
-            query_params.append(('image_set', params['image_set2']))  # noqa: E501
-        if 'image_type2' in params:
-            query_params.append(('image_type', params['image_type2']))  # noqa: E501
 
         header_params = {}
 
         form_params = []
         local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
+
+        body_params = {}
         if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
+            body_params['mpp'] = params['mpp']
         if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
+            body_params['objectivePower'] = params['objective_power']
         if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
+            body_params['image_set'] = params['image_set']
         if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
+            body_params['image_type'] = params['image_type']
 
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
 
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/images/images/{id}/', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Image',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def partial_update_image(self, id, **kwargs):  # noqa: E501
-        """partial_update_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_image(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.partial_update_image_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.partial_update_image_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def partial_update_image_with_http_info(self, id, **kwargs):  # noqa: E501
-        """partial_update_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_image_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'filename', 'height', 'width', 'mpp', 'objective_power', 'image_type', 'image_set', 'annotations', 'id2', 'name2', 'name__contains', 'filename2', 'filename__contains', 'time', 'time__contains', 'mpp2', 'mpp__range', 'objective_power2', 'objective_power__range', 'width2', 'width__range', 'height2', 'height__range', 'image_set2', 'image_type2']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method partial_update_image" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `partial_update_image`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'filename2' in params:
-            query_params.append(('filename', params['filename2']))  # noqa: E501
-        if 'filename__contains' in params:
-            query_params.append(('filename__contains', params['filename__contains']))  # noqa: E501
-        if 'time' in params:
-            query_params.append(('time', params['time']))  # noqa: E501
-        if 'time__contains' in params:
-            query_params.append(('time__contains', params['time__contains']))  # noqa: E501
-        if 'mpp2' in params:
-            query_params.append(('mpp', params['mpp2']))  # noqa: E501
-        if 'mpp__range' in params:
-            query_params.append(('mpp__range', params['mpp__range']))  # noqa: E501
-        if 'objective_power2' in params:
-            query_params.append(('objectivePower', params['objective_power2']))  # noqa: E501
-        if 'objective_power__range' in params:
-            query_params.append(('objectivePower__range', params['objective_power__range']))  # noqa: E501
-        if 'width2' in params:
-            query_params.append(('width', params['width2']))  # noqa: E501
-        if 'width__range' in params:
-            query_params.append(('width__range', params['width__range']))  # noqa: E501
-        if 'height2' in params:
-            query_params.append(('height', params['height2']))  # noqa: E501
-        if 'height__range' in params:
-            query_params.append(('height__range', params['height__range']))  # noqa: E501
-        if 'image_set2' in params:
-            query_params.append(('image_set', params['image_set2']))  # noqa: E501
-        if 'image_type2' in params:
-            query_params.append(('image_type', params['image_type2']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/images/images/{id}/', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Image',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def partial_update_image(self, id, **kwargs):  # noqa: E501
-        """partial_update_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_image(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.partial_update_image_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.partial_update_image_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def partial_update_image_with_http_info(self, id, **kwargs):  # noqa: E501
-        """partial_update_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_image_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'filename', 'height', 'width', 'mpp', 'objective_power', 'image_type', 'image_set', 'annotations', 'id2', 'name2', 'name__contains', 'filename2', 'filename__contains', 'time', 'time__contains', 'mpp2', 'mpp__range', 'objective_power2', 'objective_power__range', 'width2', 'width__range', 'height2', 'height__range', 'image_set2', 'image_type2']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method partial_update_image" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `partial_update_image`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'filename2' in params:
-            query_params.append(('filename', params['filename2']))  # noqa: E501
-        if 'filename__contains' in params:
-            query_params.append(('filename__contains', params['filename__contains']))  # noqa: E501
-        if 'time' in params:
-            query_params.append(('time', params['time']))  # noqa: E501
-        if 'time__contains' in params:
-            query_params.append(('time__contains', params['time__contains']))  # noqa: E501
-        if 'mpp2' in params:
-            query_params.append(('mpp', params['mpp2']))  # noqa: E501
-        if 'mpp__range' in params:
-            query_params.append(('mpp__range', params['mpp__range']))  # noqa: E501
-        if 'objective_power2' in params:
-            query_params.append(('objectivePower', params['objective_power2']))  # noqa: E501
-        if 'objective_power__range' in params:
-            query_params.append(('objectivePower__range', params['objective_power__range']))  # noqa: E501
-        if 'width2' in params:
-            query_params.append(('width', params['width2']))  # noqa: E501
-        if 'width__range' in params:
-            query_params.append(('width__range', params['width__range']))  # noqa: E501
-        if 'height2' in params:
-            query_params.append(('height', params['height2']))  # noqa: E501
-        if 'height__range' in params:
-            query_params.append(('height__range', params['height__range']))  # noqa: E501
-        if 'image_set2' in params:
-            query_params.append(('image_set', params['image_set2']))  # noqa: E501
-        if 'image_type2' in params:
-            query_params.append(('image_type', params['image_type2']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1605,24 +678,7 @@ class ImagesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body30 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
+        :param Image body:
         :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1644,30 +700,14 @@ class ImagesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body30 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
+        :param Image body:
         :return: Image
                  If the method is called asynchronously,
                  returns the request thread.
         """
+        raise NotImplementedError('update_image_with_http_info')
 
-        all_params = ['id', 'body', 'id2', 'name2', 'name__contains', 'filename2', 'filename__contains', 'time', 'time__contains', 'mpp2', 'mpp__range', 'objective_power2', 'objective_power__range', 'width2', 'width__range', 'height2', 'height__range', 'image_set2', 'image_type2']  # noqa: E501
+        all_params = ['id', 'body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1694,530 +734,10 @@ class ImagesApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'filename2' in params:
-            query_params.append(('filename', params['filename2']))  # noqa: E501
-        if 'filename__contains' in params:
-            query_params.append(('filename__contains', params['filename__contains']))  # noqa: E501
-        if 'time' in params:
-            query_params.append(('time', params['time']))  # noqa: E501
-        if 'time__contains' in params:
-            query_params.append(('time__contains', params['time__contains']))  # noqa: E501
-        if 'mpp2' in params:
-            query_params.append(('mpp', params['mpp2']))  # noqa: E501
-        if 'mpp__range' in params:
-            query_params.append(('mpp__range', params['mpp__range']))  # noqa: E501
-        if 'objective_power2' in params:
-            query_params.append(('objectivePower', params['objective_power2']))  # noqa: E501
-        if 'objective_power__range' in params:
-            query_params.append(('objectivePower__range', params['objective_power__range']))  # noqa: E501
-        if 'width2' in params:
-            query_params.append(('width', params['width2']))  # noqa: E501
-        if 'width__range' in params:
-            query_params.append(('width__range', params['width__range']))  # noqa: E501
-        if 'height2' in params:
-            query_params.append(('height', params['height2']))  # noqa: E501
-        if 'height__range' in params:
-            query_params.append(('height__range', params['height__range']))  # noqa: E501
-        if 'image_set2' in params:
-            query_params.append(('image_set', params['image_set2']))  # noqa: E501
-        if 'image_type2' in params:
-            query_params.append(('image_type', params['image_type2']))  # noqa: E501
-
         header_params = {}
 
         form_params = []
         local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/images/images/{id}/', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Image',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def update_image(self, id, **kwargs):  # noqa: E501
-        """update_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_image(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.update_image_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_image_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def update_image_with_http_info(self, id, **kwargs):  # noqa: E501
-        """update_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_image_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'filename', 'height', 'width', 'mpp', 'objective_power', 'image_type', 'image_set', 'annotations', 'id2', 'name2', 'name__contains', 'filename2', 'filename__contains', 'time', 'time__contains', 'mpp2', 'mpp__range', 'objective_power2', 'objective_power__range', 'width2', 'width__range', 'height2', 'height__range', 'image_set2', 'image_type2']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_image" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `update_image`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'filename2' in params:
-            query_params.append(('filename', params['filename2']))  # noqa: E501
-        if 'filename__contains' in params:
-            query_params.append(('filename__contains', params['filename__contains']))  # noqa: E501
-        if 'time' in params:
-            query_params.append(('time', params['time']))  # noqa: E501
-        if 'time__contains' in params:
-            query_params.append(('time__contains', params['time__contains']))  # noqa: E501
-        if 'mpp2' in params:
-            query_params.append(('mpp', params['mpp2']))  # noqa: E501
-        if 'mpp__range' in params:
-            query_params.append(('mpp__range', params['mpp__range']))  # noqa: E501
-        if 'objective_power2' in params:
-            query_params.append(('objectivePower', params['objective_power2']))  # noqa: E501
-        if 'objective_power__range' in params:
-            query_params.append(('objectivePower__range', params['objective_power__range']))  # noqa: E501
-        if 'width2' in params:
-            query_params.append(('width', params['width2']))  # noqa: E501
-        if 'width__range' in params:
-            query_params.append(('width__range', params['width__range']))  # noqa: E501
-        if 'height2' in params:
-            query_params.append(('height', params['height2']))  # noqa: E501
-        if 'height__range' in params:
-            query_params.append(('height__range', params['height__range']))  # noqa: E501
-        if 'image_set2' in params:
-            query_params.append(('image_set', params['image_set2']))  # noqa: E501
-        if 'image_type2' in params:
-            query_params.append(('image_type', params['image_type2']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/images/images/{id}/', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Image',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def update_image(self, id, **kwargs):  # noqa: E501
-        """update_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_image(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.update_image_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_image_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def update_image_with_http_info(self, id, **kwargs):  # noqa: E501
-        """update_image  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_image_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param str filename:
-        :param int height:
-        :param int width:
-        :param float mpp:
-        :param float objective_power:
-        :param float image_type:
-        :param int image_set:
-        :param list[int] annotations:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str filename2: filename
-        :param str filename__contains: filename__contains
-        :param str time: time
-        :param str time__contains: time__contains
-        :param str mpp2: mpp
-        :param str mpp__range: mpp__range
-        :param str objective_power2: objectivePower
-        :param str objective_power__range: objectivePower__range
-        :param str width2: width
-        :param str width__range: width__range
-        :param str height2: height
-        :param str height__range: height__range
-        :param str image_set2: image_set
-        :param str image_type2: image_type
-        :return: Image
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'filename', 'height', 'width', 'mpp', 'objective_power', 'image_type', 'image_set', 'annotations', 'id2', 'name2', 'name__contains', 'filename2', 'filename__contains', 'time', 'time__contains', 'mpp2', 'mpp__range', 'objective_power2', 'objective_power__range', 'width2', 'width__range', 'height2', 'height__range', 'image_set2', 'image_type2']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_image" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `update_image`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'filename2' in params:
-            query_params.append(('filename', params['filename2']))  # noqa: E501
-        if 'filename__contains' in params:
-            query_params.append(('filename__contains', params['filename__contains']))  # noqa: E501
-        if 'time' in params:
-            query_params.append(('time', params['time']))  # noqa: E501
-        if 'time__contains' in params:
-            query_params.append(('time__contains', params['time__contains']))  # noqa: E501
-        if 'mpp2' in params:
-            query_params.append(('mpp', params['mpp2']))  # noqa: E501
-        if 'mpp__range' in params:
-            query_params.append(('mpp__range', params['mpp__range']))  # noqa: E501
-        if 'objective_power2' in params:
-            query_params.append(('objectivePower', params['objective_power2']))  # noqa: E501
-        if 'objective_power__range' in params:
-            query_params.append(('objectivePower__range', params['objective_power__range']))  # noqa: E501
-        if 'width2' in params:
-            query_params.append(('width', params['width2']))  # noqa: E501
-        if 'width__range' in params:
-            query_params.append(('width__range', params['width__range']))  # noqa: E501
-        if 'height2' in params:
-            query_params.append(('height', params['height2']))  # noqa: E501
-        if 'height__range' in params:
-            query_params.append(('height__range', params['height__range']))  # noqa: E501
-        if 'image_set2' in params:
-            query_params.append(('image_set', params['image_set2']))  # noqa: E501
-        if 'image_type2' in params:
-            query_params.append(('image_type', params['image_type2']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
-        if 'height' in params:
-            form_params.append(('height', params['height']))  # noqa: E501
-        if 'width' in params:
-            form_params.append(('width', params['width']))  # noqa: E501
-        if 'mpp' in params:
-            form_params.append(('mpp', params['mpp']))  # noqa: E501
-        if 'objective_power' in params:
-            form_params.append(('objectivePower', params['objective_power']))  # noqa: E501
-        if 'image_type' in params:
-            form_params.append(('image_type', params['image_type']))  # noqa: E501
-        if 'image_set' in params:
-            form_params.append(('image_set', params['image_set']))  # noqa: E501
-        if 'annotations' in params:
-            form_params.append(('annotations', params['annotations']))  # noqa: E501
-            collection_formats['annotations'] = 'multi'  # noqa: E501
-
         body_params = None
         if 'body' in params:
             body_params = params['body']

@@ -56,7 +56,7 @@ class ImageSet(object):
         'creator': 'creator'
     }
 
-    def __init__(self, id=None, name=None, path=None, location=None, description=None, images=None, product_set=None, main_annotation_type=None, set_tags=None, team=None, creator=None):  # noqa: E501
+    def __init__(self, id=None, name=None, path=None, location=None, description=None, images=[], product_set=[], main_annotation_type=None, set_tags=[], team=None, creator=None):  # noqa: E501
         """ImageSet - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None

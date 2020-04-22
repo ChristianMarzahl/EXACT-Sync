@@ -60,7 +60,16 @@ class AnnotationType(object):
         'product': 'product'
     }
 
-    def __init__(self, id=None, name=None, vector_type=None, node_count=None, enable_concealed=None, enable_blurred=None, color_code=None, default_width=None, default_height=None, sort_order=None, closed=None, area_hit_test=None, product=None):  # noqa: E501
+    class VECTOR_TYPE():
+        BOUNDING_BOX = 1
+        POINT = 2
+        LINE = 3
+        MULTI_LINE = 4
+        POLYGON = 5
+        FIXED_SIZE_BOUNDING_BOX = 6
+        GLOBAL = 7 #Annotations without a shape that are valid for the whole image
+
+    def __init__(self, id=None, name=None, vector_type:int=1, node_count=1, enable_concealed=1, enable_blurred=None, color_code="#FF0000", default_width=50, default_height=50, sort_order=0, closed=1, area_hit_test=1, product=None):  # noqa: E501
         """AnnotationType - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None

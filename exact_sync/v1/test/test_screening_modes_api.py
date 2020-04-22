@@ -32,13 +32,13 @@ class TestScreeningModesApi(unittest.TestCase):
         """Test case for create_screening_mode
 
         """
-        pass
+        assert False
 
     def test_destroy_screening_mode(self):
         """Test case for destroy_screening_mode
 
         """
-        pass
+        assert False
 
     def test_list_screening_modes(self):
         """Test case for list_screening_modes
@@ -51,7 +51,7 @@ class TestScreeningModesApi(unittest.TestCase):
         """Test case for partial_update_screening_mode
 
         """
-        pass
+        assert False
 
     def test_retrieve_screening_mode(self):
         """Test case for retrieve_screening_mode
@@ -67,7 +67,7 @@ class TestScreeningModesApi(unittest.TestCase):
         """Test case for update_screening_mode
 
         """
-        pass
+        assert False
 
 
 if __name__ == '__main__':

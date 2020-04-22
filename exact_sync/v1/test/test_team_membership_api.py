@@ -32,13 +32,13 @@ class TestTeamMembershipApi(unittest.TestCase):
         """Test case for create_team_membership
 
         """
-        pass
+        assert False
 
     def test_destroy_team_membership(self):
         """Test case for destroy_team_membership
 
         """
-        pass
+        assert False
 
     def test_list_team_memberships(self):
         """Test case for list_team_memberships
@@ -51,7 +51,7 @@ class TestTeamMembershipApi(unittest.TestCase):
         """Test case for partial_update_team_membership
 
         """
-        pass
+        assert False
 
     def test_retrieve_team_membership(self):
         """Test case for retrieve_team_membership
@@ -67,7 +67,7 @@ class TestTeamMembershipApi(unittest.TestCase):
         """Test case for update_team_membership
 
         """
-        pass
+        assert False
 
 
 if __name__ == '__main__':

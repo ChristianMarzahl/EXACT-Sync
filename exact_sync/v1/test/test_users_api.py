@@ -17,6 +17,7 @@ import unittest
 from exact_sync.v1.api_client import ApiClient as client
 from exact_sync.v1.api.users_api import UsersApi  # noqa: E501
 from exact_sync.v1.rest import ApiException
+from exact_sync.v1.models.user import User
 
 
 class TestUsersApi(unittest.TestCase):
@@ -26,19 +27,19 @@ class TestUsersApi(unittest.TestCase):
         self.api = UsersApi()  # noqa: E501
 
     def tearDown(self):
-        pass
+        assert False
 
     def test_create_user(self):
         """Test case for create_user
 
         """
-        pass
+        assert False
 
     def test_destroy_user(self):
         """Test case for destroy_user
 
         """
-        pass
+        assert False
 
     def test_list_users(self):
         """Test case for list_users
@@ -51,7 +52,7 @@ class TestUsersApi(unittest.TestCase):
         """Test case for partial_update_user
 
         """
-        pass
+        assert False
 
     def test_retrieve_user(self):
         """Test case for retrieve_user
@@ -66,7 +67,7 @@ class TestUsersApi(unittest.TestCase):
         """Test case for update_user
 
         """
-        pass
+        assert False
 
 
 if __name__ == '__main__':

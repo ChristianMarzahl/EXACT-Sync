@@ -32,13 +32,13 @@ class TestVerificationsApi(unittest.TestCase):
         """Test case for create_verification
 
         """
-        pass
+        assert False
 
     def test_destroy_verification(self):
         """Test case for destroy_verification
 
         """
-        pass
+        assert False
 
     def test_list_verifications(self):
         """Test case for list_verifications
@@ -51,7 +51,7 @@ class TestVerificationsApi(unittest.TestCase):
         """Test case for partial_update_verification
 
         """
-        pass
+        assert False
 
     def test_retrieve_verification(self):
         """Test case for retrieve_verification
@@ -66,7 +66,7 @@ class TestVerificationsApi(unittest.TestCase):
         """Test case for update_verification
 
         """
-        pass
+        assert False
 
 
 if __name__ == '__main__':

@@ -32,27 +32,26 @@ class TestAnnotationMediaFilesApi(unittest.TestCase):
         """Test case for create_annotation_media_file
 
         """
-        pass
+        assert False
 
     def test_destroy_annotation_media_file(self):
         """Test case for destroy_annotation_media_file
 
         """
-        pass
+        assert False
 
     def test_list_annotation_media_files(self):
         """Test case for list_annotation_media_files
 
         """
         annotation_media_files = self.api.list_annotation_media_files()
-
         pass
 
     def test_partial_update_annotation_media_file(self):
         """Test case for partial_update_annotation_media_file
 
         """
-        pass
+        assert False
 
     def test_retrieve_annotation_media_file(self):
         """Test case for retrieve_annotation_media_file
@@ -67,7 +66,7 @@ class TestAnnotationMediaFilesApi(unittest.TestCase):
         """Test case for update_annotation_media_file
 
         """
-        pass
+        assert False
 
 
 if __name__ == '__main__':

@@ -15,8 +15,13 @@ from __future__ import absolute_import
 import unittest
 
 from exact_sync.v1.api_client import ApiClient as client
+
 from exact_sync.v1.api.images_api import ImagesApi  # noqa: E501
+from exact_sync.v1.api.teams_api import TeamsApi
+from exact_sync.v1.api.image_sets_api import ImageSetsApi
+
 from exact_sync.v1.rest import ApiException
+from exact_sync.v1.models import ImageSet, Image, Team
 
 
 class TestImagesApi(unittest.TestCase):
@@ -24,20 +29,51 @@ class TestImagesApi(unittest.TestCase):
 
     def setUp(self):
         self.api = ImagesApi()  # noqa: E501
+        self.team_api = TeamsApi()
+        self.image_sets_api = ImageSetsApi()
+
+         # create dummy team and image_sets
+        teams = self.team_api.list_teams(name="test_images")
+        if teams.count == 0:
+            team = Team(name="test_images")
+            team = self.team_api.create_team(body=team) 
+        else:
+            team = teams.results[0]
+
+        image_sets = self.image_sets_api.list_image_sets(name="test_images")
+        if image_sets.count == 0:
+            image_set = ImageSet(name="test_images", team=team.id)
+            image_set = self.image_sets_api.create_image_set(body=image_set)
+        else:
+            image_set = image_sets.results[0]
+
+        self.team = team
+        self.image_set = image_set   
 
     def tearDown(self):
+
+        self.image_sets_api.destroy_image_set(id=self.image_set.id)
+        self.team_api.destroy_team(id=self.team.id)
         pass
 
     def test_create_image(self):
         """Test case for create_image
 
         """
+        file_path = "exact_sync/v1/test/images/Eosinophile.png"
+        image_type = 0
+        image_set = self.image_set.id
+        created_images = self.api.create_image(file_path=file_path, image_type=image_type, image_set=image_set)
+        
+        for image in created_images.results:
+            self.api.destroy_image(id=image.id)
         pass
 
     def test_destroy_image(self):
-        """Test case for destroy_image
+        """Test case for destroy_image tested with test_create_image
 
         """
+        
         pass
 
     def test_list_images(self):
@@ -51,7 +87,19 @@ class TestImagesApi(unittest.TestCase):
         """Test case for partial_update_image
 
         """
-        pass
+        file_path = "exact_sync/v1/test/images/Eosinophile.png"
+        image_type = 0
+        image_set = self.image_set.id
+        created_images = self.api.create_image(file_path=file_path, image_type=image_type, image_set=image_set)
+
+        for image in created_images.results:
+            objective_power = 40
+            updated_image = self.api.partial_update_image(id=image.id, objective_power=objective_power)
+
+            assert updated_image.objective_power == objective_power
+            self.api.destroy_image(id=image.id)
+
+
 
     def test_retrieve_image(self):
         """Test case for retrieve_image
@@ -66,7 +114,7 @@ class TestImagesApi(unittest.TestCase):
         """Test case for update_image
 
         """
-        pass
+        assert False
 
 
 if __name__ == '__main__':

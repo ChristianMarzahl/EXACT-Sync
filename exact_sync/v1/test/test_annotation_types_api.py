@@ -16,8 +16,13 @@ import unittest
 
 from exact_sync.v1.api_client import ApiClient as client
 from exact_sync.v1.api.annotation_types_api import AnnotationTypesApi  # noqa: E501
-from exact_sync.v1.rest import ApiException
 
+from exact_sync.v1.api.products_api import ProductsApi  # noqa: E501
+from exact_sync.v1.api.teams_api import TeamsApi
+from exact_sync.v1.api.image_sets_api import ImageSetsApi
+
+from exact_sync.v1.rest import ApiException
+from exact_sync.v1.models import ImageSet, Team, Product, AnnotationType
 
 class TestAnnotationTypesApi(unittest.TestCase):
     """AnnotationTypesApi unit test stubs"""
@@ -25,19 +30,64 @@ class TestAnnotationTypesApi(unittest.TestCase):
     def setUp(self):
         self.api = AnnotationTypesApi()  # noqa: E501
 
+        self.team_api = TeamsApi()
+        self.image_sets_api = ImageSetsApi()
+        self.product_api = ProductsApi()
+
+        # create dummy team, image_sets and product
+        teams = self.team_api.list_teams(name="test_annotation_type")
+        if teams.count == 0:
+            team = Team(name="test_annotation_type")
+            team = self.team_api.create_team(body=team) 
+        else:
+            team = teams.results[0]
+
+        image_sets = self.image_sets_api.list_image_sets(name="test_annotation_type")
+        if image_sets.count == 0:
+            image_set = ImageSet(name="test_annotation_type", team=team.id)
+            image_set = self.image_sets_api.create_image_set(body=image_set)
+        else:
+            image_set = image_sets.results[0]
+
+        products = self.product_api.list_products(name="test_annotation_type")
+        if products.count == 0:
+            product = Product(name="test_annotation_type", imagesets=[image_set.id], team=team.id)
+            product = self.product_api.create_product(body=product)
+        else:
+            product = products.results[0]
+
+
+        self.team = team
+        self.image_set = image_set 
+        self.product = product 
+
+
     def tearDown(self):
-        pass
+
+        self.product_api.destroy_product(id=self.product.id)
+        self.image_sets_api.destroy_image_set(id=self.image_set.id)
+        self.team_api.destroy_team(id=self.team.id)
 
     def test_create_annotation_type(self):
         """Test case for create_annotation_type
 
         """
+        annotation_type = AnnotationType(name="create_annotation_type", vector_type=int(AnnotationType.VECTOR_TYPE.BOUNDING_BOX), product=self.product.id)
+        created_annotation_type = self.api.create_annotation_type(body=annotation_type)
+
+        self.api.destroy_annotation_type(id=created_annotation_type.id)
         pass
 
     def test_destroy_annotation_type(self):
         """Test case for destroy_annotation_type
 
         """
+        annotation_type = AnnotationType(name="destroy_annotation_type", vector_type=int(AnnotationType.VECTOR_TYPE.BOUNDING_BOX), product=self.product.id)
+        created_annotation_type = self.api.create_annotation_type(body=annotation_type)
+
+        self.api.destroy_annotation_type(id=created_annotation_type.id)
+        annotation_types = self.api.list_annotation_types(id=created_annotation_type.id)
+        assert 0 == annotation_types.count
         pass
 
     def test_list_annotation_types(self):
@@ -45,13 +95,21 @@ class TestAnnotationTypesApi(unittest.TestCase):
 
         """
         annotation_type_list = self.api.list_annotation_types()
-
         pass
 
     def test_partial_update_annotation_type(self):
         """Test case for partial_update_annotation_type
 
         """
+        annotation_type = AnnotationType(name="p_annotation_type", vector_type=int(AnnotationType.VECTOR_TYPE.BOUNDING_BOX), product=self.product.id)
+        created_annotation_type = self.api.create_annotation_type(body=annotation_type)
+
+        vector_type = int(AnnotationType.VECTOR_TYPE.FIXED_SIZE_BOUNDING_BOX)
+        updated_anno_type = self.api.partial_update_annotation_type(id=created_annotation_type.id, vector_type=vector_type)
+
+
+        assert vector_type == updated_anno_type.vector_type
+        self.api.destroy_annotation_type(id=updated_anno_type.id)
         pass
 
     def test_retrieve_annotation_type(self):
@@ -67,6 +125,15 @@ class TestAnnotationTypesApi(unittest.TestCase):
         """Test case for update_annotation_type
 
         """
+        annotation_type = AnnotationType(name="u_annotation_type", vector_type=int(AnnotationType.VECTOR_TYPE.BOUNDING_BOX), product=self.product.id)
+        created_annotation_type = self.api.create_annotation_type(body=annotation_type)
+
+        created_annotation_type.vector_type = int(AnnotationType.VECTOR_TYPE.FIXED_SIZE_BOUNDING_BOX)
+        updated_anno_type = self.api.update_annotation_type(id=created_annotation_type.id, body=created_annotation_type)
+
+
+        assert created_annotation_type.vector_type == updated_anno_type.vector_type
+        self.api.destroy_annotation_type(id=updated_anno_type.id)
         pass
 
 

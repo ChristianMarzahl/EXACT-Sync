@@ -32,13 +32,13 @@ class TestLogImageActionsApi(unittest.TestCase):
         """Test case for create_log_image_action
 
         """
-        pass
+        assert False
 
     def test_destroy_log_image_action(self):
         """Test case for destroy_log_image_action
 
         """
-        pass
+        assert False
 
     def test_list_log_image_actions(self):
         """Test case for list_log_image_actions
@@ -51,7 +51,7 @@ class TestLogImageActionsApi(unittest.TestCase):
         """Test case for partial_update_log_image_action
 
         """
-        pass
+        assert False
 
     def test_retrieve_log_image_action(self):
         """Test case for retrieve_log_image_action
@@ -67,7 +67,7 @@ class TestLogImageActionsApi(unittest.TestCase):
         """Test case for update_log_image_action
 
         """
-        pass
+        assert False
 
 
 if __name__ == '__main__':
