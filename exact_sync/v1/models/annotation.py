@@ -62,7 +62,7 @@ class Annotation(object):
         'meta_data': 'meta_data'
     }
 
-    def __init__(self, annotation_type=None, id=None, vector=None, verified_by_user=None, image=None, concealed=None, blurred=None, last_editor=None, user=None, deleted=None, description=None, unique_identifier=None, uploaded_media_files=None, meta_data=None):  # noqa: E501
+    def __init__(self, annotation_type=None, id=None, vector=None, verified_by_user=None, image=None, concealed=None, blurred=None, last_editor=None, user=None, deleted=None, description=None, unique_identifier=None, uploaded_media_files=[], meta_data=None):  # noqa: E501
         """Annotation - a model defined in Swagger"""  # noqa: E501
         self._annotation_type = None
         self._id = None

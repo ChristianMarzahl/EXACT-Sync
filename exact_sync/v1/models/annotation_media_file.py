@@ -28,6 +28,11 @@ class AnnotationMediaFile(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
+    class MediaFileTypes:
+        DEFAULT = 0
+        SERVER_GENERATED = 1
+        FILE_LINK = 2
+
     swagger_types = {
         'id': 'int',
         'name': 'str',

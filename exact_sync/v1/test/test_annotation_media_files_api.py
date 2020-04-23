@@ -16,7 +16,17 @@ import unittest
 
 from exact_sync.v1.api_client import ApiClient as client
 from exact_sync.v1.api.annotation_media_files_api import AnnotationMediaFilesApi  # noqa: E501
+
+from exact_sync.v1.api.images_api import ImagesApi  # noqa: E501
+from exact_sync.v1.api.teams_api import TeamsApi
+from exact_sync.v1.api.image_sets_api import ImageSetsApi
+from exact_sync.v1.api.products_api import ProductsApi
+from exact_sync.v1.api.annotation_types_api import AnnotationTypesApi  # noqa: E501
+from exact_sync.v1.api.annotations_api import AnnotationsApi
+
 from exact_sync.v1.rest import ApiException
+from exact_sync.v1.models import ImageSet, Team, Product, AnnotationType, Image, Annotation, AnnotationMediaFile
+
 
 
 class TestAnnotationMediaFilesApi(unittest.TestCase):
@@ -24,15 +34,95 @@ class TestAnnotationMediaFilesApi(unittest.TestCase):
 
     def setUp(self):
         self.api = AnnotationMediaFilesApi()  # noqa: E501
+        self.team_api = TeamsApi()
+        self.image_sets_api = ImageSetsApi()
+        self.product_api = ProductsApi()
+        self.anno_type_api = AnnotationTypesApi()
+        self.image_api = ImagesApi()
+        self.annotations_api = AnnotationsApi()
+
+        # create dummy team, image_sets, product, image, anno_type and annotation
+        teams = self.team_api.list_teams(name="test_annotation")
+        if teams.count == 0:
+            team = Team(name="test_annotation")
+            team = self.team_api.create_team(body=team) 
+        else:
+            team = teams.results[0]
+
+        image_sets = self.image_sets_api.list_image_sets(name="test_annotation")
+        if image_sets.count == 0:
+            image_set = ImageSet(name="test_annotation", team=team.id)
+            image_set = self.image_sets_api.create_image_set(body=image_set)
+        else:
+            image_set = image_sets.results[0]
+
+        products = self.product_api.list_products(name="test_annotation")
+        if products.count == 0:
+            product = Product(name="test_annotation", imagesets=[image_set.id], team=team.id)
+            product = self.product_api.create_product(body=product)
+        else:
+            product = products.results[0]
+
+        annotation_types = self.anno_type_api.list_annotation_types(name="test_annotation")
+        if annotation_types.count == 0:
+            annotation_type = AnnotationType(name="test_annotation", vector_type=int(AnnotationType.VECTOR_TYPE.BOUNDING_BOX), product=product.id)
+            annotation_type = self.anno_type_api.create_annotation_type(body=annotation_type)
+        else:
+            annotation_type = annotation_types.results[0]
+
+        images = self.image_api.list_images(name="Eosinophile.png")
+        if images.count == 0:
+            file_path = "exact_sync/v1/test/images/Eosinophile.png"
+            image_type = 0
+            
+            images = self.image_api.create_image(file_path=file_path, image_type=image_type, image_set=image_set.id)
+            image = images.results[0]
+        else:
+            image = images.results[0]
+
+        annotations = self.annotations_api.list_annotations(image=image.id)
+        if annotations.count == 0:
+            vector = {"x1":10, "x2":20, "y1":10, "y2":20}
+            annotation = Annotation(annotation_type=annotation_type.id, vector=vector, image=image.id)
+            annotation = self.annotations_api.create_annotation(body=annotation)
+        else:
+            annotation = annotations.results[0]
+
+        self.team = team
+        self.image_set = image_set 
+        self.product = product 
+        self.annotation_type = annotation_type
+        self.image = image
+        self.annotation = annotation
+
 
     def tearDown(self):
+
+        self.annotations_api.destroy_annotation(id=self.annotation.id)
+        self.image_api.destroy_image(id=self.image.id)
+        self.anno_type_api.destroy_annotation_type(id=self.annotation_type.id)
+        self.product_api.destroy_product(id=self.product.id)
+        self.image_sets_api.destroy_image_set(id=self.image_set.id)
+        self.team_api.destroy_team(id=self.team.id)
+
         pass
 
     def test_create_annotation_media_file(self):
         """Test case for create_annotation_media_file
 
         """
-        assert False
+        file = "exact_sync/v1/test/images/sound.wav"
+        name = "c_annotation_media_file"
+        media_file_type = 4
+        created_media_files = self.api.create_annotation_media_file(name=name, file=file, media_file_type=media_file_type, annotation=self.annotation.id)
+
+        for media_file in created_media_files.results:
+
+            new_name = "123.wav"
+            updated = self.api.partial_update_annotation_media_file(id=media_file.id, name=new_name)
+            
+            assert new_name == updated.name
+            self.api.destroy_annotation_media_file(id=media_file.id)
 
     def test_destroy_annotation_media_file(self):
         """Test case for destroy_annotation_media_file

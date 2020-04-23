@@ -41,115 +41,6 @@ class AnnotationMediaFilesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param Body81 body:
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_annotation_media_file_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.create_annotation_media_file_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def create_annotation_media_file_with_http_info(self, **kwargs):  # noqa: E501
-        """create_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_annotation_media_file_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param Body81 body:
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_annotation_media_file" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/annotations/annotation_media_files/', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AnnotationMediaFile',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def create_annotation_media_file(self, **kwargs):  # noqa: E501
-        """create_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_annotation_media_file(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
         :param str name:
         :param int media_file_type:
         :param str file:
@@ -209,33 +100,25 @@ class AnnotationMediaFilesApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'file' in params:
+            local_var_files['file'] = params['file']  # noqa: E501
+
         if 'name' in params:
             form_params.append(('name', params['name']))  # noqa: E501
         if 'media_file_type' in params:
             form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
         if 'annotation' in params:
             form_params.append(('annotation', params['annotation']))  # noqa: E501
 
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        body_params = {}
+            
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['basicAuth']  # noqa: E501
@@ -248,7 +131,7 @@ class AnnotationMediaFilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='AnnotationMediaFile',  # noqa: E501
+            response_type='AnnotationMediaFiles',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -256,120 +139,6 @@ class AnnotationMediaFilesApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_annotation_media_file(self, **kwargs):  # noqa: E501
-        """create_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_annotation_media_file(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_annotation_media_file_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.create_annotation_media_file_with_http_info(**kwargs)  # noqa: E501
-            return data
-
-    def create_annotation_media_file_with_http_info(self, **kwargs):  # noqa: E501
-        """create_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_annotation_media_file_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['name', 'media_file_type', 'file', 'annotation']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_annotation_media_file" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/annotations/annotation_media_files/', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AnnotationMediaFile',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
 
     def destroy_annotation_media_file(self, id, **kwargs):  # noqa: E501
         """destroy_annotation_media_file  # noqa: E501
@@ -381,11 +150,6 @@ class AnnotationMediaFilesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param str id2: id
-        :param str name: name
-        :param str name__contains: name__contains
-        :param str annotation: annotation
-        :param str media_file_type: media_file_type
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -407,17 +171,12 @@ class AnnotationMediaFilesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param str id2: id
-        :param str name: name
-        :param str name__contains: name__contains
-        :param str annotation: annotation
-        :param str media_file_type: media_file_type
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'id2', 'name', 'name__contains', 'annotation', 'media_file_type']  # noqa: E501
+        all_params = ['id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -444,17 +203,6 @@ class AnnotationMediaFilesApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name' in params:
-            query_params.append(('name', params['name']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'annotation' in params:
-            query_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'media_file_type' in params:
-            query_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-
         header_params = {}
 
         form_params = []
@@ -610,12 +358,9 @@ class AnnotationMediaFilesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body87 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
+        :param str name:
+        :param int media_file_type:
+        :param int annotation:
         :return: AnnotationMediaFile
                  If the method is called asynchronously,
                  returns the request thread.
@@ -637,18 +382,15 @@ class AnnotationMediaFilesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body87 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
+        :param str name:
+        :param int media_file_type:
+        :param int annotation:
         :return: AnnotationMediaFile
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'body', 'id2', 'name2', 'name__contains', 'annotation2', 'media_file_type2']  # noqa: E501
+        all_params = ['id', 'name', 'media_file_type', 'annotation']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -675,327 +417,19 @@ class AnnotationMediaFilesApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'annotation2' in params:
-            query_params.append(('annotation', params['annotation2']))  # noqa: E501
-        if 'media_file_type2' in params:
-            query_params.append(('media_file_type', params['media_file_type2']))  # noqa: E501
-
         header_params = {}
 
         form_params = []
         local_var_files = {}
+
+        body_params = {}
         if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
+            body_params['name'] = params['name']
         if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
+            body_params['media_file_type'] = params['media_file_type']
         if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
+            body_params['annotation'] = params['annotation']
 
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/annotations/annotation_media_files/{id}/', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AnnotationMediaFile',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def partial_update_annotation_media_file(self, id, **kwargs):  # noqa: E501
-        """partial_update_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_annotation_media_file(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.partial_update_annotation_media_file_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.partial_update_annotation_media_file_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def partial_update_annotation_media_file_with_http_info(self, id, **kwargs):  # noqa: E501
-        """partial_update_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_annotation_media_file_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'media_file_type', 'file', 'annotation', 'id2', 'name2', 'name__contains', 'annotation2', 'media_file_type2']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method partial_update_annotation_media_file" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `partial_update_annotation_media_file`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'annotation2' in params:
-            query_params.append(('annotation', params['annotation2']))  # noqa: E501
-        if 'media_file_type2' in params:
-            query_params.append(('media_file_type', params['media_file_type2']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/annotations/annotation_media_files/{id}/', 'PATCH',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AnnotationMediaFile',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def partial_update_annotation_media_file(self, id, **kwargs):  # noqa: E501
-        """partial_update_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_annotation_media_file(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.partial_update_annotation_media_file_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.partial_update_annotation_media_file_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def partial_update_annotation_media_file_with_http_info(self, id, **kwargs):  # noqa: E501
-        """partial_update_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.partial_update_annotation_media_file_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'media_file_type', 'file', 'annotation', 'id2', 'name2', 'name__contains', 'annotation2', 'media_file_type2']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method partial_update_annotation_media_file" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `partial_update_annotation_media_file`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'annotation2' in params:
-            query_params.append(('annotation', params['annotation2']))  # noqa: E501
-        if 'media_file_type2' in params:
-            query_params.append(('media_file_type', params['media_file_type2']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1033,7 +467,6 @@ class AnnotationMediaFilesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param str id2: id
         :param str name: name
         :param str name__contains: name__contains
         :param str annotation: annotation
@@ -1059,7 +492,6 @@ class AnnotationMediaFilesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param str id2: id
         :param str name: name
         :param str name__contains: name__contains
         :param str annotation: annotation
@@ -1069,7 +501,7 @@ class AnnotationMediaFilesApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'id2', 'name', 'name__contains', 'annotation', 'media_file_type']  # noqa: E501
+        all_params = ['id', 'name', 'name__contains', 'annotation', 'media_file_type']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1096,8 +528,6 @@ class AnnotationMediaFilesApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
         if 'name' in params:
             query_params.append(('name', params['name']))  # noqa: E501
         if 'name__contains' in params:
@@ -1146,12 +576,7 @@ class AnnotationMediaFilesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body84 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
+        :param AnnotationMediaFile body:
         :return: AnnotationMediaFile
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1173,18 +598,13 @@ class AnnotationMediaFilesApi(object):
 
         :param async_req bool
         :param str id: (required)
-        :param Body84 body:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
+        :param AnnotationMediaFile body:
         :return: AnnotationMediaFile
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'body', 'id2', 'name2', 'name__contains', 'annotation2', 'media_file_type2']  # noqa: E501
+        all_params = ['id', 'body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1211,323 +631,12 @@ class AnnotationMediaFilesApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'annotation2' in params:
-            query_params.append(('annotation', params['annotation2']))  # noqa: E501
-        if 'media_file_type2' in params:
-            query_params.append(('media_file_type', params['media_file_type2']))  # noqa: E501
-
         header_params = {}
 
         form_params = []
         local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/annotations/annotation_media_files/{id}/', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AnnotationMediaFile',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def update_annotation_media_file(self, id, **kwargs):  # noqa: E501
-        """update_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_annotation_media_file(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.update_annotation_media_file_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_annotation_media_file_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def update_annotation_media_file_with_http_info(self, id, **kwargs):  # noqa: E501
-        """update_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_annotation_media_file_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'media_file_type', 'file', 'annotation', 'id2', 'name2', 'name__contains', 'annotation2', 'media_file_type2']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_annotation_media_file" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `update_annotation_media_file`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'annotation2' in params:
-            query_params.append(('annotation', params['annotation2']))  # noqa: E501
-        if 'media_file_type2' in params:
-            query_params.append(('media_file_type', params['media_file_type2']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'application/x-www-form-urlencoded', 'multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['basicAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/api/v1/annotations/annotation_media_files/{id}/', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='AnnotationMediaFile',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def update_annotation_media_file(self, id, **kwargs):  # noqa: E501
-        """update_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_annotation_media_file(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.update_annotation_media_file_with_http_info(id, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_annotation_media_file_with_http_info(id, **kwargs)  # noqa: E501
-            return data
-
-    def update_annotation_media_file_with_http_info(self, id, **kwargs):  # noqa: E501
-        """update_annotation_media_file  # noqa: E501
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_annotation_media_file_with_http_info(id, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str id: (required)
-        :param str name:
-        :param int media_file_type:
-        :param str file:
-        :param int annotation:
-        :param str id2: id
-        :param str name2: name
-        :param str name__contains: name__contains
-        :param str annotation2: annotation
-        :param str media_file_type2: media_file_type
-        :return: AnnotationMediaFile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['id', 'name', 'media_file_type', 'file', 'annotation', 'id2', 'name2', 'name__contains', 'annotation2', 'media_file_type2']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_annotation_media_file" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `update_annotation_media_file`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'id' in params:
-            path_params['id'] = params['id']  # noqa: E501
-
-        query_params = []
-        if 'id2' in params:
-            query_params.append(('id', params['id2']))  # noqa: E501
-        if 'name2' in params:
-            query_params.append(('name', params['name2']))  # noqa: E501
-        if 'name__contains' in params:
-            query_params.append(('name__contains', params['name__contains']))  # noqa: E501
-        if 'annotation2' in params:
-            query_params.append(('annotation', params['annotation2']))  # noqa: E501
-        if 'media_file_type2' in params:
-            query_params.append(('media_file_type', params['media_file_type2']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'media_file_type' in params:
-            form_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
-        if 'file' in params:
-            local_var_files['file'] = params['file']  # noqa: E501
-        if 'annotation' in params:
-            form_params.append(('annotation', params['annotation']))  # noqa: E501
+        if 'file' in body:
+            local_var_files['file'] = body['file']  # noqa: E501
 
         body_params = None
         if 'body' in params:
