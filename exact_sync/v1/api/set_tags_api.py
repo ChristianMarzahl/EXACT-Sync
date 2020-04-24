@@ -449,7 +449,7 @@ class SetTagsApi(PaginationBaseAPI):
                 (data) = self.list_set_tags_with_http_info(**kwargs)  # noqa: E501
                 return data
         else:
-            return self.get_all(self.list_set_tags_with_http_info, **kwargs)
+            return self._get_all(self.list_set_tags_with_http_info, **kwargs)
 
     def list_set_tags_with_http_info(self, **kwargs):  # noqa: E501
         """list_set_tags  # noqa: E501

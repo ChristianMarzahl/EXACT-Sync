@@ -12,7 +12,7 @@
 
 import pprint
 import re  # noqa: F401
-
+from enum import Enum, IntEnum
 import six
 
 
@@ -28,10 +28,11 @@ class AnnotationMediaFile(object):
       attribute_map (dict): The key is attribute name
                             and the value is json key in definition.
     """
-    class MediaFileTypes:
-        DEFAULT = 0
-        SERVER_GENERATED = 1
-        FILE_LINK = 2
+    class MediaFileType(IntEnum):
+        Undefined = 1
+        Image = 2
+        Video = 3
+        Audio = 4
 
     swagger_types = {
         'id': 'int',

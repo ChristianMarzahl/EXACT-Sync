@@ -245,7 +245,7 @@ class AnnotationTypesApi(PaginationBaseAPI):
                 (data) = self.list_annotation_types_with_http_info(**kwargs)  # noqa: E501
                 return data
         else:
-            return self.get_all(self.list_annotation_types_with_http_info, **kwargs)
+            return self._get_all(self.list_annotation_types_with_http_info, **kwargs)
 
     def list_annotation_types_with_http_info(self, **kwargs):  # noqa: E501
         """list_annotation_types  # noqa: E501

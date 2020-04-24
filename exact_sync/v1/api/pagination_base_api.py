@@ -3,7 +3,7 @@ import re
 
 class PaginationBaseAPI(object):
     
-    def get_all(self, func:callable, **kwargs):
+    def _get_all(self, func:callable, **kwargs):
 
         data = func(**kwargs)
 

@@ -128,10 +128,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-
+examples/examples/
 examples/images
 examples/temp*
 examples/Results*
+examples/*.py
 
 .vscode/settings.json
 .vscode/launch.json
