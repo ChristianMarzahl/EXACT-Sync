@@ -4,45 +4,62 @@ Rest API sync with the EXACT Server https://github.com/ChristianMarzahl/Exact
 
 ## Example Notebooks
 
-In the folder examples or:
-https://colab.research.google.com/drive/1nOTyAVwzBDMSEAdgjbdpe7isGfeVpusK
+In the folder examples
+
+## Pip
+
+pip install EXCAT-Sync
+
+## Tests
+
+with a lot of implementation examples
+/exact_sync/v1/test
+
 
 ### Basic features:
 
+#### Connect to server
+
+```python
+configuration = Configuration()
+configuration.username = 'exact'
+configuration.password = 'exact'
+configuration.host = "http://127.0.0.1:8000"
+
+client = ApiClient(configuration)
+
+image_sets_api = ImageSetsApi(client)
+annotations_api = AnnotationsApi(client)
+annotation_types_api = AnnotationTypesApi(client)
+images_api = ImagesApi(client)
+product_api = ProductsApi(client)
+team_api = TeamsApi(client)
+```
+
+
 #### Get image set information
 ```python
-username="Demo"
-password="demodemo"
-serverurl="http://127.0.0.1:8000/"
-target_folder = Path('examples/images/') 
-
-manager = ExactManager(username=username,  password=password, serverurl=serverurl)
-imageset = manager.retrieve_imagesets()
+image_sets = image_sets_api.list_image_sets(name="cluster_asthma_imageset")
+image_sets
 ```
 
 #### Upload image to image set
 
 ```python
-manager.upload_image_to_imageset(imageset_id=image_set['id'], filename="example.png")
+image_type = int(Image.ImageSourceTypes.DEFAULT)
+image = images_api.create_image(file_path=target_file, image_type=image_type, image_set=image_set.id).results[0]
 ```
 
 ##### Donwload image from image set
 
 ```python
-id = image['id']
-name = image['name']
-image_path = target_folder/name
-manager.download_image(id, image_path, None)# , original_image=True
+images_api.download_image(id=image_id, target_path=image_path, original_image=True)
 ```
 
 #### Download image annotations 
 
 ```python
-id = image['id']
-annotations = manager.retrieve_annotations(id)
+annotations_api.list_annotations(pagination=False, async_req=True, image=image.id)
 ```
 
-## Pip
-
-pip install EXCAT-Sync
 
