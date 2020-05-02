@@ -43,7 +43,7 @@ class Image(object):
         'width': 'int',
         'mpp': 'float',
         'objective_power': 'float',
-        'image_type': 'float',
+        'image_type': 'int',
         'image_set': 'int',
         'annotations': 'list[int]'
     }

@@ -42,6 +42,7 @@ class Annotation(object):
         'description': 'str',
         'unique_identifier': 'str',
         'uploaded_media_files': 'list[int]',
+        'annotationversion_set': 'list[int]',
         'meta_data': 'object'
     }
 
@@ -59,10 +60,11 @@ class Annotation(object):
         'description': 'description',
         'unique_identifier': 'unique_identifier',
         'uploaded_media_files': 'uploaded_media_files',
+        'annotationversion_set': 'annotationversion_set',
         'meta_data': 'meta_data'
     }
 
-    def __init__(self, annotation_type=None, id=None, vector=None, verified_by_user=None, image=None, concealed=None, blurred=None, last_editor=None, user=None, deleted=None, description=None, unique_identifier=None, uploaded_media_files=[], meta_data=None):  # noqa: E501
+    def __init__(self, annotation_type=None, id=None, vector=None, verified_by_user=None, image=None, concealed=None, blurred=None, last_editor=None, user=None, deleted=None, description=None, unique_identifier=None, uploaded_media_files=[], meta_data=None, annotationversion_set=[]):  # noqa: E501
         """Annotation - a model defined in Swagger"""  # noqa: E501
         self._annotation_type = None
         self._id = None
@@ -77,6 +79,7 @@ class Annotation(object):
         self._description = None
         self._unique_identifier = None
         self._uploaded_media_files = None
+        self._annotationversion_set = None
         self._meta_data = None
         self.discriminator = None
         self.annotation_type = annotation_type
@@ -102,6 +105,7 @@ class Annotation(object):
         if unique_identifier is not None:
             self.unique_identifier = unique_identifier
         self.uploaded_media_files = uploaded_media_files
+        self.annotationversion_set = annotationversion_set
         if meta_data is not None:
             self.meta_data = meta_data
 
@@ -383,6 +387,30 @@ class Annotation(object):
         #    raise ValueError("Invalid value for `uploaded_media_files`, must not be `None`")  # noqa: E501
 
         self._uploaded_media_files = uploaded_media_files
+
+
+    @property
+    def annotationversion_set(self):
+        """Gets the annotationversion_set of this Annotation.  # noqa: E501
+
+
+        :return: The annotationversion_set of this Annotation.  # noqa: E501
+        :rtype: list[int]
+        """
+        return self._annotationversion_set
+
+    @annotationversion_set.setter
+    def annotationversion_set(self, annotationversion_set):
+        """Sets the annotationversion_set of this Annotation.
+
+
+        :param annotationversion_set: The annotationversion_set of this Annotation.  # noqa: E501
+        :type: list[int]
+        """
+        #if annotationversion_set is None:
+        #    raise ValueError("Invalid value for `annotationversion_set`, must not be `None`")  # noqa: E501
+
+        self._annotationversion_set = annotationversion_set
 
     @property
     def meta_data(self):
