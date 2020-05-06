@@ -227,7 +227,7 @@ class ImagesApi(PaginationBaseAPI):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def list_images(self, pagination:bool=True, **kwargs):  # noqa: E501
+    def list_images(self, pagination:bool=True, omit="annotations" ,**kwargs):  # noqa: E501
         """list_images  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -239,6 +239,7 @@ class ImagesApi(PaginationBaseAPI):
         :param int limit: Number of results to return per page.
         :param int offset: The initial index from which to return the results.
         :param str id: id
+        :param str omit: fields to exclude
         :param str name: name
         :param str name__contains: name__contains
         :param str filename: filename
@@ -260,16 +261,17 @@ class ImagesApi(PaginationBaseAPI):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
+        kwargs['omit'] = omit
         if pagination:
             if kwargs.get('async_req'):
-                return self.list_images_with_http_info(**kwargs)  # noqa: E501
+                return self.__list_images_with_http_info(**kwargs)  # noqa: E501
             else:
-                (data) = self.list_images_with_http_info(**kwargs)  # noqa: E501
+                (data) = self.__list_images_with_http_info(**kwargs)  # noqa: E501
                 return data
         else:
-            return self._get_all(self.list_images_with_http_info, **kwargs)
+            return self._get_all(self.__list_images_with_http_info, **kwargs)
 
-    def list_images_with_http_info(self, **kwargs):  # noqa: E501
+    def __list_images_with_http_info(self, **kwargs):  # noqa: E501
         """list_images  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an

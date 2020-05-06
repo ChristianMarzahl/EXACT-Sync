@@ -306,6 +306,8 @@ class Image(object):
         :param image_set: The image_set of this Image.  # noqa: E501
         :type: int
         """
+        if image_set is None:
+            image_set = "image_set not load please remove omit=image_set"
         #if image_set is None:
         #    raise ValueError("Invalid value for `image_set`, must not be `None`")  # noqa: E501
 
@@ -329,7 +331,8 @@ class Image(object):
         :param annotations: The annotations of this Image.  # noqa: E501
         :type: list[int]
         """
-        #if annotations is None:
+        if annotations is None:
+            annotations = "Annotations not load please remove omit=annotations"
         #    raise ValueError("Invalid value for `annotations`, must not be `None`")  # noqa: E501
 
         self._annotations = annotations
