@@ -241,6 +241,8 @@ class AnnotationsApi(PaginationBaseAPI):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
+        :param bool meta_data__isnull: Meta data is null
+        :param bool vector__isnull: Vector is null
         :return: Annotations
                  If the method is called asynchronously,
                  returns the request thread.
@@ -283,12 +285,14 @@ class AnnotationsApi(PaginationBaseAPI):
         :param str verified_by__range: verified_by__range
         :param str vector_x: Vector-X-Range
         :param str vector_y: Vector-Y-Range
+        :param bool meta_data__isnull: Meta data is null
+        :param bool vector__isnull: Vector is null
         :return: Annotations
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['limit', 'offset', 'id', 'time', 'time__lte', 'time__gte', 'time__range', 'unique_identifier', 'unique_identifier__contains', 'description', 'description__contains', 'deleted', 'image', 'user', 'annotation_type', 'verified_by', 'verified_by__range', 'vector_x', 'vector_y']  # noqa: E501
+        all_params = ['limit', 'offset', 'id', 'time', 'time__lte', 'time__gte', 'time__range', 'unique_identifier', 'unique_identifier__contains', 'description', 'description__contains', 'deleted', 'image', 'user', 'annotation_type', 'verified_by', 'verified_by__range', 'vector_x', 'vector_y', 'meta_data__isnull', 'vector__isnull']  # noqa: E501
         all_params.append('omit')
         all_params.append('fields')
         all_params.append('async_req')
@@ -349,6 +353,10 @@ class AnnotationsApi(PaginationBaseAPI):
             query_params.append(('vector_x', params['vector_x']))  # noqa: E501
         if 'vector_y' in params:
             query_params.append(('vector_y', params['vector_y']))  # noqa: E501
+        if 'meta_data__isnull' in params:
+            query_params.append(('meta_data__isnull', params['meta_data__isnull']))  # noqa: E501
+        if 'vector__isnull' in params:
+            query_params.append(('vector__isnull', params['vector__isnull']))  # noqa: E501
         if 'omit' in params:
             query_params.append(('omit', params['omit']))  # noqa: E501
         if 'fields' in params:
