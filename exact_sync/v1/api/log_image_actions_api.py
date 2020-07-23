@@ -565,6 +565,7 @@ class LogImageActionsApi(PaginationBaseAPI):
         all_params = ['limit', 'offset', 'id', 'image', 'user', 'time', 'time__lte', 'time__gte', 'time__range', 'ip', 'ip__contains', 'action']  # noqa: E501
         all_params.append('omit')
         all_params.append('fields')
+        all_params.append('expand')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -612,7 +613,9 @@ class LogImageActionsApi(PaginationBaseAPI):
         if 'omit' in params:
             query_params.append(('omit', params['omit']))  # noqa: E501
         if 'fields' in params:
-            query_params.append(('fields', params['fields']))  # noqa: E501
+            query_params.append(('fields', params['fields']))  # noqa: E50
+        if 'expand' in params:
+            query_params.append(('expand', params['expand']))  # noqa: E501
             
         header_params = {}
 
@@ -1184,6 +1187,9 @@ class LogImageActionsApi(PaginationBaseAPI):
 
         all_params = ['id', 'id2', 'image', 'user', 'time', 'time__lte', 'time__gte', 'time__range', 'ip', 'ip__contains', 'action']  # noqa: E501
         all_params.append('async_req')
+        all_params.append('omit')
+        all_params.append('fields')
+        all_params.append('expand')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1229,7 +1235,13 @@ class LogImageActionsApi(PaginationBaseAPI):
             query_params.append(('ip__contains', params['ip__contains']))  # noqa: E501
         if 'action' in params:
             query_params.append(('action', params['action']))  # noqa: E501
-
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E50
+        if 'expand' in params:
+            query_params.append(('expand', params['expand']))  # noqa: E501
+            
         header_params = {}
 
         form_params = []

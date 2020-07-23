@@ -280,6 +280,7 @@ class AnnotationMediaFilesApi(PaginationBaseAPI):
 
         all_params = ['limit', 'offset', 'id', 'name', 'name__contains', 'annotation', 'media_file_type']  # noqa: E501
         all_params.append('omit')
+        all_params.append('expand')
         all_params.append('fields')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
@@ -319,7 +320,8 @@ class AnnotationMediaFilesApi(PaginationBaseAPI):
             query_params.append(('omit', params['omit']))  # noqa: E501
         if 'fields' in params:
             query_params.append(('fields', params['fields']))  # noqa: E501
-
+        if 'expand' in params:
+            query_params.append(('expand', params['expand']))  # noqa: E501
 
         header_params = {}
 
@@ -505,6 +507,9 @@ class AnnotationMediaFilesApi(PaginationBaseAPI):
 
         all_params = ['id', 'name', 'name__contains', 'annotation', 'media_file_type']  # noqa: E501
         all_params.append('async_req')
+        all_params.append('omit')
+        all_params.append('fields')
+        all_params.append('expand')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -538,7 +543,14 @@ class AnnotationMediaFilesApi(PaginationBaseAPI):
             query_params.append(('annotation', params['annotation']))  # noqa: E501
         if 'media_file_type' in params:
             query_params.append(('media_file_type', params['media_file_type']))  # noqa: E501
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E50
+        if 'expand' in params:
+            query_params.append(('expand', params['expand']))  # noqa: E501
 
+            
         header_params = {}
 
         form_params = []

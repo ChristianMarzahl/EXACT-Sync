@@ -568,6 +568,7 @@ class UsersApi(PaginationBaseAPI):
         all_params = ['limit', 'offset', 'id', 'username', 'username__contains', 'is_superuser', 'is_staff', 'is_active', 'last_login', 'team']  # noqa: E501
         all_params.append('omit')
         all_params.append('fields')
+        all_params.append('expand')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -612,6 +613,8 @@ class UsersApi(PaginationBaseAPI):
             query_params.append(('omit', params['omit']))  # noqa: E501
         if 'fields' in params:
             query_params.append(('fields', params['fields']))  # noqa: E501
+        if 'expand' in params:
+            query_params.append(('expand', params['expand']))  # noqa: E501
 
         header_params = {}
 
@@ -1171,6 +1174,9 @@ class UsersApi(PaginationBaseAPI):
 
         all_params = ['id', 'id2', 'username', 'username__contains', 'is_superuser', 'is_staff', 'is_active', 'last_login', 'team']  # noqa: E501
         all_params.append('async_req')
+        all_params.append('omit')
+        all_params.append('fields')
+        all_params.append('expand')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1212,7 +1218,13 @@ class UsersApi(PaginationBaseAPI):
             query_params.append(('last_login', params['last_login']))  # noqa: E501
         if 'team' in params:
             query_params.append(('team', params['team']))  # noqa: E501
-
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E50
+        if 'expand' in params:
+            query_params.append(('expand', params['expand']))  # noqa: E501
+            
         header_params = {}
 
         form_params = []

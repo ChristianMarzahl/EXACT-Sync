@@ -295,6 +295,7 @@ class AnnotationsApi(PaginationBaseAPI):
         all_params = ['limit', 'offset', 'id', 'time', 'time__lte', 'time__gte', 'time__range', 'unique_identifier', 'unique_identifier__contains', 'description', 'description__contains', 'deleted', 'image', 'user', 'annotation_type', 'verified_by', 'verified_by__range', 'vector_x', 'vector_y', 'meta_data__isnull', 'vector__isnull']  # noqa: E501
         all_params.append('omit')
         all_params.append('fields')
+        all_params.append('expand')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -360,7 +361,9 @@ class AnnotationsApi(PaginationBaseAPI):
         if 'omit' in params:
             query_params.append(('omit', params['omit']))  # noqa: E501
         if 'fields' in params:
-            query_params.append(('fields', params['fields']))  # noqa: E501
+            query_params.append(('fields', params['fields']))  # noqa: E50
+        if 'expand' in params:
+            query_params.append(('expand', params['expand']))  # noqa: E501
             
         header_params = {}
 
@@ -598,6 +601,11 @@ class AnnotationsApi(PaginationBaseAPI):
         """
 
         all_params = ['id', 'id2', 'time', 'time__lte', 'time__gte', 'time__range', 'unique_identifier', 'unique_identifier__contains', 'description', 'description__contains', 'deleted', 'image', 'user', 'annotation_type', 'verified_by', 'verified_by__range', 'vector_x', 'vector_y']  # noqa: E501
+        
+        all_params.append('omit')
+        all_params.append('fields')
+        all_params.append('expand')
+
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -658,7 +666,14 @@ class AnnotationsApi(PaginationBaseAPI):
             query_params.append(('vector_x', params['vector_x']))  # noqa: E501
         if 'vector_y' in params:
             query_params.append(('vector_y', params['vector_y']))  # noqa: E501
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'fields' in params:
+            query_params.append(('fields', params['fields']))  # noqa: E50
+        if 'expand' in params:
+            query_params.append(('expand', params['expand']))  # noqa: E501
 
+            
         header_params = {}
 
         form_params = []
