@@ -443,12 +443,13 @@ class AnnotationsApi(PaginationBaseAPI):
         :param str unique_identifier:
         :param list[int] uploaded_media_files:
         :param object meta_data:
+        :param last_edit_time
         :return: Annotation
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'annotation_type', 'vector', 'image', 'last_editor', 'user', 'deleted', 'description', 'unique_identifier', 'uploaded_media_files', 'meta_data']  # noqa: E501
+        all_params = ['id', 'annotation_type', 'last_edit_time', 'vector', 'image', 'last_editor', 'user', 'deleted', 'description', 'unique_identifier', 'uploaded_media_files', 'meta_data']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -501,7 +502,8 @@ class AnnotationsApi(PaginationBaseAPI):
             body_params['uploaded_media_files'] = params['uploaded_media_files']
         if 'meta_data' in params: 
             body_params['meta_data'] = params['meta_data']
-
+        if 'last_edit_time' in params: 
+            body_params['last_edit_time'] = params['last_edit_time'] 
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(

@@ -43,7 +43,9 @@ class Annotation(object):
         'unique_identifier': 'str',
         'uploaded_media_files': 'list[int]',
         'annotationversion_set': 'list[int]',
-        'meta_data': 'object'
+        'meta_data': 'object',
+        'time': 'datetime',
+        'last_edit_time': 'datetime',
     }
 
     attribute_map = {
@@ -61,10 +63,12 @@ class Annotation(object):
         'unique_identifier': 'unique_identifier',
         'uploaded_media_files': 'uploaded_media_files',
         'annotationversion_set': 'annotationversion_set',
-        'meta_data': 'meta_data'
+        'meta_data': 'meta_data',
+        'last_edit_time': 'last_edit_time',
+        'time': 'time'
     }
 
-    def __init__(self, annotation_type=None, id=None, vector=None, verified_by_user=None, image=None, concealed=None, blurred=None, last_editor=None, user=None, deleted=None, description=None, unique_identifier=None, uploaded_media_files=[], meta_data=None, annotationversion_set=[]):  # noqa: E501
+    def __init__(self, annotation_type=None, id=None, vector=None, verified_by_user=None, image=None, concealed=None, blurred=None, last_editor=None, user=None, time=None, last_edit_time=None, deleted=None, description=None, unique_identifier=None, uploaded_media_files=[], meta_data=None, annotationversion_set=[]):  # noqa: E501
         """Annotation - a model defined in Swagger"""  # noqa: E501
         self._annotation_type = None
         self._id = None
@@ -108,6 +112,10 @@ class Annotation(object):
         self.annotationversion_set = annotationversion_set
         if meta_data is not None:
             self.meta_data = meta_data
+        if time is not None:
+            self.time = time
+        if last_edit_time is not None:
+            self.last_edit_time = last_edit_time
 
     @property
     def annotation_type(self):
@@ -173,6 +181,48 @@ class Annotation(object):
         """
 
         self._vector = vector
+
+    @property
+    def time(self):
+        """Gets the time of this Annotation.  # noqa: E501
+
+
+        :return: The time of this Annotation.  # noqa: E501
+        :rtype: object
+        """
+        return self._time
+
+    @time.setter
+    def time(self, time):
+        """Sets the time of this Annotation.
+
+
+        :param time: The time of this Annotation.  # noqa: E501
+        :type: object
+        """
+
+        self._time = time
+
+    @property
+    def last_edit_time(self):
+        """Gets the last_edit_time of this Annotation.  # noqa: E501
+
+
+        :return: The last_edit_time of this Annotation.  # noqa: E501
+        :rtype: object
+        """
+        return self._last_edit_time
+
+    @last_edit_time.setter
+    def last_edit_time(self, last_edit_time):
+        """Sets the time of this Annotation.
+
+
+        :param time: The last_edit_time of this Annotation.  # noqa: E501
+        :type: object
+        """
+
+        self._last_edit_time = last_edit_time
 
     @property
     def verified_by_user(self):

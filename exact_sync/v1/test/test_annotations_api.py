@@ -101,10 +101,12 @@ class TestAnnotationsApi(unittest.TestCase):
         """
         vector = {"x1":10, "x2":20, "y1":10, "y2":20}
         unique_identifier = str(uuid.uuid4())
-        annotation = Annotation(annotation_type=self.annotation_type.id, vector=vector, image=self.image.id, unique_identifier=unique_identifier)
+        time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+        annotation = Annotation(annotation_type=self.annotation_type.id, time=time, vector=vector, image=self.image.id, unique_identifier=unique_identifier)
         created_annotation = self.api.create_annotation(body=annotation)
         
         assert created_annotation.unique_identifier == unique_identifier
+        assert created_annotation.time == time
         self.api.destroy_annotation(id=created_annotation.id)
 
     def test_destroy_annotation(self):
@@ -126,13 +128,16 @@ class TestAnnotationsApi(unittest.TestCase):
         """
         vector = {"x1":10, "x2":20, "y1":10, "y2":20}
         unique_identifier = str(uuid.uuid4())
+        last_edit_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+
         annotation = Annotation(annotation_type=self.annotation_type.id, vector=vector, image=self.image.id, unique_identifier=unique_identifier)
         created_annotation = self.api.create_annotation(body=annotation)
         
         new_vector = {"x1":100, "x2":200, "y1":100, "y2":200}
-        updated_annotation = self.api.partial_update_annotation(id=created_annotation.id, vector=new_vector)
+        updated_annotation = self.api.partial_update_annotation(id=created_annotation.id, last_edit_time=last_edit_time, vector=new_vector)
         
         assert new_vector == updated_annotation.vector
+        assert last_edit_time == updated_annotation.last_edit_time
         self.api.destroy_annotation(id=created_annotation.id)
 
     def test_retrieve_annotation(self):
