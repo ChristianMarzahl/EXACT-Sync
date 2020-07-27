@@ -14,7 +14,6 @@ from __future__ import absolute_import
 from exact_sync.v1.api.pagination_base_api import PaginationBaseAPI
 import re  # noqa: F401
 
-from tqdm import tqdm
 from pathlib import Path
 # python 2 and python 3 compatibility library
 import six

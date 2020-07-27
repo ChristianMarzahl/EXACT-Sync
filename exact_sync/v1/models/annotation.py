@@ -79,6 +79,8 @@ class Annotation(object):
         self._blurred = None
         self._last_editor = None
         self._user = None
+        self._time = None
+        self._last_edit_time = None
         self._deleted = None
         self._description = None
         self._unique_identifier = None
