@@ -5,9 +5,9 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="EXCAT-Sync", 
-    version="0.0.17",
+    version="0.0.18",
     author="Christian Marzahl",
-    author_email="christian.marzahl@gamil.com",
+    author_email="christian.marzahl(at)gmail.com",
     description="A package to download images and annotations from the EXACT Server https://github.com/ChristianMarzahl/Exact",
     long_description=long_description,
     long_description_content_type="text/markdown",

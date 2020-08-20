@@ -46,3 +46,4 @@ from exact_sync.v1.models.images import Images
 from exact_sync.v1.models.image import Image
 from exact_sync.v1.models.image_sets import ImageSets
 from exact_sync.v1.models.image_set import ImageSet
+from exact_sync.v1.models.slide_information import SlideInformation
