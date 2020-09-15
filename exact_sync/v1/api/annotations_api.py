@@ -95,6 +95,10 @@ class AnnotationsApi(PaginationBaseAPI):
         form_params = []
         local_var_files = {}
 
+        response_type = 'Annotation'
+        if isinstance(params['body'], list):
+            response_type = "list[Annotation]"
+
         body_params = {}
         if 'body' in params:
             body_params = params['body']
@@ -117,7 +121,7 @@ class AnnotationsApi(PaginationBaseAPI):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Annotation',  # noqa: E501
+            response_type=response_type,  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

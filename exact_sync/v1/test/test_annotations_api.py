@@ -14,6 +14,7 @@ from __future__ import absolute_import
 
 import unittest
 import uuid
+import datetime
 
 from exact_sync.v1.api_client import ApiClient as client
 
@@ -96,18 +97,29 @@ class TestAnnotationsApi(unittest.TestCase):
         pass
 
     def test_create_annotation(self):
+        
         """Test case for create_annotation
 
         """
         vector = {"x1":10, "x2":20, "y1":10, "y2":20}
         unique_identifier = str(uuid.uuid4())
-        time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+        time = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
         annotation = Annotation(annotation_type=self.annotation_type.id, time=time, vector=vector, image=self.image.id, unique_identifier=unique_identifier)
         created_annotation = self.api.create_annotation(body=annotation)
         
         assert created_annotation.unique_identifier == unique_identifier
         assert created_annotation.time == time
         self.api.destroy_annotation(id=created_annotation.id)
+
+
+    def test_create_annotation_list(self):
+        """Test case for create_annotation
+
+        """
+        vector = {"x1":10, "x2":20, "y1":10, "y2":20}
+        annotations = [Annotation(annotation_type=self.annotation_type.id, vector=vector, image=self.image.id) 
+                        for i in range(10)]
+        created_annotations = self.api.create_annotation(body=annotations)
 
     def test_destroy_annotation(self):
         """Test case for destroy_annotation
@@ -123,12 +135,13 @@ class TestAnnotationsApi(unittest.TestCase):
         pass
 
     def test_partial_update_annotation(self):
+        
         """Test case for partial_update_annotation
 
         """
         vector = {"x1":10, "x2":20, "y1":10, "y2":20}
         unique_identifier = str(uuid.uuid4())
-        last_edit_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+        last_edit_time = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
 
         annotation = Annotation(annotation_type=self.annotation_type.id, vector=vector, image=self.image.id, unique_identifier=unique_identifier)
         created_annotation = self.api.create_annotation(body=annotation)
@@ -141,6 +154,7 @@ class TestAnnotationsApi(unittest.TestCase):
         self.api.destroy_annotation(id=created_annotation.id)
 
     def test_retrieve_annotation(self):
+        
         """Test case for retrieve_annotation
 
         """
@@ -150,6 +164,7 @@ class TestAnnotationsApi(unittest.TestCase):
         pass
 
     def test_update_annotation(self):
+        
         """Test case for update_annotation
 
         """
