@@ -782,6 +782,7 @@ class ImageRegistrationApi(PaginationBaseAPI):
         :param int target_depth:  (optional)
         :param tuple thumbnail_size:  (optional) (1024, 1024)
         :param [orb , sift] point_extractor:  (optional)
+        :param int maxFeatures: (optional)
         :param bool flann:  (optional)
         :param bool crossCheck: (optional)
         :param float ratio:  (optional)
@@ -793,7 +794,7 @@ class ImageRegistrationApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['source_image', 'target_image', "target_depth", "thumbnail_size", "point_extractor", "flann", "crossCheck", "ratio", "use_gray", "homography", "filter_outliner"]  # noqa: E501
+        all_params = ['source_image', 'target_image', "target_depth", "thumbnail_size", "maxFeatures", "point_extractor", "flann", "crossCheck", "ratio", "use_gray", "homography", "filter_outliner"]  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -833,11 +834,13 @@ class ImageRegistrationApi(PaginationBaseAPI):
         if 'id' in params:
             body_params['id'] = params['source_image']  # noqa: E501
         if 'target_image' in params:
-            body_params['target_image'] = params['target_image']  # noqa: E501
+            body_params['target_image'] = params['target_image']  # noqa: E501 maxFeatures
         if "target_depth" in params:
             body_params['target_depth'] = params['target_depth']  # noqa: E501
         if "thumbnail_size" in params:
             body_params['thumbnail_size'] = params['thumbnail_size']  # noqa: E501
+        if "maxFeatures" in params:
+            body_params['maxFeatures'] = params['maxFeatures']  # noqa: E501
         if "point_extractor" in params:
             body_params['point_extractor'] = params['point_extractor']  # noqa: E501
         if "flann" in params:

@@ -221,6 +221,10 @@ class ImageRegistration(object):
 
         self._file = file
 
+    @property
+    def server_file(self):
+        return f"/media{self._file.split('/media')[1]}"
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
