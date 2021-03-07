@@ -1,6 +1,7 @@
 # EXACT-Sync
 Rest API sync with the EXACT Server https://github.com/ChristianMarzahl/Exact
 
+[Browsable-API](https://documenter.getpostman.com/view/11308910/TVYF6xZo)
 
 ## Example Notebooks
 
