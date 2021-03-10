@@ -93,7 +93,6 @@ class TestImageRegistration(unittest.TestCase):
 
         registation = self.image_registration_api.create_image_registration(body=registation)
 
-
         retrieved_image_registration = self.image_registration_api.retrieve_image_registration(id=registation.id)
         retrieved_image_registrations = self.image_registration_api.list_image_registrations(source_image=self.source_image.id)
         assert len(retrieved_image_registrations.results) > 0
@@ -110,6 +109,14 @@ class TestImageRegistration(unittest.TestCase):
 
         """
         registration = self.image_registration_api.register_image(source_image=self.source_image.id, target_image=self.target_image.id)
+        inverse_registration = self.image_registration_api.create_inverse_registration(id=registration.id)
+
+        assert registration.source_image == inverse_registration.target_image
+        assert registration.target_image == inverse_registration.source_image
+        
+ 
+        vector = {"x1":10, "x2":20, "y1":10, "y2":20}
+        new_vector, _ = image_registration_api.convert_coodinates(registration.id, vector=vector)
 
         target_path = "temp1.pickle"
         status, target_path = self.image_registration_api.download_registration_file(file=registration.file, target_path=target_path)
