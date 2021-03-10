@@ -343,7 +343,7 @@ class ImageSetsApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['limit', 'offset', 'id', 'path', 'path__contains', 'name', 'name__contains', 'location', 'location__contains', 'description', 'description__contains', 'time', 'time__range', 'team', 'creator', 'public', 'main_annotation_type', 'set_tags', 'product', 'collaboration_type', 'priority', 'zip_state', 'images']  # noqa: E501
+        all_params = ['limit', 'offset', 'id', "id__in", 'path', 'path__contains', 'name', 'name__contains', 'name__in', 'location', 'location__contains', 'description', 'description__contains', 'time', 'time__range', 'team', 'creator', 'public', 'main_annotation_type', 'set_tags', 'product', 'collaboration_type', 'priority', 'zip_state', 'images']  # noqa: E501
         all_params.append('omit')
         all_params.append('expand')
         all_params.append('fields')
@@ -373,12 +373,16 @@ class ImageSetsApi(PaginationBaseAPI):
             query_params.append(('offset', params['offset']))  # noqa: E501
         if 'id' in params:
             query_params.append(('id', params['id']))  # noqa: E501
+        if 'id__in' in params:
+            query_params.append(('id__in', params['id__in']))  # noqa: E501
         if 'path' in params:
             query_params.append(('path', params['path']))  # noqa: E501
         if 'path__contains' in params:
             query_params.append(('path__contains', params['path__contains']))  # noqa: E501
         if 'name' in params:
             query_params.append(('name', params['name']))  # noqa: E501
+        if 'name__in' in params:
+            query_params.append(('name__in', params['name__in']))  # noqa: E501
         if 'name__contains' in params:
             query_params.append(('name__contains', params['name__contains']))  # noqa: E501
         if 'location' in params:

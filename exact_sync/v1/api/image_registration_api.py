@@ -270,11 +270,13 @@ class ImageRegistrationApi(PaginationBaseAPI):
         :param async_req bool
         :param int limit: Number of results to return per page.
         :param int offset: The initial index from which to return the results.
-        :param str id: id
-        :param str target_image: target_image
-        :param str source_image: source_image
-        :param str registration_error__range: registration_error__range
-        :param str runtime__range: runtime__range
+        :param int id: id
+        :param int target_image: target_image
+        :param int source_image: source_image
+        :param str target_image__in: target_image list 1,2,3 etc
+        :param str source_image__in: target_image list 1,2,3 etc
+        :param int registration_error__range: registration_error__range
+        :param int runtime__range: runtime__range
         :return: InlineResponse2008
                  If the method is called asynchronously,
                  returns the request thread.
@@ -299,7 +301,9 @@ class ImageRegistrationApi(PaginationBaseAPI):
         :param int offset: The initial index from which to return the results.
         :param str id: id
         :param str target_image: target_image
-        :param str source_image: source_image
+        :param int source_image: source_image
+        :param str target_image__in: target_image list 1,2,3 etc
+        :param str source_image__in: target_image list 1,2,3 etc
         :param str registration_error__range: registration_error__range
         :param str runtime__range: runtime__range
         :return: InlineResponse2008
@@ -307,7 +311,7 @@ class ImageRegistrationApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['limit', 'offset', 'id', 'target_image', 'source_image', 'registration_error__range', 'runtime__range']  # noqa: E501
+        all_params = ['limit', 'offset', 'id', "id__in", 'target_image', 'source_image', 'target_image__in', 'source_image__in', 'registration_error__range', 'runtime__range']  # noqa: E501
         all_params.append('omit')
         all_params.append('fields')
         all_params.append('expand')
@@ -337,10 +341,16 @@ class ImageRegistrationApi(PaginationBaseAPI):
             query_params.append(('offset', params['offset']))  # noqa: E501
         if 'id' in params:
             query_params.append(('id', params['id']))  # noqa: E501
+        if 'id__in' in params:
+            query_params.append(('id__in', params['id__in']))  # noqa: E501
         if 'target_image' in params:
             query_params.append(('target_image', params['target_image']))  # noqa: E501
         if 'source_image' in params:
             query_params.append(('source_image', params['source_image']))  # noqa: E501
+        if 'target_image__in' in params:
+            query_params.append(('target_image__in', params['target_image__in']))  # noqa: E501
+        if 'source_image__in' in params:
+            query_params.append(('source_image__in', params['source_image__in']))  # noqa: E501
         if 'registration_error__range' in params:
             query_params.append(('registration_error__range', params['registration_error__range']))  # noqa: E501
         if 'runtime__range' in params:

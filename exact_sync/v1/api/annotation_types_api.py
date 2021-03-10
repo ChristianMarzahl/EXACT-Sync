@@ -272,7 +272,7 @@ class AnnotationTypesApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['limit', 'offset', 'id', 'name', 'name__contains', 'vector_type', 'vector_type__lte', 'vector_type__gte', 'vector_type__range', 'active', 'product']  # noqa: E501
+        all_params = ['limit', 'offset', 'id', 'id__in', 'name', 'name__contains', 'name__in', 'vector_type', 'vector_type__lte', 'vector_type__gte', 'vector_type__range', 'active', 'product']  # noqa: E501
 
         all_params.append('omit')
         all_params.append('fields')
@@ -303,12 +303,18 @@ class AnnotationTypesApi(PaginationBaseAPI):
             query_params.append(('offset', params['offset']))  # noqa: E501
         if 'id' in params:
             query_params.append(('id', params['id']))  # noqa: E501
+        if 'id__in' in params:
+            query_params.append(('id__in', params['id__in']))  # noqa: E501
         if 'name' in params:
             query_params.append(('name', params['name']))  # noqa: E501
+        if 'name__in' in params:
+            query_params.append(('name__in', params['name__in']))  # noqa: E501
         if 'name__contains' in params:
             query_params.append(('name__contains', params['name__contains']))  # noqa: E501
         if 'vector_type' in params:
             query_params.append(('vector_type', params['vector_type']))  # noqa: E501
+        if 'vector_type__in' in params:
+            query_params.append(('vector_type__in', params['vector_type__in']))  # noqa: E501
         if 'vector_type__lte' in params:
             query_params.append(('vector_type__lte', params['vector_type__lte']))  # noqa: E501
         if 'vector_type__gte' in params:

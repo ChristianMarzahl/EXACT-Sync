@@ -298,7 +298,7 @@ class AnnotationsApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['limit', 'offset', 'id', 'time', 'time__lte', 'time__gte', 'time__range', 'unique_identifier', 'unique_identifier__contains', 'description', 'description__contains', 'deleted', 'image', 'user', 'annotation_type', 'verified_by', 'verified_by__range', 'vector_x', 'vector_y', 'meta_data__isnull', 'vector__isnull', 'vector_type']  # noqa: E501
+        all_params = ['limit', 'offset', 'id', 'id__in' 'time', 'time__lte', 'time__gte', 'time__range', 'unique_identifier', 'unique_identifier__contains', 'unique_identifier__in', 'description', 'description__contains', 'deleted', 'image', 'user', 'annotation_type', 'verified_by', 'verified_by__range', 'vector_x', 'vector_y', 'meta_data__isnull', 'vector__isnull', 'vector_type']  # noqa: E501
         all_params.append('omit')
         all_params.append('fields')
         all_params.append('expand')
@@ -328,6 +328,8 @@ class AnnotationsApi(PaginationBaseAPI):
             query_params.append(('offset', params['offset']))  # noqa: E501
         if 'id' in params:
             query_params.append(('id', params['id']))  # noqa: E501
+        if 'id__in' in params:
+            query_params.append(('id__in', params['id__in']))  # noqa: E501
         if 'time' in params:
             query_params.append(('time', params['time']))  # noqa: E501
         if 'time__lte' in params:
@@ -340,6 +342,8 @@ class AnnotationsApi(PaginationBaseAPI):
             query_params.append(('unique_identifier', params['unique_identifier']))  # noqa: E501
         if 'unique_identifier__contains' in params:
             query_params.append(('unique_identifier__contains', params['unique_identifier__contains']))  # noqa: E501
+        if 'unique_identifier__in' in params:
+            query_params.append(('unique_identifier__in', params['unique_identifier__in']))  # noqa: E501
         if 'description' in params:
             query_params.append(('description', params['description']))  # noqa: E501
         if 'description__contains' in params:

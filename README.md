@@ -1,4 +1,10 @@
 # EXACT-Sync
+
+[![PyPI version fury.io](https://badge.fury.io/py/EXCAT-Sync.svg)](https://pypi.python.org/pypi/EXCAT-Sync/)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
+
+
 Rest API sync with the EXACT Server https://github.com/ChristianMarzahl/Exact
 
 [Browsable-API](https://documenter.getpostman.com/view/11308910/TVYF6xZo)

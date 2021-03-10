@@ -523,7 +523,7 @@ class ImagesApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['limit', 'offset', 'id', 'name', 'name__contains', 'filename', 'filename__contains', 'time', 'time__contains', 'mpp', 'mpp__range', 'objective_power', 'objective_power__range', 'width', 'width__range', 'height', 'height__range', 'image_set', 'image_type']  # noqa: E501
+        all_params = ['limit', 'offset', 'id', 'id__in', 'name', 'name__in', 'name__contains', 'filename', 'filename__in', 'filename__contains', 'time', 'time__contains', 'mpp', 'mpp__range', 'objective_power', 'objective_power__range', 'width', 'width__range', 'height', 'height__range', 'image_set', 'image_type']  # noqa: E501
         all_params.append('omit')
         all_params.append('fields')
         all_params.append('expand')
@@ -553,12 +553,18 @@ class ImagesApi(PaginationBaseAPI):
             query_params.append(('offset', params['offset']))  # noqa: E501
         if 'id' in params:
             query_params.append(('id', params['id']))  # noqa: E501
+        if 'id__in' in params:
+            query_params.append(('id__in', params['id__in']))  # noqa: E501
         if 'name' in params:
             query_params.append(('name', params['name']))  # noqa: E501
+        if 'name__in' in params:
+            query_params.append(('name__in', params['name__in']))  # noqa: E501
         if 'name__contains' in params:
             query_params.append(('name__contains', params['name__contains']))  # noqa: E501
         if 'filename' in params:
             query_params.append(('filename', params['filename']))  # noqa: E501
+        if 'filename__in' in params:
+            query_params.append(('filename__in', params['filename__in']))  # noqa: E501
         if 'filename__contains' in params:
             query_params.append(('filename__contains', params['filename__contains']))  # noqa: E501
         if 'time' in params:
