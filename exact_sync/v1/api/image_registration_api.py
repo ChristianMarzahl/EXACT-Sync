@@ -805,7 +805,10 @@ class ImageRegistrationApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['source_image', 'target_image', "target_depth", "thumbnail_size", "maxFeatures", "point_extractor", "flann", "crossCheck", "ratio", "use_gray", "homography", "filter_outliner"]  # noqa: E501
+        all_params = ['source_image', 'target_image', "target_depth", "thumbnail_size", "maxFeatures", 
+                        "point_extractor", "flann", "crossCheck", "ratio", "use_gray", "homography", 
+                        "filter_outliner", "create_inverse_registration"]  # noqa: E501
+
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -866,7 +869,8 @@ class ImageRegistrationApi(PaginationBaseAPI):
             body_params['homography'] = params['homography']  # noqa: E501
         if "filter_outliner" in params:
             body_params['filter_outliner'] = params['filter_outliner']  # noqa: E501
-
+        if "create_inverse_registration" in params:
+            body_params['create_inverse_registration'] = params['create_inverse_registration']  # noqa: E501
 
 
         # HTTP header `Accept`

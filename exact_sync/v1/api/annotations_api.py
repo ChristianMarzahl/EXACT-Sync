@@ -298,7 +298,7 @@ class AnnotationsApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['limit', 'offset', 'id', 'id__in' 'time', 'time__lte', 'time__gte', 'time__range', 'unique_identifier', 'unique_identifier__contains', 'unique_identifier__in', 'description', 'description__contains', 'deleted', 'image', 'user', 'annotation_type', 'verified_by', 'verified_by__range', 'vector_x', 'vector_y', 'meta_data__isnull', 'vector__isnull', 'vector_type']  # noqa: E501
+        all_params = ['limit', 'offset', 'id', 'id__in' 'time', 'time__lte', 'time__gte', 'time__range', 'unique_identifier', 'unique_identifier__contains', 'unique_identifier__in', 'description', 'description__contains', 'deleted', 'image', 'image__in', 'user', 'annotation_type', 'annotation_type__in', 'verified_by', 'verified_by__range', 'vector_x', 'vector_y', 'meta_data__isnull', 'vector__isnull', 'vector_type']  # noqa: E501
         all_params.append('omit')
         all_params.append('fields')
         all_params.append('expand')
@@ -352,10 +352,14 @@ class AnnotationsApi(PaginationBaseAPI):
             query_params.append(('deleted', params['deleted']))  # noqa: E501
         if 'image' in params:
             query_params.append(('image', params['image']))  # noqa: E501
+        if 'image__in' in params:
+            query_params.append(('image__in', params['image__in']))  # noqa: E501
         if 'user' in params:
             query_params.append(('user', params['user']))  # noqa: E501
         if 'annotation_type' in params:
             query_params.append(('annotation_type', params['annotation_type']))  # noqa: E501
+        if 'annotation_type__in' in params:
+            query_params.append(('annotation_type__in', params['annotation_type__in']))  # noqa: E501
         if 'verified_by' in params:
             query_params.append(('verified_by', params['verified_by']))  # noqa: E501
         if 'verified_by__range' in params:
