@@ -130,17 +130,17 @@ class ImageRegistrationApi(PaginationBaseAPI):
 
         body_params = None
         if 'body' in params:
-            body_params = params['body']
+            body_params['body'] = params['body']
         if 'source_image' in params:
-            body_params = params['source_image']
+            body_params['source_image'] = params['source_image']
         if 'target_image' in params:
-            body_params = params['target_image']
+            body_params['target_image'] = params['target_image']
         if 'transformation_matrix' in params:
-            body_params = params['transformation_matrix']
+            body_params['transformation_matrix'] = params['transformation_matrix']
         if 'registration_error' in params:
-            body_params = params['registration_error']
+            body_params['registration_error'] = params['registration_error']
         if 'runtime' in params:
-            body_params = params['runtime']
+            body_params['runtime'] = params['runtime']
 
 
         # HTTP header `Accept`
