@@ -33,17 +33,19 @@ class SlideInformation(object):
         'id': 'int',
         'levels': 'int',
         'level_downsamples': 'list[float]',
-        'level_dimensions': 'list[int]'
+        'level_dimensions': 'list[int]',
+        'level_tiles': 'list[int]'
     }
 
     attribute_map = {
         'id': 'id',
         'levels': 'levels',
         'level_dimensions': 'level_dimensions',
-        'level_downsamples': 'level_downsamples'
+        'level_downsamples': 'level_downsamples',
+        'level_tiles': 'level_tiles'
     }
 
-    def __init__(self, id=None, levels=None, level_downsamples=None, level_dimensions=None):  # noqa: E501
+    def __init__(self, id=None, levels=None, level_downsamples=None, level_dimensions=None, level_tiles=None):  # noqa: E501
         """Image - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._levels = None
@@ -57,6 +59,8 @@ class SlideInformation(object):
             self.level_downsamples = level_downsamples
         if level_dimensions is not None:
             self.level_dimensions = level_dimensions
+        if level_tiles is not None:
+            self.level_tiles = level_tiles
 
     @property
     def id(self):
@@ -145,6 +149,27 @@ class SlideInformation(object):
         """
 
         self._level_dimensions = level_dimensions
+
+    @property
+    def level_tiles(self):
+        """Gets the level_tiles of this Image.  # noqa: E501
+
+
+        :return: The level_tiles of this Image.  # noqa: E501
+        :rtype: array[int]
+        """
+        return self._level_tiles
+
+    @level_tiles.setter
+    def level_tiles(self, level_tiles):
+        """Sets the time of this Image.
+
+
+        :param time: The level_tiles of this Image.  # noqa: E501
+        :type: datetime
+        """
+
+        self._level_tiles = level_tiles
 
     def to_dict(self):
         """Returns the model properties as a dict"""

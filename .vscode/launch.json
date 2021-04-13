@@ -11,7 +11,20 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "justMyCode": false
+            "justMyCode": false,
+            "gevent": true,
+        },
+        {
+            "name": "Locust",
+            "type": "python",
+            "request": "launch",
+            "module": "locust",
+            "args": [
+                "-f",
+                "${file}",
+            ],
+            "gevent": true,
+            "console": "integratedTerminal"
         }
     ]
 }

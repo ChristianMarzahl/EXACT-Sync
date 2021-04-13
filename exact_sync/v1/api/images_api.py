@@ -119,7 +119,7 @@ class ImagesApi(PaginationBaseAPI):
         auth_settings = ['basicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v1/images/images/{id}/slide_information', 'GET',
+            '/api/v1/images/images/{id}/slide_information/', 'GET',
             path_params,
             query_params,
             header_params,
