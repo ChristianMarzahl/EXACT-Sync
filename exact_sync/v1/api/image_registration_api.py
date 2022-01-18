@@ -128,9 +128,9 @@ class ImageRegistrationApi(PaginationBaseAPI):
         if 'file' in params:
             local_var_files['file'] = params['file']  # noqa: E501
 
-        body_params = None
-        if 'body' in params:
-            body_params['body'] = params['body']
+        body_params = {}
+        #if 'body' in params:
+        #    body_params['body'] = params['body']
         if 'source_image' in params:
             body_params['source_image'] = params['source_image']
         if 'target_image' in params:
@@ -480,13 +480,13 @@ class ImageRegistrationApi(PaginationBaseAPI):
             local_var_files['file'] = params['file']  # noqa: E501
 
 
-        body_params = None
+        body_params = {}
         if 'registration_error' in params:
-            body_params = params['registration_error']
+            body_params['registration_error'] = params['registration_error']
         if 'runtime' in params:
-            body_params = params['runtime']
+            body_params['runtime'] = params['runtime']
         if 'transformation_matrix' in params:
-            body_params = params['transformation_matrix']
+            body_params['transformation_matrix'] = params['transformation_matrix']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
@@ -715,7 +715,7 @@ class ImageRegistrationApi(PaginationBaseAPI):
         form_params = []
         local_var_files = {}
 
-        body_params = None
+        body_params = {}
         if 'body' in params:
             body_params = params['body']
 

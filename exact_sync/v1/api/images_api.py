@@ -671,7 +671,7 @@ class ImagesApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['id', 'mpp', 'objective_power', 'image_set', 'image_type']  # noqa: E501
+        all_params = ['id', 'mpp', 'objective_power', 'image_set', 'image_type', 'name']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -713,7 +713,8 @@ class ImagesApi(PaginationBaseAPI):
             body_params['image_set'] = params['image_set']
         if 'image_type' in params:
             body_params['image_type'] = params['image_type']
-
+        if 'name' in params:
+            body_params['name'] = params['name']  # noqa: E501
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(

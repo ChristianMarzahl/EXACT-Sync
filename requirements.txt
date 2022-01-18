@@ -2,5 +2,5 @@ requests
 tqdm
 requests-toolbelt
 pillow
-locust
+locust==1.1.0
 #locust-plugins==1.1.0

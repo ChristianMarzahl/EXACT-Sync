@@ -9,5 +9,5 @@ pip install locust
 Please edit the [locustfile.py](locustfile.py) according to our test case and add authorization.
 
 ```bash
-locust --host=http://localhost:1337 --locustfile locustfile.py
+locust --web-port 8090 --locustfile locustfile.py
 ```

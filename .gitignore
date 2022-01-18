@@ -134,5 +134,7 @@ examples/temp*
 examples/Results*
 examples/*.py
 
+locustfile_*.py
+
 .vscode/settings.json
 .vscode/launch.json

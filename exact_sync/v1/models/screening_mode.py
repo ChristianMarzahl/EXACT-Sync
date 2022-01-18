@@ -143,9 +143,6 @@ class ScreeningMode(object):
         :param user: The user of this ScreeningMode.  # noqa: E501
         :type: int
         """
-        if user is None:
-            raise ValueError("Invalid value for `user`, must not be `None`")  # noqa: E501
-
         self._user = user
 
     @property
