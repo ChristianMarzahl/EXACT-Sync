@@ -293,7 +293,7 @@ class ImagesApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['file_path', 'image_type', 'image_set']  # noqa: E501
+        all_params = ['file_path', 'image_type', 'image_set', 'body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -357,6 +357,143 @@ class ImagesApi(PaginationBaseAPI):
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
+
+    def index_image(self, **kwargs):  # noqa: E501
+        """index_image  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.index_image(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name:
+        :param str filename:
+        :param float mpp:
+        :param int width:
+        :param int height:
+        :param int depth:
+        :param int frames:
+        :param int channels:
+        :param float objectivePower:
+        :param int image_type:
+        :param int image_set:
+
+        :return: Image
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.index_image_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.index_image_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def index_image_with_http_info(self, **kwargs):  # noqa: E501
+        """index_image  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_image_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name:
+        :param str filename:
+        :param float mpp:
+        :param int width:
+        :param int height:
+        :param int depth:
+        :param int frames:
+        :param int channels:
+        :param float objectivePower:
+        :param int image_type:
+        :param int image_set:
+        :return: Image
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['image_type', 'image_set', 'name', 'filename', 'mpp', 'width', 'height', 'depth'
+                            , 'frames', 'channels', 'objective_power']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_image" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        if 'image_type' in params:
+            form_params.append(('image_type', params['image_type'])) 
+        if 'image_set' in params:
+            form_params.append(('image_set', params['image_set'])) 
+        if 'name' in params:
+            form_params.append(('name', params['name'])) 
+        if 'filename' in params:
+            form_params.append(('filename', params['filename'])) 
+        if 'mpp' in params:
+            form_params.append(('mpp', params['mpp'])) 
+        if 'width' in params:
+            form_params.append(('width', params['width'])) 
+        if 'height' in params:
+            form_params.append(('height', params['height'])) 
+        if 'depth' in params:
+            form_params.append(('depth', params['depth'])) 
+        if 'frames' in params:
+            form_params.append(('frames', params['frames'])) 
+        if 'channels' in params:
+            form_params.append(('channels', params['channels'])) 
+        if 'objective_power' in params:
+            form_params.append(('objective_power', params['objective_power'])) 
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/api/v1/images/images/index_image/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files={},
+            response_type='Images',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
 
     def destroy_image(self, id, **kwargs):  # noqa: E501
         """destroy_image  # noqa: E501
@@ -671,7 +808,7 @@ class ImagesApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['id', 'mpp', 'objective_power', 'image_set', 'image_type', 'name']  # noqa: E501
+        all_params = ['id', 'mpp', 'objective_power', 'image_set', 'image_type', 'name', 'depth', 'frames']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -714,7 +851,11 @@ class ImagesApi(PaginationBaseAPI):
         if 'image_type' in params:
             body_params['image_type'] = params['image_type']
         if 'name' in params:
-            body_params['name'] = params['name']  # noqa: E501
+            body_params['name'] = params['name'] 
+        if 'depth' in params:
+            body_params['depth'] = params['depth'] 
+        if 'frames' in params:
+            body_params['frames'] = params['frames'] 
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(

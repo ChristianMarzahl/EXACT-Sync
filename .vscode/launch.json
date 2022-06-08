@@ -13,6 +13,7 @@
             "console": "integratedTerminal",
             "justMyCode": false,
             "gevent": true,
+            "env": {"PYTHONPATH": "${workspaceFolder}${pathSeparator}${env:PYTHONPATH}"}
         },
         {
             "name": "Locust",
