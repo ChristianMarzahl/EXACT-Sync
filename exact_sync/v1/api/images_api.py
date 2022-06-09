@@ -17,6 +17,7 @@ import re  # noqa: F401
 from pathlib import Path
 # python 2 and python 3 compatibility library
 import six
+import json
 from io import BytesIO
 from PIL import Image
 
@@ -486,7 +487,7 @@ class ImagesApi(PaginationBaseAPI):
             body=body_params,
             post_params=form_params,
             files={},
-            response_type='Images',  # noqa: E501
+            response_type='Image',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
