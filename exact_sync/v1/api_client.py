@@ -17,6 +17,7 @@ from multiprocessing.pool import ThreadPool
 import os
 import re
 import tempfile
+import requests
 
 # python 2 and python 3 compatibility library
 import six
@@ -26,7 +27,6 @@ from exact_sync.v1.configuration import Configuration
 import exact_sync.v1
 import exact_sync.v1.models
 from exact_sync.v1 import rest
-
 
 class ApiClient(object):
     """Generic API client for Swagger client library builds.
@@ -129,8 +129,8 @@ class ApiClient(object):
                                                      collection_formats)
 
         # post parameters
-        if post_params or files:
-            post_params = self.prepare_post_parameters(post_params, files)
+        if post_params :
+            post_params = self.prepare_post_parameters(post_params, None)
             post_params = self.sanitize_for_serialization(post_params)
             post_params = self.parameters_to_tuples(post_params,
                                                     collection_formats)
@@ -145,22 +145,49 @@ class ApiClient(object):
         # request url
         url = self.configuration.host + resource_path
 
-        # perform request and return response
-        response_data = self.request(
-            method, url, query_params=query_params, headers=header_params,
-            post_params=post_params, body=body,
-            _preload_content=_preload_content,
-            _request_timeout=_request_timeout)
+        
+        if files is not None and len(files)>0:
+            # File upload needs to provide large-file capabilities by using streams
+            # Thus we deviate from the default path here and use requests
+            
+            assert(len(files)==1)
+                
+            for filek in files:
+                file = files[filek]
+                from requests_toolbelt.multipart.encoder import MultipartEncoder
+                # perform request and return response
+            
+                filename = os.path.basename(file)
+                f = open(file,'rb')
+                mimetype = (mimetypes.guess_type(filename)[0] or
+                            'application/octet-stream')
+                fields = {filek: (filename, f, mimetype)}
+                for (k,v) in post_params:
+                    fields[k] = str(v)
+                m = MultipartEncoder(fields=fields, boundary='UploadBoundary-xyz')
+                header_params['Content-Type'] =  m.content_type
+            
+                response = requests.post(url, headers=header_params, data=m)
+                
+                response_data = json.loads(response.text)
+                
+                return_data = self.__deserialize(response_data, response_type)
+        else:
+            response_data = self.request(
+                method, url, query_params=query_params, headers=header_params,
+                post_params=post_params, body=body,
+                _preload_content=_preload_content,
+                _request_timeout=_request_timeout)
 
-        self.last_response = response_data
+            self.last_response = response_data
 
-        return_data = response_data
-        if _preload_content:
-            # deserialize response data
-            if response_type:
-                return_data = self.deserialize(response_data, response_type)
-            else:
-                return_data = None
+            return_data = response_data
+            if _preload_content:
+                # deserialize response data
+                if response_type:
+                    return_data = self.deserialize(response_data, response_type)
+                else:
+                    return_data = None
 
         if _return_http_data_only:
             return (return_data)
@@ -332,7 +359,7 @@ class ApiClient(object):
         return thread
 
     def request(self, method, url, query_params=None, headers=None,
-                post_params=None, body=None, _preload_content=True,
+                post_params=None, body=None, data=None, _preload_content=True,
                 _request_timeout=None):
         """Makes the HTTP request using RESTClient."""
         if method == "GET":
