@@ -145,8 +145,11 @@ class ApiClient(object):
         # request url
         url = self.configuration.host + resource_path
 
+        
         if files is not None and len(files)>0:
-
+            # File upload needs to provide large-file capabilities by using streams
+            # Thus we deviate from the default path here and use requests
+            
             assert(len(files)==1)
                 
             for filek in files:
