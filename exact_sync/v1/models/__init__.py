@@ -23,6 +23,20 @@ from exact_sync.v1.models.annotation_type import AnnotationType
 from exact_sync.v1.models.annotation_media_files import AnnotationMediaFiles
 from exact_sync.v1.models.annotation_media_file import AnnotationMediaFile
 
+from exact_sync.v1.models.plugin import Plugin
+from exact_sync.v1.models.plugins import Plugins
+from exact_sync.v1.models.plugin_job import PluginJob
+from exact_sync.v1.models.plugin_jobs import PluginJobs
+from exact_sync.v1.models.plugin_result import PluginResult
+from exact_sync.v1.models.plugin_results import PluginResults
+from exact_sync.v1.models.plugin_result_annotation import PluginResultAnnotation
+from exact_sync.v1.models.plugin_result_annotations import PluginResultAnnotations
+from exact_sync.v1.models.plugin_result_bitmap import PluginResultBitmap
+from exact_sync.v1.models.plugin_result_bitmaps import PluginResultBitmaps
+from exact_sync.v1.models.plugin_result_entry import PluginResultEntry
+from exact_sync.v1.models.plugin_result_entries import PluginResultEntries
+from exact_sync.v1.models.product import Product
+
 
 from exact_sync.v1.models.users import Users
 from exact_sync.v1.models.user import User
