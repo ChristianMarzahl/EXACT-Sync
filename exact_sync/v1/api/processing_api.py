@@ -1055,7 +1055,8 @@ class ProcessingApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['id', 'body']  # noqa: E501
+        all_params = ['id', 'creator', 'plugin', 'created_time', 'eta_time',
+            'processing_complete', 'updated_time', 'result']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1087,42 +1088,26 @@ class ProcessingApi(PaginationBaseAPI):
 
         form_params = []
         local_var_files = {}
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'plugin' in params:
-            form_params.append(('plugin', params['plugin']))  # noqa: E501
-        if 'created_time' in params:
-            form_params.append(('created_time', params['created_time']))  # noqa: E501
-        if 'eta_time' in params:
-            form_params.append(('eta_time', params['eta_time']))  # noqa: E501
-        if 'processing_complete' in params:
-            form_params.append(('processing_complete', params['processing_complete']))  # noqa: E501
-        if 'updated_time' in params:
-            form_params.append(('updated_time', params['updated_time']))  # noqa: E501
-        if 'result' in params:
-            form_params.append(('result', params['result']))  # noqa: E501
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'plugin' in params:
-            form_params.append(('plugin', params['plugin']))  # noqa: E501
-        if 'created_time' in params:
-            form_params.append(('created_time', params['created_time']))  # noqa: E501
-        if 'eta_time' in params:
-            form_params.append(('eta_time', params['eta_time']))  # noqa: E501
-        if 'processing_complete' in params:
-            form_params.append(('processing_complete', params['processing_complete']))  # noqa: E501
-        if 'updated_time' in params:
-            form_params.append(('updated_time', params['updated_time']))  # noqa: E501
-        if 'result' in params:
-            form_params.append(('result', params['result']))  # noqa: E501
 
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        body_params = {}
+
+        if 'id' in params:
+            body_params['id'] = params['id']
+        if 'creator' in params:
+            body_params['creator'] = params['creator']
+        if 'plugin' in params:
+            body_params['plugin'] = params['plugin']
+        if 'created_time' in params:
+            body_params['created_time'] = params['created_time']
+        if 'eta_time' in params:
+            body_params['eta_time'] = params['eta_time']
+        if 'processing_complete' in params:
+            body_params['processing_complete'] = params['processing_complete']
+        if 'updated_time' in params:
+            body_params['updated_time'] = params['updated_time']
+        if 'result' in params:
+            body_params['result'] = params['result']
+
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
