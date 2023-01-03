@@ -1254,9 +1254,9 @@ class ProcessingApi(PaginationBaseAPI):
             'meta_data',
             'vector',
             'unique_identifier',
-            'generated',
             'image',
             'time']  # noqa: E501
+            
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
