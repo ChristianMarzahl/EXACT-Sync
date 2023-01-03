@@ -30,6 +30,7 @@ class PluginJob(object):
         'id': 'int',
         'creator': 'int',
         'plugin': 'int',
+        'image' : 'int',
         'created_time': 'datetime',
         'eta_time': 'datetime',
         'processing_complete': 'float',
@@ -41,6 +42,7 @@ class PluginJob(object):
         'id': 'id',
         'creator': 'creator',
         'plugin': 'plugin',
+        'image': 'image',
         'created_time': 'created_time',
         'eta_time': 'eta_time',
         'processing_complete': 'processing_complete',
@@ -48,11 +50,12 @@ class PluginJob(object):
         'result': 'result'
     }
 
-    def __init__(self, id=None, creator=None, plugin=None, created_time=None, eta_time=None, processing_complete=None, updated_time=None, result=None):  # noqa: E501
+    def __init__(self, id=None, creator=None, plugin=None, image=None, created_time=None, eta_time=None, processing_complete=None, updated_time=None, result=None):  # noqa: E501
         """PluginJob - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._creator = None
         self._plugin = None
+        self._image = None
         self._created_time = None
         self._eta_time = None
         self._processing_complete = None
@@ -61,6 +64,8 @@ class PluginJob(object):
         self.discriminator = None
         if id is not None:
             self.id = id
+        if image is not None:
+            self.image = image
         if creator is not None:
             self.creator = creator
         self.plugin = plugin
@@ -94,6 +99,27 @@ class PluginJob(object):
         """
 
         self._id = id
+
+    @property
+    def image(self):
+        """Gets the image of this PluginJob.  # noqa: E501
+
+
+        :return: The image of this PluginJob.  # noqa: E501
+        :rtype: int
+        """
+        return self._image
+
+    @image.setter
+    def image(self, image):
+        """Sets the image of this PluginJob.
+
+
+        :param image: The image of this PluginJob.  # noqa: E501
+        :type: int
+        """
+
+        self._image = image
 
     @property
     def creator(self):
