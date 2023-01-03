@@ -2741,42 +2741,6 @@ class ProcessingApi(PaginationBaseAPI):
 
         form_params = []
         local_var_files = {}
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'author' in params:
-            form_params.append(('author', params['author']))  # noqa: E501
-        if 'contact' in params:
-            form_params.append(('contact', params['contact']))  # noqa: E501
-        if 'abouturl' in params:
-            form_params.append(('abouturl', params['abouturl']))  # noqa: E501
-        if 'icon' in params:
-            local_var_files['icon'] = params['icon']  # noqa: E501
-        if 'products' in params:
-            form_params.append(('products', params['products']))  # noqa: E501
-            collection_formats['products'] = 'multi'  # noqa: E501
-        if 'results' in params:
-            form_params.append(('results', params['results']))  # noqa: E501
-            collection_formats['results'] = 'multi'  # noqa: E501
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'author' in params:
-            form_params.append(('author', params['author']))  # noqa: E501
-        if 'contact' in params:
-            form_params.append(('contact', params['contact']))  # noqa: E501
-        if 'abouturl' in params:
-            form_params.append(('abouturl', params['abouturl']))  # noqa: E501
-        if 'icon' in params:
-            local_var_files['icon'] = params['icon']  # noqa: E501
-        if 'products' in params:
-            form_params.append(('products', params['products']))  # noqa: E501
-            collection_formats['products'] = 'multi'  # noqa: E501
-        if 'results' in params:
-            form_params.append(('results', params['results']))  # noqa: E501
-            collection_formats['results'] = 'multi'  # noqa: E501
 
         body_params = None
         if 'body' in params:
@@ -2880,38 +2844,7 @@ class ProcessingApi(PaginationBaseAPI):
 
         form_params = []
         local_var_files = {}
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'plugin' in params:
-            form_params.append(('plugin', params['plugin']))  # noqa: E501
-        if 'created_time' in params:
-            form_params.append(('created_time', params['created_time']))  # noqa: E501
-        if 'eta_time' in params:
-            form_params.append(('eta_time', params['eta_time']))  # noqa: E501
-        if 'processing_complete' in params:
-            form_params.append(('processing_complete', params['processing_complete']))  # noqa: E501
-        if 'updated_time' in params:
-            form_params.append(('updated_time', params['updated_time']))  # noqa: E501
-        if 'result' in params:
-            form_params.append(('result', params['result']))  # noqa: E501
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'plugin' in params:
-            form_params.append(('plugin', params['plugin']))  # noqa: E501
-        if 'created_time' in params:
-            form_params.append(('created_time', params['created_time']))  # noqa: E501
-        if 'eta_time' in params:
-            form_params.append(('eta_time', params['eta_time']))  # noqa: E501
-        if 'processing_complete' in params:
-            form_params.append(('processing_complete', params['processing_complete']))  # noqa: E501
-        if 'updated_time' in params:
-            form_params.append(('updated_time', params['updated_time']))  # noqa: E501
-        if 'result' in params:
-            form_params.append(('result', params['result']))  # noqa: E501
+ 
 
         body_params = None
         if 'body' in params:
@@ -3015,36 +2948,6 @@ class ProcessingApi(PaginationBaseAPI):
 
         form_params = []
         local_var_files = {}
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'image' in params:
-            form_params.append(('image', params['image']))  # noqa: E501
-        if 'job' in params:
-            form_params.append(('job', params['job']))  # noqa: E501
-        if 'plugin' in params:
-            form_params.append(('plugin', params['plugin']))  # noqa: E501
-        if 'completed_time' in params:
-            form_params.append(('completed_time', params['completed_time']))  # noqa: E501
-        if 'created_time' in params:
-            form_params.append(('created_time', params['created_time']))  # noqa: E501
-        if 'entries' in params:
-            form_params.append(('entries', params['entries']))  # noqa: E501
-            collection_formats['entries'] = 'multi'  # noqa: E501
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'image' in params:
-            form_params.append(('image', params['image']))  # noqa: E501
-        if 'job' in params:
-            form_params.append(('job', params['job']))  # noqa: E501
-        if 'plugin' in params:
-            form_params.append(('plugin', params['plugin']))  # noqa: E501
-        if 'completed_time' in params:
-            form_params.append(('completed_time', params['completed_time']))  # noqa: E501
-        if 'created_time' in params:
-            form_params.append(('created_time', params['created_time']))  # noqa: E501
-        if 'entries' in params:
-            form_params.append(('entries', params['entries']))  # noqa: E501
-            collection_formats['entries'] = 'multi'  # noqa: E501
 
         body_params = None
         if 'body' in params:
@@ -3148,43 +3051,7 @@ class ProcessingApi(PaginationBaseAPI):
 
         form_params = []
         local_var_files = {}
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'annotation_type' in params:
-            form_params.append(('annotation_type', params['annotation_type']))  # noqa: E501
-        if 'pluginresultentry' in params:
-            form_params.append(('pluginresultentry', params['pluginresultentry']))  # noqa: E501
-        if 'meta_data' in params:
-            form_params.append(('meta_data', params['meta_data']))  # noqa: E501
-        if 'vector' in params:
-            form_params.append(('vector', params['vector']))  # noqa: E501
-        if 'unique_identifier' in params:
-            form_params.append(('unique_identifier', params['unique_identifier']))  # noqa: E501
-        if 'generated' in params:
-            form_params.append(('generated', params['generated']))  # noqa: E501
-        if 'image' in params:
-            form_params.append(('image', params['image']))  # noqa: E501
-        if 'time' in params:
-            form_params.append(('time', params['time']))  # noqa: E501
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'annotation_type' in params:
-            form_params.append(('annotation_type', params['annotation_type']))  # noqa: E501
-        if 'pluginresultentry' in params:
-            form_params.append(('pluginresultentry', params['pluginresultentry']))  # noqa: E501
-        if 'meta_data' in params:
-            form_params.append(('meta_data', params['meta_data']))  # noqa: E501
-        if 'vector' in params:
-            form_params.append(('vector', params['vector']))  # noqa: E501
-        if 'unique_identifier' in params:
-            form_params.append(('unique_identifier', params['unique_identifier']))  # noqa: E501
-        if 'generated' in params:
-            form_params.append(('generated', params['generated']))  # noqa: E501
-        if 'image' in params:
-            form_params.append(('image', params['image']))  # noqa: E501
-        if 'time' in params:
-            form_params.append(('time', params['time']))  # noqa: E501
-
+ 
         body_params = None
         if 'body' in params:
             body_params = params['body']
@@ -3332,54 +3199,7 @@ class ProcessingApi(PaginationBaseAPI):
 
         form_params = []
         local_var_files = {}
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'bitmap' in params:
-            local_var_files['bitmap'] = params['bitmap']  # noqa: E501
-        if 'channels' in params:
-            form_params.append(('channels', params['channels']))  # noqa: E501
-        if 'default_alpha' in params:
-            form_params.append(('default_alpha', params['default_alpha']))  # noqa: E501
-        if 'default_threshold' in params:
-            form_params.append(('default_threshold', params['default_threshold']))  # noqa: E501
-        if 'meta_data' in params:
-            form_params.append(('meta_data', params['meta_data']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'scale_max' in params:
-            form_params.append(('scale_max', params['scale_max']))  # noqa: E501
-        if 'scale_min' in params:
-            form_params.append(('scale_min', params['scale_min']))  # noqa: E501
-        if 'transformation_matrix' in params:
-            form_params.append(('transformation_matrix', params['transformation_matrix']))  # noqa: E501
-        if 'pluginresultentry' in params:
-            form_params.append(('pluginresultentry', params['pluginresultentry']))  # noqa: E501
-        if 'image' in params:
-            form_params.append(('image', params['image']))  # noqa: E501
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'bitmap' in params:
-            local_var_files['bitmap'] = params['bitmap']  # noqa: E501
-        if 'channels' in params:
-            form_params.append(('channels', params['channels']))  # noqa: E501
-        if 'default_alpha' in params:
-            form_params.append(('default_alpha', params['default_alpha']))  # noqa: E501
-        if 'default_threshold' in params:
-            form_params.append(('default_threshold', params['default_threshold']))  # noqa: E501
-        if 'meta_data' in params:
-            form_params.append(('meta_data', params['meta_data']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'scale_max' in params:
-            form_params.append(('scale_max', params['scale_max']))  # noqa: E501
-        if 'scale_min' in params:
-            form_params.append(('scale_min', params['scale_min']))  # noqa: E501
-        if 'transformation_matrix' in params:
-            form_params.append(('transformation_matrix', params['transformation_matrix']))  # noqa: E501
-        if 'pluginresultentry' in params:
-            form_params.append(('pluginresultentry', params['pluginresultentry']))  # noqa: E501
-        if 'image' in params:
-            form_params.append(('image', params['image']))  # noqa: E501
+
 
         body_params = None
         if 'body' in params:
@@ -3483,38 +3303,7 @@ class ProcessingApi(PaginationBaseAPI):
 
         form_params = []
         local_var_files = {}
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'pluginresult' in params:
-            form_params.append(('pluginresult', params['pluginresult']))  # noqa: E501
-        if 'created_time' in params:
-            form_params.append(('created_time', params['created_time']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'visible' in params:
-            form_params.append(('visible', params['visible']))  # noqa: E501
-        if 'annotation_results' in params:
-            form_params.append(('annotation_results', params['annotation_results']))  # noqa: E501
-            collection_formats['annotation_results'] = 'multi'  # noqa: E501
-        if 'bitmap_results' in params:
-            form_params.append(('bitmap_results', params['bitmap_results']))  # noqa: E501
-            collection_formats['bitmap_results'] = 'multi'  # noqa: E501
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'pluginresult' in params:
-            form_params.append(('pluginresult', params['pluginresult']))  # noqa: E501
-        if 'created_time' in params:
-            form_params.append(('created_time', params['created_time']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'visible' in params:
-            form_params.append(('visible', params['visible']))  # noqa: E501
-        if 'annotation_results' in params:
-            form_params.append(('annotation_results', params['annotation_results']))  # noqa: E501
-            collection_formats['annotation_results'] = 'multi'  # noqa: E501
-        if 'bitmap_results' in params:
-            form_params.append(('bitmap_results', params['bitmap_results']))  # noqa: E501
-            collection_formats['bitmap_results'] = 'multi'  # noqa: E501
+
 
         body_params = None
         if 'body' in params:
