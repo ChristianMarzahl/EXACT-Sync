@@ -1029,7 +1029,7 @@ class ProcessingApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['id', 'creator', 'plugin', 'created_time', 'eta_time',
+        all_params = ['id', 'creator', 'plugin', 'created_time', 'image', 'eta_time',
             'processing_complete', 'updated_time', 'result']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
@@ -1256,7 +1256,7 @@ class ProcessingApi(PaginationBaseAPI):
             'unique_identifier',
             'image',
             'time']  # noqa: E501
-            
+
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3532,6 +3532,576 @@ class ProcessingApi(PaginationBaseAPI):
 
         return self.api_client.call_api(
             '/api/v1/processing/pluginresultentrys/{id}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PluginResultEntry',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_plugin(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin  # noqa: E501
+
+        API endpoint that allows Plugins to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin. (required)
+        :return: Plugin
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_plugin_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_plugin_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_plugin_with_http_info(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin  # noqa: E501
+
+        API endpoint that allows Plugins to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin. (required)
+        :return: Plugin
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_plugin" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `retrieve_plugin`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/api/v1/processing/plugins/{id}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='Plugin',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_plugin_job(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_job  # noqa: E501
+
+        API endpoint that allows PluginJobs to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_job(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin job. (required)
+        :return: PluginJob
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_plugin_job_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_plugin_job_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_plugin_job_with_http_info(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_job  # noqa: E501
+
+        API endpoint that allows PluginJobs to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_job_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin job. (required)
+        :return: PluginJob
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_plugin_job" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `retrieve_plugin_job`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/api/v1/processing/pluginjobs/{id}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PluginJob',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_plugin_result(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_result  # noqa: E501
+
+        API endpoint that allows PluginResultss to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_result(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :return: PluginResult
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_plugin_result_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_plugin_result_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_plugin_result_with_http_info(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_result  # noqa: E501
+
+        API endpoint that allows PluginResultss to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_result_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :return: PluginResult
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_plugin_result" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `retrieve_plugin_result`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/api/v1/processing/pluginresults/{id}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PluginResult',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_plugin_result_annotation(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_result_annotation  # noqa: E501
+
+        API endpoint that allows PluginResultAnnotations to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_result_annotation(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin result annotation. (required)
+        :return: PluginResultAnnotation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_plugin_result_annotation_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_plugin_result_annotation_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_plugin_result_annotation_with_http_info(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_result_annotation  # noqa: E501
+
+        API endpoint that allows PluginResultAnnotations to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_result_annotation_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin result annotation. (required)
+        :return: PluginResultAnnotation
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_plugin_result_annotation" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `retrieve_plugin_result_annotation`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/api/v1/processing/pluginresultannotations/{id}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PluginResultAnnotation',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_plugin_result_bitmap(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_result_bitmap  # noqa: E501
+
+        API endpoint that allows PluginResultBitmaps to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_result_bitmap(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin result bitmap. (required)
+        :return: PluginResultBitmap
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_plugin_result_bitmap_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_plugin_result_bitmap_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_plugin_result_bitmap_with_http_info(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_result_bitmap  # noqa: E501
+
+        API endpoint that allows PluginResultBitmaps to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_result_bitmap_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin result bitmap. (required)
+        :return: PluginResultBitmap
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_plugin_result_bitmap" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `retrieve_plugin_result_bitmap`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/api/v1/processing/pluginresultbitmaps/{id}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PluginResultBitmap',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_plugin_result_entry(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_result_entry  # noqa: E501
+
+        API endpoint that allows PluginResultsEntrys to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_result_entry(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin result entry. (required)
+        :return: PluginResultEntry
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_plugin_result_entry_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_plugin_result_entry_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_plugin_result_entry_with_http_info(self, id, **kwargs):  # noqa: E501
+        """retrieve_plugin_result_entry  # noqa: E501
+
+        API endpoint that allows PluginResultsEntrys to be viewed or edited.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_plugin_result_entry_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: A unique integer value identifying this plugin result entry. (required)
+        :return: PluginResultEntry
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_plugin_result_entry" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `retrieve_plugin_result_entry`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['basicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/api/v1/processing/pluginresultentrys/{id}/', 'GET',
             path_params,
             query_params,
             header_params,
