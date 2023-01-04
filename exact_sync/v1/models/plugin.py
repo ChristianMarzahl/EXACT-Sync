@@ -30,6 +30,7 @@ class Plugin(object):
         'id': 'int',
         'name': 'str',
         'author': 'str',
+        'package' : 'str',
         'contact': 'str',
         'abouturl': 'str',
         'icon': 'str',
@@ -41,6 +42,7 @@ class Plugin(object):
         'id': 'id',
         'name': 'name',
         'author': 'author',
+        'package' : 'package',
         'contact': 'contact',
         'abouturl': 'abouturl',
         'icon': 'icon',
@@ -48,11 +50,12 @@ class Plugin(object):
         'results': 'results'
     }
 
-    def __init__(self, id=None, name=None, author=None, contact=None, abouturl=None, icon=None, products=None, results=None):  # noqa: E501
+    def __init__(self, id=None, name=None, author=None, package=None, contact=None, abouturl=None, icon=None, products=None, results=None):  # noqa: E501
         """Plugin - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None
         self._author = None
+        self._package = None
         self._contact = None
         self._abouturl = None
         self._icon = None
@@ -66,6 +69,7 @@ class Plugin(object):
         self.contact = contact
         self.abouturl = abouturl
         self.icon = icon
+        self.package = package
         self.products = products
         self.results = results
 
@@ -112,6 +116,29 @@ class Plugin(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def package(self):
+        """Gets the package of this Plugin.  # noqa: E501
+
+
+        :return: The package of this Plugin.  # noqa: E501
+        :rtype: str
+        """
+        return self._package
+
+    @package.setter
+    def package(self, package):
+        """Sets the author of this Plugin.
+
+
+        :param author: The author of this Plugin.  # noqa: E501
+        :type: str
+        """
+        if package is None:
+            raise ValueError("Invalid value for `package`, must not be `None`")  # noqa: E501
+
+        self._package = package
 
     @property
     def author(self):
