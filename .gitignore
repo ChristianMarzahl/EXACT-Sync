@@ -129,10 +129,13 @@ dmypy.json
 .pyre/
 
 examples/examples/
+examples/*/
 examples/images
 examples/temp*
 examples/Results*
 examples/*.py
+examples/*.pkl
+examples/*.json
 
 locustfile_*.py
 
