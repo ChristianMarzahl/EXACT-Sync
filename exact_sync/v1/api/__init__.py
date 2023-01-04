@@ -6,6 +6,7 @@ from __future__ import absolute_import
 from exact_sync.v1.api.annotation_media_files_api import AnnotationMediaFilesApi
 from exact_sync.v1.api.annotation_types_api import AnnotationTypesApi
 from exact_sync.v1.api.annotations_api import AnnotationsApi
+from exact_sync.v1.api.processing_api import ProcessingApi
 from exact_sync.v1.api.image_sets_api import ImageSetsApi
 from exact_sync.v1.api.images_api import ImagesApi
 from exact_sync.v1.api.log_image_actions_api import LogImageActionsApi
