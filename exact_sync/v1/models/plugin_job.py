@@ -33,6 +33,9 @@ class PluginJob(object):
         'image' : 'int',
         'created_time': 'datetime',
         'eta_time': 'datetime',
+        'error_message' : 'str',
+        'error_detail' : 'str',
+        'attached_worker' : 'str', 
         'processing_complete': 'float',
         'updated_time': 'datetime',
         'result': 'int'
@@ -45,12 +48,15 @@ class PluginJob(object):
         'image': 'image',
         'created_time': 'created_time',
         'eta_time': 'eta_time',
+        'error_message' : 'error_message',
+        'error_detail' : 'error_detail',
+        'attached_worker' : 'attached_worker',
         'processing_complete': 'processing_complete',
         'updated_time': 'updated_time',
         'result': 'result'
     }
 
-    def __init__(self, id=None, creator=None, plugin=None, image=None, created_time=None, eta_time=None, processing_complete=None, updated_time=None, result=None):  # noqa: E501
+    def __init__(self, id=None, creator=None, plugin=None, image=None, created_time=None, eta_time=None, processing_complete=None, updated_time=None, result=None, error_message=None, error_detail=None, attached_worker=None):  # noqa: E501
         """PluginJob - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._creator = None
@@ -60,6 +66,9 @@ class PluginJob(object):
         self._eta_time = None
         self._processing_complete = None
         self._updated_time = None
+        self._error_message = None
+        self._error_detail = None
+        self._attached_worker = None
         self._result = None
         self.discriminator = None
         if id is not None:
@@ -77,7 +86,14 @@ class PluginJob(object):
             self.processing_complete = processing_complete
         if updated_time is not None:
             self.updated_time = updated_time
-        self.result = result
+        if attached_worker is not None:
+            self.attached_worker = attached_worker
+        if error_detail is not None:
+            self.error_detail = error_detail
+        if error_message is not None:
+            self.error_message = error_message
+        if self.result is not None:               
+            self.result = result
 
     @property
     def id(self):
@@ -227,6 +243,69 @@ class PluginJob(object):
         """
 
         self._processing_complete = processing_complete
+
+    @property
+    def error_message(self):
+        """Gets the error_message of this PluginJob.  # noqa: E501
+        The error message resembles the short form of the error the plugin has encountered.
+
+        :return: The error_message of this PluginJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._error_message
+
+    @error_message.setter
+    def error_message(self, error_message):
+        """Sets the error_message of this PluginJob.
+        The error message resembles the short form of the error the plugin has encountered.
+
+        :param error_message: The error_message of this PluginJob.  # noqa: E501
+        :type: float
+        """
+
+        self._error_message = error_message
+
+    @property
+    def error_detail(self):
+        """Gets the error_detail of this PluginJob.  # noqa: E501
+        The error detail shall include information that helps to trace down the error, such as a trace dump or a detailed error message.
+
+        :return: The error_detail of this PluginJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._error_detail
+
+    @error_detail.setter
+    def error_detail(self, error_detail):
+        """Sets the error_detail of this PluginJob.
+        The error detail shall include information that helps to trace down the error, such as a trace dump or a detailed error message.
+
+        :param error_detail: The error_detail of this PluginJob.  # noqa: E501
+        :type: float
+        """
+
+        self._error_detail = error_detail
+
+    @property
+    def attached_worker(self):
+        """Gets the attached_worker of this PluginJob.  # noqa: E501
+        The attached worker is a randomly chosen ID for the worker (to provide a mitigation for exclusive access to the job)
+
+        :return: The attached_worker of this PluginJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._attached_worker
+
+    @attached_worker.setter
+    def attached_worker(self, attached_worker):
+        """Sets the attached_worker of this PluginJob.
+        The attached worker is a randomly chosen ID for the worker (to provide a mitigation for exclusive access to the job)
+
+        :param attached_worker: The attached_worker of this PluginJob.  # noqa: E501
+        :type: float
+        """
+
+        self._attached_worker = attached_worker
 
     @property
     def updated_time(self):
