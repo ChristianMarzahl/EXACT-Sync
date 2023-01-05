@@ -911,7 +911,7 @@ class ProcessingApi(PaginationBaseAPI):
         """
 
         all_params = ['id', 'creator', 'plugin', 'created_time', 'image', 'eta_time',
-            'processing_complete', 'updated_time', 'result']  # noqa: E501
+            'processing_complete', 'updated_time', 'result', 'error_message', 'error_detail', 'attached_worker']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -978,6 +978,7 @@ class ProcessingApi(PaginationBaseAPI):
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
+
     def partial_update_plugin_result(self, id, **kwargs):  # noqa: E501
         """partial_update_plugin_result  # noqa: E501
 
