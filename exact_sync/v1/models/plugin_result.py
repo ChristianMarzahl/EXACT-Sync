@@ -31,6 +31,7 @@ class PluginResult(object):
         'image': 'int',
         'job': 'int',
         'plugin': 'int',
+        'default_alpha': 'float',
         'completed_time': 'datetime',
         'created_time': 'datetime',
         'entries': 'list[int]'
@@ -41,12 +42,13 @@ class PluginResult(object):
         'image': 'image',
         'job': 'job',
         'plugin': 'plugin',
+        'default_alpha': 'default_alpha',
         'completed_time': 'completed_time',
         'created_time': 'created_time',
         'entries': 'entries'
     }
 
-    def __init__(self, id=None, image=None, job=None, plugin=None, completed_time=None, created_time=None, entries=None):  # noqa: E501
+    def __init__(self, id=None, image=None, job=None, plugin=None, completed_time=None, default_alpha=None, created_time=None, entries=None):  # noqa: E501
         """PluginResult - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._image = None
@@ -54,6 +56,7 @@ class PluginResult(object):
         self._plugin = None
         self._completed_time = None
         self._created_time = None
+        self._default_alpha = None
         self._entries = None
         self.discriminator = None
         if id is not None:
@@ -66,6 +69,8 @@ class PluginResult(object):
             self.completed_time = completed_time
         if created_time is not None:
             self.created_time = created_time
+        if default_alpha is not None:
+            self.default_alpha = default_alpha
         self.entries = entries
 
     @property
@@ -176,6 +181,30 @@ class PluginResult(object):
         """
 
         self._completed_time = completed_time
+
+
+
+    @property
+    def default_alpha(self):
+        """Gets the default_alpha of this PluginResult.  # noqa: E501
+
+
+        :return: The default_alpha of this PluginResult.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._default_alpha
+
+    @default_alpha.setter
+    def default_alpha(self, default_alpha):
+        """Sets the default_alpha of this PluginResult.
+
+
+        :param default_alpha: The default_alpha of this PluginResult.  # noqa: E501
+        :type: datetime
+        """
+
+        self._default_alpha = default_alpha
+
 
     @property
     def created_time(self):
