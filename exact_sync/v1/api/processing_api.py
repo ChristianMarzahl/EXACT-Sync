@@ -1500,8 +1500,6 @@ class ProcessingApi(PaginationBaseAPI):
         # Authentication setting
         auth_settings = ['basicAuth']   # noqa: E501
 
-        print('Running query with: ',{'path_params':path_params,'query_params':query_params, 'body_params':body_params})
-
         return self.api_client.call_api(
             '/api/v1/processing/pluginjobs/', 'GET',
             path_params,
