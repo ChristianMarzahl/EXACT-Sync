@@ -84,7 +84,7 @@ class ProcessingApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = [ 'id', 'name', 'author', 'contact', 'abouturl', 'icon', 'products', 'results']  # noqa: E501
+        all_params = [ 'id', 'name', 'author', 'package', 'contact', 'abouturl', 'icon', 'products', 'results']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -110,30 +110,15 @@ class ProcessingApi(PaginationBaseAPI):
 
         form_params = []
         local_var_files = {}
+
         if 'id' in params:
             form_params.append(('id', params['id']))  # noqa: E501
         if 'name' in params:
             form_params.append(('name', params['name']))  # noqa: E501
         if 'author' in params:
             form_params.append(('author', params['author']))  # noqa: E501
-        if 'contact' in params:
-            form_params.append(('contact', params['contact']))  # noqa: E501
-        if 'abouturl' in params:
-            form_params.append(('abouturl', params['abouturl']))  # noqa: E501
-        if 'icon' in params:
-            local_var_files['icon'] = params['icon']  # noqa: E501
-        if 'products' in params:
-            form_params.append(('products', params['products']))  # noqa: E501
-            collection_formats['products'] = 'multi'  # noqa: E501
-        if 'results' in params:
-            form_params.append(('results', params['results']))  # noqa: E501
-            collection_formats['results'] = 'multi'  # noqa: E501
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'name' in params:
-            form_params.append(('name', params['name']))  # noqa: E501
-        if 'author' in params:
-            form_params.append(('author', params['author']))  # noqa: E501
+        if 'package' in params:
+            form_params.append(('package', params['package']))  # noqa: E501
         if 'contact' in params:
             form_params.append(('contact', params['contact']))  # noqa: E501
         if 'abouturl' in params:
@@ -147,9 +132,8 @@ class ProcessingApi(PaginationBaseAPI):
             form_params.append(('results', params['results']))  # noqa: E501
             collection_formats['results'] = 'multi'  # noqa: E501
 
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        body_params = {}
+
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -1495,11 +1479,13 @@ class ProcessingApi(PaginationBaseAPI):
 
         path_params = {}
 
-        query_params = []
+        query_params = {}
         if 'limit' in params:
-            query_params.append(('limit', params['limit']))  # noqa: E501
+            query_params['limit'] = params['limit']
+            #.append(('limit', params['limit']))  # noqa: E501
         if 'offset' in params:
-            query_params.append(('offset', params['offset']))  # noqa: E501
+            query_params['offset'] = params['offset']
+#            query_params.append(('offset', params['offset']))  # noqa: E501
 
         header_params = {}
 
@@ -1513,6 +1499,8 @@ class ProcessingApi(PaginationBaseAPI):
 
         # Authentication setting
         auth_settings = ['basicAuth']   # noqa: E501
+
+        print('Running query with: ',{'path_params':path_params,'query_params':query_params, 'body_params':body_params})
 
         return self.api_client.call_api(
             '/api/v1/processing/pluginjobs/', 'GET',
