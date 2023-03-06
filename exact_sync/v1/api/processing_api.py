@@ -203,6 +203,7 @@ class ProcessingApi(PaginationBaseAPI):
         :param int id:
         :param int creator:
         :param int plugin:
+        :param int image:
         :param datetime created_time:
         :param datetime eta_time:
         :param float processing_complete:
@@ -213,7 +214,7 @@ class ProcessingApi(PaginationBaseAPI):
                  returns the request thread.
         """
 
-        all_params = ['id', 'creator', 'plugin', 'created_time', 'eta_time', 'processing_complete', 'updated_time', 'result']  # noqa: E501
+        all_params = ['id', 'body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -239,27 +240,12 @@ class ProcessingApi(PaginationBaseAPI):
 
         form_params = []
         local_var_files = {}
-        if 'id' in params:
-            form_params.append(('id', params['id']))  # noqa: E501
-        if 'creator' in params:
-            form_params.append(('creator', params['creator']))  # noqa: E501
-        if 'plugin' in params:
-            form_params.append(('plugin', params['plugin']))  # noqa: E501
-        if 'created_time' in params:
-            form_params.append(('created_time', params['created_time']))  # noqa: E501
-        if 'eta_time' in params:
-            form_params.append(('eta_time', params['eta_time']))  # noqa: E501
-        if 'processing_complete' in params:
-            form_params.append(('processing_complete', params['processing_complete']))  # noqa: E501
-        if 'updated_time' in params:
-            form_params.append(('updated_time', params['updated_time']))  # noqa: E501
-        if 'result' in params:
-            form_params.append(('result', params['result']))  # noqa: E501
 
         body_params = None
         if 'body' in params:
             body_params = params['body']
-        # HTTP header `Accept`
+
+       # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
 
@@ -270,6 +256,8 @@ class ProcessingApi(PaginationBaseAPI):
         # Authentication setting
         auth_settings = ['basicAuth']   # noqa: E501
 
+        print('Running query with: ',{'path_params':path_params,'query_params':query_params, 'body_params':body_params, 'post_params':form_params})
+        
         return self.api_client.call_api(
             '/api/v1/processing/pluginjobs/', 'POST',
             path_params,

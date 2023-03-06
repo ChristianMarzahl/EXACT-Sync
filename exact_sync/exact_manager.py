@@ -197,6 +197,19 @@ class ExactManager():
         else: 
             self.log(10,'Unable to create annotation, message was: '+ret)
             raise ExactProcessError('Unable to create annotation')
+        
+    def submit_job(self, image_id:int, plugin_id:int):
+        data = {
+            'image_id': image_id,
+            'plugin_id' : plugin_id,
+        }
+
+        status, ret = self.post('processing/api/plugin_job/create/', data=json.dumps(data), headers={'content-type':'application/json'})
+        if status==201:
+            return ret
+        else: 
+            self.log(10,'Unable to create plugin job, message was: '+ret)
+            raise ExactProcessError('Unable to create plugin job')        
 
     def upload_image_to_imageset(self, imageset_id:int, filename:str) -> bool:
         e = encoder.MultipartEncoder(fields={'files[]': (os.path.basename(filename), open(filename, 'rb'), 'application/octet-stream')})
