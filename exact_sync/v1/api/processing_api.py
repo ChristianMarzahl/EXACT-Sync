@@ -1525,7 +1525,8 @@ class ProcessingApi(PaginationBaseAPI):
         :param async_req bool
         :param int limit: Number of results to return per page.
         :param int offset: The initial index from which to return the results.
-        :param int plugin_result_id: id of the plugin result
+        :param int pluginresultentry: id of the plugin result
+        :param int image: id of the image
         :return: PluginResultAnnotations
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1557,6 +1558,7 @@ class ProcessingApi(PaginationBaseAPI):
 
         all_params = ['limit', 'offset','omit']  # noqa: E501
         all_params.append('async_req')
+        all_params.append('image')
         all_params.append('pluginresultentry')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1583,6 +1585,8 @@ class ProcessingApi(PaginationBaseAPI):
             query_params.append(('offset', params['offset']))  # noqa: E501
         if 'omit' in params:
             query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'image' in params:
+            query_params.append(('image', params['image']))  # noqa: E501
         if 'pluginresultentry' in params:
             query_params.append(('pluginresultentry', params['pluginresultentry']))  # noqa: E501
 
@@ -1946,6 +1950,7 @@ class ProcessingApi(PaginationBaseAPI):
         all_params = ['limit', 'offset']  # noqa: E501
         all_params.append('job_id')
         all_params.append('image_id')
+        all_params.append('plugin_id')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1970,6 +1975,8 @@ class ProcessingApi(PaginationBaseAPI):
             query_params.append(('limit', params['limit']))  # noqa: E501
         if 'image_id' in params:
             query_params.append(('image_id', params['image_id']))  # noqa: E501
+        if 'plugin_id' in params:
+            query_params.append(('plugin_id', params['plugin_id']))  # noqa: E501
         if 'job_id' in params:
             query_params.append(('job_id', params['job_id']))  # noqa: E501
         if 'offset' in params:
