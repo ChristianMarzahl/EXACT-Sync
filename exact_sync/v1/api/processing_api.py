@@ -1525,6 +1525,7 @@ class ProcessingApi(PaginationBaseAPI):
         :param async_req bool
         :param int limit: Number of results to return per page.
         :param int offset: The initial index from which to return the results.
+        :param int plugin_result_id: id of the plugin result
         :return: PluginResultAnnotations
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1548,13 +1549,15 @@ class ProcessingApi(PaginationBaseAPI):
         :param async_req bool
         :param int limit: Number of results to return per page.
         :param int offset: The initial index from which to return the results.
+        :param int plugin_result_id: id of the plugin result
         :return: PluginResultAnnotations
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['limit', 'offset']  # noqa: E501
+        all_params = ['limit', 'offset','omit']  # noqa: E501
         all_params.append('async_req')
+        all_params.append('pluginresultentry')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1578,6 +1581,10 @@ class ProcessingApi(PaginationBaseAPI):
             query_params.append(('limit', params['limit']))  # noqa: E501
         if 'offset' in params:
             query_params.append(('offset', params['offset']))  # noqa: E501
+        if 'omit' in params:
+            query_params.append(('omit', params['omit']))  # noqa: E501
+        if 'pluginresultentry' in params:
+            query_params.append(('pluginresultentry', params['pluginresultentry']))  # noqa: E501
 
         header_params = {}
 
@@ -1841,6 +1848,7 @@ class ProcessingApi(PaginationBaseAPI):
         all_params = ['limit', 'offset']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
+        all_params.append('pluginresult')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
 
@@ -1863,6 +1871,8 @@ class ProcessingApi(PaginationBaseAPI):
             query_params.append(('limit', params['limit']))  # noqa: E501
         if 'offset' in params:
             query_params.append(('offset', params['offset']))  # noqa: E501
+        if 'pluginresult' in params:
+            query_params.append(('pluginresult', params['pluginresult']))  # noqa: E501
 
         header_params = {}
 
@@ -3396,7 +3406,7 @@ class ProcessingApi(PaginationBaseAPI):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def retrieve_plugin_result(self, **kwargs):  # noqa: E501
+    def retrieve_plugin_result(self,  **kwargs):  # noqa: E501
         """retrieve_plugin_result  # noqa: E501
 
         API endpoint that allows PluginResultss to be viewed or edited.  # noqa: E501
