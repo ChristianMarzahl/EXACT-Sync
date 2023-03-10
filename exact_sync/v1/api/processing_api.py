@@ -1449,6 +1449,7 @@ class ProcessingApi(PaginationBaseAPI):
         all_params = ['limit', 'offset']  # noqa: E501
         all_params.append('image_id')
         all_params.append('user_id')
+        all_params.append('plugin_id')
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1476,6 +1477,8 @@ class ProcessingApi(PaginationBaseAPI):
             query_params['offset'] = params['offset']
         if 'user_id' in params:
             query_params['user_id'] = params['user_id']
+        if 'plugin_id' in params:
+            query_params['plugin_id'] = params['plugin_id']
         if 'image_id' in params:
             query_params['image_id'] = params['image_id']
         
