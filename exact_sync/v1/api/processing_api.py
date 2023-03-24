@@ -458,6 +458,8 @@ class ProcessingApi(PaginationBaseAPI):
             form_params.append(('meta_data', params['meta_data']))  # noqa: E501
         if 'vector' in params:
             form_params.append(('vector', params['vector']))  # noqa: E501
+        if 'score' in params:
+            form_params.append(('score', params['score']))  # noqa: E501
         if 'unique_identifier' in params:
             form_params.append(('unique_identifier', params['unique_identifier']))  # noqa: E501
         if 'generated' in params:
@@ -1106,6 +1108,7 @@ class ProcessingApi(PaginationBaseAPI):
             'pluginresultentry',
             'meta_data',
             'vector',
+            'score',
             'unique_identifier',
             'image',
             'time']  # noqa: E501
