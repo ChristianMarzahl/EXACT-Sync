@@ -692,6 +692,8 @@ class ProcessingApi(PaginationBaseAPI):
             form_params.append(('name', params['name']))  # noqa: E501
         if 'visible' in params:
             form_params.append(('visible', params['visible']))  # noqa: E501
+        if 'default_threshold' in params:
+            form_params.append(('default_threshold', params['default_threshold']))  # noqa: E501
         if 'annotation_results' in params:
             form_params.append(('annotation_results', params['annotation_results']))  # noqa: E501
             collection_formats['annotation_results'] = 'multi'  # noqa: E501
@@ -1341,6 +1343,7 @@ class ProcessingApi(PaginationBaseAPI):
             'created_time',
             'name',
             'visible',
+            'default_threshold',
             'annotation_results',
             'bitmap_results']  # noqa: E501
         all_params.append('async_req')

@@ -343,7 +343,7 @@ class PluginResultAnnotation(object):
             else:
                 result[attr] = value
         if issubclass(PluginResultAnnotation, dict):
-            for key, value in self.items():
+            for key, value in self.items(): # type: ignore
                 result[key] = value
 
         return result
