@@ -31,7 +31,9 @@ class PluginResultAnnotation(object):
         'annotation_type': 'int',
         'pluginresultentry': 'int',
         'meta_data': 'object',
+        'plugin' : 'int',
         'vector': 'object',
+        'score' : 'float',
         'unique_identifier': 'str',
         'generated': 'str',
         'image': 'int',
@@ -43,6 +45,8 @@ class PluginResultAnnotation(object):
         'annotation_type': 'annotation_type',
         'pluginresultentry': 'pluginresultentry',
         'meta_data': 'meta_data',
+        'plugin' : 'plugin',
+        'score' : 'score',
         'vector': 'vector',
         'unique_identifier': 'unique_identifier',
         'generated': 'generated',
@@ -50,7 +54,7 @@ class PluginResultAnnotation(object):
         'time': 'time'
     }
 
-    def __init__(self, id=None, annotation_type=None, pluginresultentry=None, meta_data=None, vector=None, unique_identifier=None, generated=None, image=None, time=None):  # noqa: E501
+    def __init__(self, id=None, annotation_type=None, pluginresultentry=None, meta_data=None, vector=None, score=None, unique_identifier=None, generated=None, image=None, time=None, plugin=None):  # noqa: E501
         """PluginResultAnnotation - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._annotation_type = None
@@ -60,6 +64,8 @@ class PluginResultAnnotation(object):
         self._unique_identifier = None
         self._generated = None
         self._image = None
+        self._score = None
+        self._plugin = None
         self._time = None
         self.discriminator = None
         if id is not None:
@@ -70,6 +76,10 @@ class PluginResultAnnotation(object):
             self.meta_data = meta_data
         if vector is not None:
             self.vector = vector
+        if plugin is not None:
+            self._plugin = plugin
+        if score is not None:
+            self._score = score
         if unique_identifier is not None:
             self.unique_identifier = unique_identifier
         if generated is not None:
@@ -100,6 +110,46 @@ class PluginResultAnnotation(object):
         self._id = id
 
     @property
+    def plugin(self):
+        """Gets the plugin of this PluginResultAnnotation.  # noqa: E501
+
+
+        :return: The plugin of this PluginResultAnnotation.  # noqa: E501
+        :rtype: int
+        """
+        return self._plugin
+
+    @plugin.setter
+    def plugin(self, plugin):
+        """Sets the plugin of this PluginResultAnnotation.
+
+        :param id: The id of this PluginResultAnnotation.  # noqa: E501
+        :type: int
+        """
+
+        raise ValueError('This is a read-only property.')
+
+    @property
+    def score(self):
+        """Gets the score of this PluginResultAnnotation.  # noqa: E501
+
+
+        :return: The score of this PluginResultAnnotation.  # noqa: E501
+        :rtype: int
+        """
+        return self._score
+
+    @score.setter
+    def score(self, score):
+        """Sets the score of this PluginResultAnnotation.
+
+        :param id: The id of this PluginResultAnnotation.  # noqa: E501
+        :type: int
+        """
+
+        self._score = score
+
+    @property
     def annotation_type(self):
         """Gets the annotation_type of this PluginResultAnnotation.  # noqa: E501
 
@@ -117,8 +167,6 @@ class PluginResultAnnotation(object):
         :param annotation_type: The annotation_type of this PluginResultAnnotation.  # noqa: E501
         :type: int
         """
-        if annotation_type is None:
-            raise ValueError("Invalid value for `annotation_type`, must not be `None`")  # noqa: E501
 
         self._annotation_type = annotation_type
 
@@ -295,7 +343,7 @@ class PluginResultAnnotation(object):
             else:
                 result[attr] = value
         if issubclass(PluginResultAnnotation, dict):
-            for key, value in self.items():
+            for key, value in self.items(): # type: ignore
                 result[key] = value
 
         return result

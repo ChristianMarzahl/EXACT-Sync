@@ -32,6 +32,7 @@ class PluginResultEntry(object):
         'created_time': 'datetime',
         'name': 'str',
         'visible': 'bool',
+        'default_threshold' : 'float',
         'annotation_results': 'list[int]',
         'bitmap_results': 'list[int]'
     }
@@ -42,11 +43,12 @@ class PluginResultEntry(object):
         'created_time': 'created_time',
         'name': 'name',
         'visible': 'visible',
+        'default_threshold' : 'default_threshold',
         'annotation_results': 'annotation_results',
         'bitmap_results': 'bitmap_results'
     }
 
-    def __init__(self, id=None, pluginresult=None, created_time=None, name=None, visible=None, annotation_results=None, bitmap_results=None):  # noqa: E501
+    def __init__(self, id=None, pluginresult=None, created_time=None, name=None, default_threshold=None, visible=None, annotation_results=None, bitmap_results=None):  # noqa: E501
         """PluginResultEntry - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._pluginresult = None
@@ -56,6 +58,9 @@ class PluginResultEntry(object):
         self._annotation_results = None
         self._bitmap_results = None
         self.discriminator = None
+        self.default_threshold = None
+        if default_threshold is not None:
+            self.default_threshold = default_threshold
         if id is not None:
             self.id = id
         self.pluginresult = pluginresult

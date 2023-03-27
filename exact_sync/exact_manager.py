@@ -8,8 +8,6 @@ import datetime
 import re
 import sys
 from functools import partial
-import threading
-import queue
 from tqdm import tqdm
 from requests_toolbelt.multipart import encoder
 
@@ -33,23 +31,13 @@ class ExactImageList():
 
 class ExactManager():
 
-    def __init__(self, username:str=None, password:str=None, serverurl:str=None, logfile=sys.stdout, loglevel:int=1, statusqueue:queue.Queue=None):
+    def __init__(self, username:str=None, password:str=None, serverurl:str=None, logfile=sys.stdout, loglevel:int=1):
         self.username = username
         self.password = password
         self.serverurl = serverurl if serverurl[-1]=='/' else serverurl+'/'
-        self.statusqueue = statusqueue
         self.progress_denominator = 1
         self.progress_offset = 0
         self.set_progress_properties(1,0)
-        self.multi_threaded=True
-        self.num_threads=10
-        if (self.multi_threaded):
-            self.jobqueue = queue.Queue()
-            self.resultQueue = queue.Queue()
-            self.workers={}
-            for k in range(self.num_threads):
-                self.workers[k] = threading.Thread(target=self.queueWorker, daemon=True)
-                self.workers[k].start()
 
         self.logfile = logfile
         self.loglevel = loglevel
@@ -67,13 +55,9 @@ class ExactManager():
         logmsg=' '.join([str(x) for x in args])
         if level>=self.loglevel:
             self.logfile.write( '%s ' % str(datetime.datetime.now()) + logmsg +'\n')
-        if (self.statusqueue is not None) and (level>1):
-            self.statusqueue.put((1, logmsg))
 
     def progress(self, value:float, callback:callable=None):
         value=value/self.progress_denominator+self.offset
-        if (self.statusqueue is not None):
-            self.statusqueue.put((0, value*100 if value<1 else -1))
         if (callback is not None):
             callback(value*100)
 
@@ -81,18 +65,6 @@ class ExactManager():
         self.progress_denominator=float(denominator)
         self.offset=float(offset)
 
-    def queueWorker(self):
-        while (True):
-            status, newjob, context = self.jobqueue.get()
-            if (status==-1):
-#                print('Stopping worker')
-                break
-            ret = newjob()
-            self.resultQueue.put((ret, context))
-
-    def terminate(self):
-        for k in range(self.num_threads):
-            self.jobqueue.put((-1,0,0))
 
     def create_progressbar(self, e:encoder.MultipartEncoder):
 
@@ -197,6 +169,19 @@ class ExactManager():
         else: 
             self.log(10,'Unable to create annotation, message was: '+ret)
             raise ExactProcessError('Unable to create annotation')
+        
+    def submit_job(self, image_id:int, plugin_id:int):
+        data = {
+            'image_id': image_id,
+            'plugin_id' : plugin_id,
+        }
+
+        status, ret = self.post('processing/api/plugin_job/create/', data=json.dumps(data), headers={'content-type':'application/json'})
+        if status==201:
+            return ret
+        else: 
+            self.log(10,'Unable to create plugin job, message was: '+ret)
+            raise ExactProcessError('Unable to create plugin job')        
 
     def upload_image_to_imageset(self, imageset_id:int, filename:str) -> bool:
         e = encoder.MultipartEncoder(fields={'files[]': (os.path.basename(filename), open(filename, 'rb'), 'application/octet-stream')})

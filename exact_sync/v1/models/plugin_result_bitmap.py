@@ -36,7 +36,7 @@ class PluginResultBitmap(object):
         'name': 'str',
         'scale_max': 'float',
         'scale_min': 'float',
-        'transformation_matrix': 'object',
+        'location_rect': 'object',
         'pluginresultentry': 'int',
         'image': 'int'
     }
@@ -51,12 +51,12 @@ class PluginResultBitmap(object):
         'name': 'name',
         'scale_max': 'scale_max',
         'scale_min': 'scale_min',
-        'transformation_matrix': 'transformation_matrix',
+        'location_rect': 'location_rect',
         'pluginresultentry': 'pluginresultentry',
         'image': 'image'
     }
 
-    def __init__(self, id=None, bitmap=None, channels=None, default_alpha=None, default_threshold=None, meta_data=None, name=None, scale_max=None, scale_min=None, transformation_matrix=None, pluginresultentry=None, image=None):  # noqa: E501
+    def __init__(self, id=None, bitmap=None, channels=None, default_alpha=None, default_threshold=None, meta_data=None, name=None, scale_max=None, scale_min=None, location_rect=None, pluginresultentry=None, image=None):  # noqa: E501
         """PluginResultBitmap - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._bitmap = None
@@ -67,7 +67,7 @@ class PluginResultBitmap(object):
         self._name = None
         self._scale_max = None
         self._scale_min = None
-        self._transformation_matrix = None
+        self._location_rect = None
         self._pluginresultentry = None
         self._image = None
         self.discriminator = None
@@ -87,8 +87,8 @@ class PluginResultBitmap(object):
             self.scale_max = scale_max
         if scale_min is not None:
             self.scale_min = scale_min
-        if transformation_matrix is not None:
-            self.transformation_matrix = transformation_matrix
+        if location_rect is not None:
+            self.location_rect = location_rect
         self.pluginresultentry = pluginresultentry
         self.image = image
 
@@ -286,25 +286,25 @@ class PluginResultBitmap(object):
         self._scale_min = scale_min
 
     @property
-    def transformation_matrix(self):
-        """Gets the transformation_matrix of this PluginResultBitmap.  # noqa: E501
+    def location_rect(self):
+        """Gets the location_rect of this PluginResultBitmap.  # noqa: E501
 
 
-        :return: The transformation_matrix of this PluginResultBitmap.  # noqa: E501
+        :return: The location_rect of this PluginResultBitmap.  # noqa: E501
         :rtype: object
         """
-        return self._transformation_matrix
+        return self._location_rect
 
-    @transformation_matrix.setter
-    def transformation_matrix(self, transformation_matrix):
-        """Sets the transformation_matrix of this PluginResultBitmap.
+    @location_rect.setter
+    def location_rect(self, location_rect):
+        """Sets the location_rect of this PluginResultBitmap.
 
 
-        :param transformation_matrix: The transformation_matrix of this PluginResultBitmap.  # noqa: E501
+        :param location_rect: The location_rect of this PluginResultBitmap.  # noqa: E501
         :type: object
         """
 
-        self._transformation_matrix = transformation_matrix
+        self._location_rect = location_rect
 
     @property
     def pluginresultentry(self):
