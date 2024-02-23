@@ -18,7 +18,7 @@ setuptools.setup(
         'tqdm', 
         'requests-toolbelt',
         'pillow',
-        "locust==1.1.0"
+        "locust==1.3.2"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
